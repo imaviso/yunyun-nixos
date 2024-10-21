@@ -15,7 +15,7 @@
       description = "minipc";
       createHome = true;
       home = "/home/minipc";
-      extraGroups = [ "wheel" "users" "networkmanager" ];
+      extraGroups = [ "wheel" "users" "networkmanager" "podman" ];
     };
   };
 }

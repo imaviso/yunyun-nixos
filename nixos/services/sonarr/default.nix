@@ -2,6 +2,7 @@
   services.sonarr = {
     enable = true;
     openFirewall = true;
-    group = "aria2";
+    user = "aria2";
+    group = "users";
   };
 }

@@ -4,5 +4,6 @@
     ./services
     ./zsh.nix
     ./starship.nix
+    ./podman.nix
   ];
 }

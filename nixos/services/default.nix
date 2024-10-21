@@ -7,7 +7,7 @@
     ./tailscale
     ./sonarr
     ./aria2
-    ./adguard-home
+    #./adguard-home
     ./jellyfin
     ./komga
     ./open-webui
