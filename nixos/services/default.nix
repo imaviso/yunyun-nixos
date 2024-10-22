@@ -11,5 +11,8 @@
     ./jellyfin
     ./komga
     ./open-webui
+    #./multi-scrobbler
+    ./cloudflared
+    ./immich
   ];
 }
