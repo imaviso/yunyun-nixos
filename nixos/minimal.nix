@@ -1,9 +1,8 @@
 {...}: {
   imports = [
     ./configuration.nix
-    ./services
+    # ./services
     ./zsh.nix
     ./starship.nix
-    ./podman.nix
   ];
 }

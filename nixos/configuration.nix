@@ -23,18 +23,18 @@
   time.timeZone = "Asia/Manila";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_PH.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_PH.UTF-8";
-    LC_IDENTIFICATION = "en_PH.UTF-8";
-    LC_MEASUREMENT = "en_PH.UTF-8";
-    LC_MONETARY = "en_PH.UTF-8";
-    LC_NAME = "en_PH.UTF-8";
-    LC_NUMERIC = "en_PH.UTF-8";
-    LC_PAPER = "en_PH.UTF-8";
-    LC_TELEPHONE = "en_PH.UTF-8";
-    LC_TIME = "en_PH.UTF-8";
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEUSONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
   # Configure keymap in X11
@@ -43,26 +43,39 @@
     variant = "";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-#  users.users.minipc = {
-#    isNormalUser = true;
-#    description = "minipc";
-#    extraGroups = [ "networkmanager" "wheel" ];
-#    packages = with pkgs; [];
-#  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nix = {
-    package = pkgs.nixFlakes;
-    extraOptions =
-      lib.optionalString (config.nix.package == pkgs.nixFlakes)
-      "experimental-features = nix-command flakes";
+    settings = {
+      experimental-features = [
+       "nix-command" "flakes"
+      ];
+      };
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+  };
+
+
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+ # Enable sound with pipewire.
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
   };
 
   # List packages installed in system profile. To search, run:
@@ -73,11 +86,8 @@
      curl
      git
      fastfetch
-     onefetch
      nmap
      btop
-     streamrip
-     beets
      mediainfo
      neovim
      clang
@@ -92,33 +102,9 @@
      nodejs
      bun
      yazi
-     podman-compose
+     # podman-compose
      
   ];
-
-  age.identityPaths = [ "/home/minipc/.ssh/id_ed25519"];
-  age.secrets = {
-    LastFMApiKey = {
-      file = ../secrets/lastfmkey.age;
-      owner = "minipc"; # Adjust the owner and group as necessary
-      group = "users";
-    };
-    LastFMApiSecret = {
-      file = ../secrets/lastfmsecret.age;
-      owner = "minipc"; # Adjust the owner and group as necessary
-      group = "users";
-    };
-    SpotifyID = {
-      file = ../secrets/spotifyid.age;
-      owner = "minipc"; # Adjust the owner and group as necessary
-      group = "users";
-    };
-    SpotifySecret = {
-      file = ../secrets/spotifysecret.age;
-      owner = "minipc"; # Adjust the owner and group as necessary
-      group = "users";
-    };
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -143,8 +129,8 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [53 2283 3001 4533 4747 4000 4001 4002 20048 2049 111 139 445 8000 8081 9078 9091 51413];
-    allowedUDPPorts = [53 4747 4000 4001 4002 20048 2049 111 137 138 51413];
+    # allowedTCPPorts = [53 2283 3001 4533 4747 4000 4001 4002 20048 2049 111 139 445 8000 8081 9078 9091 51413];
+    # allowedUDPPorts = [53 4747 4000 4001 4002 20048 2049 111 137 138 51413];
     #allowedUDPPortRanges = [
     #  { from = 8000; to = 8010; }
     #];

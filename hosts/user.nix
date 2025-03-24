@@ -5,17 +5,17 @@
 {
 
   imports = [
-    ./hardware.nix
+    ./hardware-configuration.nix
     ../nixos/minimal.nix
   ];
 
   users = {
-    users.minipc= {
+    users.yunyun= {
       isNormalUser = true;
-      description = "minipc";
+      description = "yunyun";
       createHome = true;
       home = "/home/minipc";
-      extraGroups = [ "wheel" "users" "networkmanager" "podman" ];
+      extraGroups = [ "wheel" "users" "networkmanager" ];
     };
   };
 }
