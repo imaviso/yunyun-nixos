@@ -14,7 +14,7 @@
       isNormalUser = true;
       description = "yunyun";
       createHome = true;
-      home = "/home/minipc";
+      home = "/home/yunyun";
       extraGroups = [ "wheel" "users" "networkmanager" ];
     };
   };

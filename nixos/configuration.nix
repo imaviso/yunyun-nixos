@@ -102,6 +102,10 @@
      nodejs
      bun
      yazi
+     firefox
+     brave
+     ghostty
+     walker
      # podman-compose
      
   ];
