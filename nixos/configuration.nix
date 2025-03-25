@@ -37,9 +37,16 @@
      unzip
      zig
      go
+     cargo
+     rustup
+     rust-analyzer
+     rustfmt
+     python3Full
      jdk
      ripgrep
      eza
+     fd
+     lazygit
      zellij
      zoxide
      fzf
@@ -57,6 +64,12 @@
      vesktop
      youtube-music
      teams-for-linux
+     mpv
+     img2pdf
+     tesseract
+     imagemagick
+     wl-clipboard
+     feishin
   ];
 
  
