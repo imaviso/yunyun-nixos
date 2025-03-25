@@ -1,9 +1,12 @@
 {...}: {
   imports = [
     ./configuration.nix
+    ./services
     ./programs
-    # ./services
+    ./networking.nix
+    ./i18n.nix
     ./zsh.nix
+    ./fonts.nix
     ./starship.nix
   ];
 }

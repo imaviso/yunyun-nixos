@@ -1,15 +1,13 @@
 { config, lib, pkgs, ... }:
 
-
-
 {
-
   imports = [
     ./hardware-configuration.nix
-    ../nixos/minimal.nix
+    ../nixos
   ];
 
-  users = {
+  users = { 
+    defaultUserShell = pkgs.zsh;
     users.yunyun= {
       isNormalUser = true;
       description = "yunyun";

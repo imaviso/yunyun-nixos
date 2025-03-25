@@ -1,7 +1,8 @@
 {...}: {
   imports = [
-    # ./services
-    # ./zsh.nix
     ./fish
+    ./an-anime-game
+    ./corectrl
+    ./nix-ld.nix
   ];
 }

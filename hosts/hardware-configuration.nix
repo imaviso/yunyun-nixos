@@ -7,11 +7,17 @@
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
-
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
+  boot.supportedFilesystems = [ "nfs" ];
   boot.extraModulePackages = [ ];
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/5e4e3e11-db99-402c-8511-0f87ba5d4520";
@@ -24,10 +30,22 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/mnt/ramsta" =
+    { device = "/dev/disk/by-uuid/6957d721-0c6e-4609-8bb3-c5673e20ca66";
+      fsType = "btrfs";
+    };
+
+  fileSystems."/mnt/nfs" =
+    { device = "192.168.254.191:/mnt/media2";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" ];
+    };
+  
   swapDevices =
     [ { device = "/dev/disk/by-uuid/1c3aff10-d194-478a-9da8-c41768978c5b"; }
     ];
 
+  hardware.bluetooth.enable = true;
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
