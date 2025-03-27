@@ -1,27 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 {
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nix = {
-    settings = {
-      experimental-features = [
-       "nix-command" "flakes"
-      ];
-      substituters = [ "https://ezkea.cachix.org" ];
-      trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = with pkgs; [
      klipper
      neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -43,6 +28,7 @@
      rustfmt
      python3Full
      jdk
+     maven
      ripgrep
      eza
      fd
@@ -57,8 +43,8 @@
      firefox
      brave
      ghostty
-     walker
      bottles
+     heroic
      libreoffice-fresh
      easyeffects
      vesktop
@@ -70,6 +56,8 @@
      imagemagick
      wl-clipboard
      feishin
+     bbe
+     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg # installs a package
   ];
 
  

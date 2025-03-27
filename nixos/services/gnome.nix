@@ -11,7 +11,9 @@
     adwaita-icon-theme
     gnome-tweaks
     gnomeExtensions.appindicator
-    gnomeExtensions.appindicator
+    gnomeExtensions.gsconnect
+    gnomeExtensions.pano
+    gnomeExtensions.just-perfection
     apple-cursor
     gnome-screenshot
   ];

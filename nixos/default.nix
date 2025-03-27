@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./nix
     ./configuration.nix
     ./services
     ./programs
@@ -8,5 +9,7 @@
     ./zsh.nix
     ./fonts.nix
     ./starship.nix
+    # ./podman.nix
+    ./docker.nix
   ];
 }
