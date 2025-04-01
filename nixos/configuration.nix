@@ -58,7 +58,15 @@
      feishin
      bbe
      inputs.nix-gaming.packages.${pkgs.system}.wine-tkg # installs a package
+     dbeaver-bin
+     zed-editor
+     mission-center
+     vulkan-tools
+     glxinfo
+     libva-utils
+     gamemode
   ];
+
 
  
   # Some programs need SUID wrappers, can be configured further or are

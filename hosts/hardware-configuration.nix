@@ -18,6 +18,9 @@
   boot.supportedFilesystems = [ "nfs" ];
   boot.extraModulePackages = [ ];
 
+  environment.systemPackages = with pkgs; [ lact ];
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/5e4e3e11-db99-402c-8511-0f87ba5d4520";

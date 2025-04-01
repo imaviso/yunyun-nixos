@@ -10,12 +10,15 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
   };
 
   outputs = inputs @ {
     nixpkgs,
     aagl,
     nix-gaming,
+    hyprpanel,
     ...
   }: {
     nixosConfigurations = {

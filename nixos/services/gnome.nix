@@ -14,6 +14,10 @@
     gnomeExtensions.gsconnect
     gnomeExtensions.pano
     gnomeExtensions.just-perfection
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.tiling-shell
+    gnomeExtensions.rounded-window-corners-reborn
     apple-cursor
     gnome-screenshot
   ];
