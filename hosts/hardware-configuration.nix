@@ -13,10 +13,13 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
   boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
   boot.supportedFilesystems = [ "nfs" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [ pkgs.linuxPackages_latest.v4l2loopback ];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback exclusive_caps=1 card_label="Virtual Webcam"
+  '';
 
   environment.systemPackages = with pkgs; [ lact ];
   systemd.packages = with pkgs; [ lact ];

@@ -8,12 +8,12 @@
   # $ nix search wget
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = with pkgs; [
-     klipper
      neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      curl
      git
      fastfetch
+     nitch
      nmap
      btop
      mediainfo
@@ -35,6 +35,7 @@
      lazygit
      zellij
      zoxide
+     starship
      fzf
      nodejs
      bun
@@ -42,7 +43,9 @@
      yazi
      firefox
      brave
+     chromium
      ghostty
+     foot
      bottles
      heroic
      libreoffice-fresh
@@ -60,12 +63,17 @@
      inputs.nix-gaming.packages.${pkgs.system}.wine-tkg # installs a package
      dbeaver-bin
      zed-editor
+     vscode
      mission-center
      vulkan-tools
      glxinfo
      libva-utils
      gamemode
+     android-tools
+     scrcpy
+     pdfsam-basic
   ];
+  
 
 
  
