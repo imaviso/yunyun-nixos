@@ -7,5 +7,6 @@
     ./audio.nix
     ./keyboard.nix
     ./ssh.nix
+    # ./flatpak.nix
   ];
 }

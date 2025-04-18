@@ -13,7 +13,7 @@
       description = "yunyun";
       createHome = true;
       home = "/home/yunyun";
-      extraGroups = [ "wheel" "users" "networkmanager" "docker" ];
+      extraGroups = [ "wheel" "users" "networkmanager" "docker" "video" "plugdev" "input" ];
     };
   };
 }

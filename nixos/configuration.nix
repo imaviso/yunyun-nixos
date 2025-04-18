@@ -72,6 +72,10 @@
      android-tools
      scrcpy
      pdfsam-basic
+     gnome-disk-utility
+     wgcf
+     wireguard-tools
+     mkvtoolnix
   ];
   
 

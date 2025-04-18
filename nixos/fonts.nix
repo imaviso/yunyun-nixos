@@ -6,6 +6,8 @@ fonts.packages = with pkgs; [
   noto-fonts-emoji
   liberation_ttf
   adwaita-fonts
+  geist-font
+  nerd-fonts.geist-mono
   nerd-fonts.jetbrains-mono
   
 ];

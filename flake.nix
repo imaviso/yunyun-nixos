@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,6 +13,8 @@
 
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
+    stylix.url = "github:danth/stylix";
+
   };
 
   outputs = inputs @ {
@@ -19,6 +22,7 @@
     aagl,
     nix-gaming,
     hyprpanel,
+    stylix,
     ...
   }: {
     nixosConfigurations = {
@@ -32,6 +36,7 @@
           {
             imports = [
               aagl.nixosModules.default
+              stylix.nixosModules.stylix
             ];
           }
         ];
