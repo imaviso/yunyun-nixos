@@ -12,8 +12,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelModules = [ "kvm-amd" "v4l2loopback" ];
+  boot.initrd.kernelModules = [ "amdgpu" "ntsync" ];
+  boot.kernelModules = [ "kvm-amd" "v4l2loopback" "ntsync" ];
   boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
   boot.supportedFilesystems = [ "nfs" "ext4" "btrfs" ];
   boot.extraModulePackages = [ pkgs.linuxPackages_latest.v4l2loopback ];

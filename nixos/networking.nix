@@ -10,7 +10,7 @@
   # Enable networking
     networkmanager.enable = true;
 
-    wg-quick.interfaces.wg0.configFile = "/etc/nixos/files/wireguard/wg0.conf";
+    # wg-quick.interfaces.wg0.configFile = "/etc/nixos/files/wireguard/wg0.conf";
 
     firewall = {
       enable = true;
