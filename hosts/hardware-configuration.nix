@@ -84,11 +84,11 @@
       fsType = "btrfs";
     };
 
-  # fileSystems."/mnt/nfs" =
-  #   { device = "192.168.254.191:/mnt/media2";
-  #     fsType = "nfs";
-  #     options = [ "x-systemd.automount" "noauto" ];
-  #   };
+  fileSystems."/mnt/nfs" =
+    { device = "192.168.254.191:/mnt/media2";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" ];
+    };
   
   swapDevices =
     [ { device = "/dev/disk/by-uuid/1c3aff10-d194-478a-9da8-c41768978c5b"; }

@@ -13,8 +13,6 @@
 
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
-    stylix.url = "github:danth/stylix";
-
   };
 
   outputs = inputs @ {
@@ -22,7 +20,6 @@
     aagl,
     nix-gaming,
     hyprpanel,
-    stylix,
     ...
   }: {
     nixosConfigurations = {
@@ -36,7 +33,6 @@
           {
             imports = [
               aagl.nixosModules.default
-              stylix.nixosModules.stylix
             ];
           }
         ];

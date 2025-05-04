@@ -80,6 +80,7 @@
      handbrake
      lsof
      komikku
+     vial
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
