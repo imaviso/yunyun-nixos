@@ -23,7 +23,7 @@
      zig
      go
      cargo
-     rustup
+     rustc
      rust-analyzer
      rustfmt
      python3Full
@@ -61,9 +61,19 @@
      feishin
      bbe
      inputs.nix-gaming.packages.${pkgs.system}.wine-tkg # installs a package
+    (pkgs.wrapOBS {
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        droidcam-obs
+      ];
+    })
      dbeaver-bin
      zed-editor
      vscode
+     code-cursor
+     windsurf
      mission-center
      vulkan-tools
      glxinfo
@@ -81,13 +91,11 @@
      lsof
      komikku
      vial
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-      ];
-    })
+     anydesk
+     virt-manager
+     moonlight-qt
+     remmina
+     sbctl
   ];
   
 

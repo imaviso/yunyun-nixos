@@ -3,7 +3,7 @@
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;
   programs.hyprland = {
-    enable = true; # enable Hyprland
+    enable = true; 
     withUWSM = true;
     xwayland.enable = true;
   };
@@ -32,6 +32,7 @@
     wl-clipboard
     cliphist
     wl-screenrec
+    fuzzel
   ];
 
   # services.greetd = {
@@ -56,19 +57,19 @@
   #   };
   # };
 
-  services.greetd = let
-    session = {
-      command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
-      user = "yunyun";
-    };
-  in {
-    enable = true;
-    settings = {
-      terminal.vt = 1;
-      default_session = session;
-      initial_session = session;
-    };
-  };
+  # services.greetd = let
+  #   session = {
+  #     command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop";
+  #     user = "yunyun";
+  #   };
+  # in {
+  #   enable = true;
+  #   settings = {
+  #     terminal.vt = 1;
+  #     default_session = session;
+  #     initial_session = session;
+  #   };
+  # };
 
   # security.pam.services.greetd.enableGnomeKeyring = true;
 

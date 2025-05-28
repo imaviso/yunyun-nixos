@@ -6,18 +6,24 @@
 
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = inputs @ {
     nixpkgs,
     aagl,
+    lanzaboote,
     nix-gaming,
     hyprpanel,
     ...
@@ -33,6 +39,7 @@
           {
             imports = [
               aagl.nixosModules.default
+              lanzaboote.nixosModules.lanzaboote
             ];
           }
         ];

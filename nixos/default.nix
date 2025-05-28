@@ -11,5 +11,6 @@
     ./starship.nix
     # ./podman.nix
     ./docker.nix
+    ./libvirt.nix
   ];
 }
