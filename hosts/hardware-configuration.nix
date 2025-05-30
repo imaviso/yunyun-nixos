@@ -87,11 +87,6 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/ramsta" =
-    { device = "/dev/disk/by-uuid/6957d721-0c6e-4609-8bb3-c5673e20ca66";
-      fsType = "btrfs";
-    };
-
   fileSystems."/mnt/nfs" =
     { device = "192.168.254.191:/mnt/media2";
       fsType = "nfs";
