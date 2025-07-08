@@ -1,12 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, pkgs, ... }:
 {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.variables.FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   environment.systemPackages = with pkgs; [
      neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
@@ -32,6 +33,7 @@
      ripgrep
      eza
      fd
+     jq
      lazygit
      zellij
      zoxide
@@ -46,7 +48,7 @@
      chromium
      ghostty
      foot
-     bottles
+     # bottles
      heroic
      libreoffice-fresh
      easyeffects
@@ -60,7 +62,7 @@
      wl-clipboard
      feishin
      bbe
-     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg # installs a package
+     inputs.zen-browser.packages.${pkgs.system}.default # beta
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
@@ -87,7 +89,7 @@
      wireguard-tools
      mkvtoolnix
      obs-studio
-     handbrake
+     # handbrake
      lsof
      komikku
      vial
@@ -96,6 +98,10 @@
      moonlight-qt
      remmina
      sbctl
+     telegram-desktop
+     woeusb-ng
+     efibootmgr
+     os-prober
   ];
   
 

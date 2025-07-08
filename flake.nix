@@ -4,17 +4,20 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-gaming.url = "github:fufexan/nix-gaming";
-
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,10 +25,10 @@
 
   outputs = inputs @ {
     nixpkgs,
-    aagl,
     lanzaboote,
+    zen-browser,
+    quickshell,
     nix-gaming,
-    hyprpanel,
     ...
   }: {
     nixosConfigurations = {
@@ -38,7 +41,6 @@
           ./hosts/user.nix
           {
             imports = [
-              aagl.nixosModules.default
               lanzaboote.nixosModules.lanzaboote
             ];
           }

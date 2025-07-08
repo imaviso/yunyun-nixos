@@ -5,69 +5,84 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [ 
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
-  # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.enable = lib.mkForce false;
 
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "amdgpu" "ntsync" ];
-  boot.kernelModules = [ "kvm-amd" "v4l2loopback" "ntsync" ];
-  boot.kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
-  boot.supportedFilesystems = [ "nfs" "ext4" "btrfs" ];
-  boot.extraModulePackages = [ pkgs.linuxPackages_latest.v4l2loopback ];
-  boot.extraModprobeConfig = ''
-    options v4l2loopback exclusive_caps=1 card_label="Virtual Webcam"
-  '';
+  boot = {
+    loader = {
+      systemd-boot = {
+         enable = lib.mkForce false;
+         # enable = true;
+         consoleMode = "keep"; 
+      };
+      efi.canTouchEfiVariables = true;
+      timeout = 5; 
+    };
 
-  boot.kernel.sysctl = {
-    # The Magic SysRq key is a key combo that allows users connected to the
-    # system console of a Linux kernel to perform some low-level commands.
-    # Disable it, since we don't need it, and is a potential security concern.
-    "kernel.sysrq" = 0;
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+    initrd.kernelModules = [ 
+      "amdgpu"
+    ];
 
-    ## TCP hardening
-    # Prevent bogus ICMP errors from filling up logs.
-    "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
-    # Reverse path filtering causes the kernel to do source validation of
-    # packets received from all interfaces. This can mitigate IP spoofing.
-    "net.ipv4.conf.default.rp_filter" = 1;
-    "net.ipv4.conf.all.rp_filter" = 1;
-    # Do not accept IP source route packets (we're not a router)
-    "net.ipv4.conf.all.accept_source_route" = 0;
-    "net.ipv6.conf.all.accept_source_route" = 0;
-    # Don't send ICMP redirects (again, we're not a router)
-    "net.ipv4.conf.all.send_redirects" = 0;
-    "net.ipv4.conf.default.send_redirects" = 0;
-    # Refuse ICMP redirects (MITM mitigations)
-    "net.ipv4.conf.all.accept_redirects" = 0;
-    "net.ipv4.conf.default.accept_redirects" = 0;
-    "net.ipv4.conf.all.secure_redirects" = 0;
-    "net.ipv4.conf.default.secure_redirects" = 0;
-    "net.ipv6.conf.all.accept_redirects" = 0;
-    "net.ipv6.conf.default.accept_redirects" = 0;
-    # Protects against SYN flood attacks
-    "net.ipv4.tcp_syncookies" = 1;
-    # Incomplete protection again TIME-WAIT assassination
-    "net.ipv4.tcp_rfc1337" = 1;
+    kernelModules = [ "kvm-amd" 
+      "v4l2loopback"
+    ];
 
-    ## TCP optimization
-    # TCP Fast Open is a TCP extension that reduces network latency by packing
-    # data in the sender’s initial TCP SYN. Setting 3 = enable TCP Fast Open for
-    # both incoming and outgoing connections:
-    "net.ipv4.tcp_fastopen" = 3;
-    # Bufferbloat mitigations + slight improvement in throughput & latency
-    "net.ipv4.tcp_congestion_control" = "bbr";
-    "net.core.default_qdisc" = "cake";
-  };
+    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
+    supportedFilesystems = [ "nfs" "ext4" "btrfs" "ntfs" ];
+    extraModulePackages = [ pkgs.linuxPackages_latest.v4l2loopback ];
+    extraModprobeConfig = ''
+      options v4l2loopback exclusive_caps=1 card_label="Virtual Webcam"
+    '';
 
+    kernel.sysctl = {
+      # The Magic SysRq key is a key combo that allows users connected to the
+      # system console of a Linux kernel to perform some low-level commands.
+      # Disable it, since we don't need it, and is a potential security concern.
+      "kernel.sysrq" = 0;
 
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/var/lib/sbctl";
+      ## TCP hardening
+      # Prevent bogus ICMP errors from filling up logs.
+      "net.ipv4.icmp_ignore_bogus_error_responses" = 1;
+      # Reverse path filtering causes the kernel to do source validation of
+      # packets received from all interfaces. This can mitigate IP spoofing.
+      "net.ipv4.conf.default.rp_filter" = 1;
+      "net.ipv4.conf.all.rp_filter" = 1;
+      # Do not accept IP source route packets (we're not a router)
+      "net.ipv4.conf.all.accept_source_route" = 0;
+      "net.ipv6.conf.all.accept_source_route" = 0;
+      # Don't send ICMP redirects (again, we're not a router)
+      "net.ipv4.conf.all.send_redirects" = 0;
+      "net.ipv4.conf.default.send_redirects" = 0;
+      # Refuse ICMP redirects (MITM mitigations)
+      "net.ipv4.conf.all.accept_redirects" = 0;
+      "net.ipv4.conf.default.accept_redirects" = 0;
+      "net.ipv4.conf.all.secure_redirects" = 0;
+      "net.ipv4.conf.default.secure_redirects" = 0;
+      "net.ipv6.conf.all.accept_redirects" = 0;
+      "net.ipv6.conf.default.accept_redirects" = 0;
+      # Protects against SYN flood attacks
+      "net.ipv4.tcp_syncookies" = 1;
+      # Incomplete protection again TIME-WAIT assassination
+      "net.ipv4.tcp_rfc1337" = 1;
+
+      ## TCP optimization
+      # TCP Fast Open is a TCP extension that reduces network latency by packing
+      # data in the sender’s initial TCP SYN. Setting 3 = enable TCP Fast Open for
+      # both incoming and outgoing connections:
+      "net.ipv4.tcp_fastopen" = 3;
+      # Bufferbloat mitigations + slight improvement in throughput & latency
+      "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.core.default_qdisc" = "cake";
+    };
+
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
+
   };
 
   environment.systemPackages = with pkgs; [ lact ];
@@ -99,7 +114,12 @@
 
   zramSwap.enable = true;
 
-  hardware.bluetooth.enable = true;
+  hardware = {
+    amdgpu.overdrive.ppfeaturemask.enable = true;
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  };
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
@@ -109,5 +129,4 @@
   # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

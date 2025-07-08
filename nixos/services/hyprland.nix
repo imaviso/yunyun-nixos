@@ -7,8 +7,6 @@
     withUWSM = true;
     xwayland.enable = true;
   };
-  
-  nixpkgs.overlays = [ inputs.hyprpanel.overlay ];
   environment.systemPackages = with pkgs; [
     kitty
     walker 
@@ -33,6 +31,8 @@
     cliphist
     wl-screenrec
     fuzzel
+    inputs.quickshell.packages.${pkgs.system}.default
+    pavucontrol
   ];
 
   # services.greetd = {
