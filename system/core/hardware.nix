@@ -20,7 +20,7 @@
       timeout = 5; 
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
     initrd.kernelModules = [ 
       "amdgpu"
@@ -32,7 +32,9 @@
 
     kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
     supportedFilesystems = [ "nfs" "ext4" "btrfs" "ntfs" ];
-    extraModulePackages = [ pkgs.linuxPackages_latest.v4l2loopback ];
+    extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
     extraModprobeConfig = ''
       options v4l2loopback exclusive_caps=1 card_label="Virtual Webcam"
     '';
@@ -102,11 +104,11 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/nfs" =
-    { device = "192.168.254.191:/mnt/media2";
-      fsType = "nfs";
-      options = [ "x-systemd.automount" "noauto" ];
-    };
+  # fileSystems."/mnt/nfs" =
+  #   { device = "192.168.254.191:/mnt/media2";
+  #     fsType = "nfs";
+  #     options = [ "x-systemd.automount" "noauto" ];
+  #   };
   
   swapDevices =
     [ { device = "/dev/disk/by-uuid/1c3aff10-d194-478a-9da8-c41768978c5b"; }

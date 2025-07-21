@@ -1,15 +1,17 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-{ inputs, pkgs, ... }:
-{
+{ inputs, pkgs, ...}: {
+  imports = [
+    ./hardware.nix
+    ./networking.nix
+    ./fonts.nix
+    ./i18n.nix
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.variables.FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   environment.systemPackages = with pkgs; [
-     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+     neovim 
      wget
      curl
      git
@@ -31,9 +33,12 @@
      jdk
      maven
      ripgrep
+     bat
      eza
      fd
      jq
+     p7zip-rar
+     unrar
      lazygit
      zellij
      zoxide
@@ -50,6 +55,7 @@
      foot
      # bottles
      heroic
+     gamescope
      libreoffice-fresh
      easyeffects
      vesktop
@@ -75,7 +81,6 @@
      zed-editor
      vscode
      code-cursor
-     windsurf
      mission-center
      vulkan-tools
      glxinfo
@@ -102,6 +107,7 @@
      woeusb-ng
      efibootmgr
      os-prober
+     uutils-coreutils-noprefix
   ];
   
 

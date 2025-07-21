@@ -31,7 +31,6 @@
     cliphist
     wl-screenrec
     fuzzel
-    inputs.quickshell.packages.${pkgs.system}.default
     pavucontrol
   ];
 

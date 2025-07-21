@@ -16,18 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
   outputs = inputs @ {
     nixpkgs,
     lanzaboote,
     zen-browser,
-    quickshell,
     nix-gaming,
     ...
   }: {
@@ -38,7 +32,7 @@
           inherit inputs;
         };
         modules = [
-          ./hosts/user.nix
+          ./hosts/desktop.nix
           {
             imports = [
               lanzaboote.nixosModules.lanzaboote
