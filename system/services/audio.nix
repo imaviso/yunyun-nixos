@@ -1,4 +1,4 @@
-{
+{ pkgs, ...} : {
  # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -7,6 +7,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -20,6 +21,25 @@
           "bluez5.enable-hw-volume" = true;
           "bluez5.roles" = [ "hsp_hs" "hsp_ag" "hfp_hf" "hfp_ag" ];
       };
+    };
+  };
+
+
+  environment.systemPackages = with pkgs; [
+    easyeffects
+  ];
+
+  systemd = {
+    user.services.easyeffects = {
+      description = "easyeffects";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.easyeffects}/bin/easyeffects --gapplication-service";
+          Restart = "always";
+        };
     };
   };
 }

@@ -9,9 +9,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.variables.FREETYPE_PROPERTIES = "cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+  environment.variables.FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   environment.systemPackages = with pkgs; [
-     neovim 
+     neovim
+     helix
      wget
      curl
      git
@@ -20,7 +21,6 @@
      nmap
      btop
      mediainfo
-     neovim
      clang
      unzip
      zig
@@ -38,11 +38,9 @@
      fd
      jq
      p7zip-rar
-     unrar
      lazygit
      zellij
-     zoxide
-     starship
+     uv
      fzf
      nodejs
      bun
@@ -53,11 +51,9 @@
      chromium
      ghostty
      foot
-     # bottles
      heroic
      gamescope
      libreoffice-fresh
-     easyeffects
      vesktop
      youtube-music
      teams-for-linux
@@ -68,7 +64,6 @@
      wl-clipboard
      feishin
      bbe
-     inputs.zen-browser.packages.${pkgs.system}.default # beta
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
@@ -85,7 +80,6 @@
      vulkan-tools
      glxinfo
      libva-utils
-     gamemode
      android-tools
      scrcpy
      pdfsam-basic
@@ -100,14 +94,16 @@
      vial
      anydesk
      virt-manager
-     moonlight-qt
-     remmina
      sbctl
      telegram-desktop
      woeusb-ng
      efibootmgr
      os-prober
      uutils-coreutils-noprefix
+     authenticator
+     universal-android-debloater
+     yt-dlp
+     ffmpeg
   ];
   
 

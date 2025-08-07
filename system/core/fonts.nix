@@ -10,7 +10,7 @@ fonts.packages = with pkgs; [
   nerd-fonts.geist-mono
   nerd-fonts.jetbrains-mono
   nerd-fonts.adwaita-mono
-  
+  material-symbols
 ];
 
 }

@@ -10,8 +10,8 @@
   environment.systemPackages = with pkgs; [
     kitty
     walker 
-    hyprpanel
     swww
+    hyprpanel
     apple-cursor
     colloid-icon-theme
     nwg-look
@@ -32,6 +32,8 @@
     wl-screenrec
     fuzzel
     pavucontrol
+    app2unit
+    inputs.quickshell.packages.x86_64-linux.default
   ];
 
   # services.greetd = {

@@ -11,8 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+    quickshell = {
+      url = "github:quickshell-mirror/quickshell/v0.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -21,8 +21,8 @@
   outputs = inputs @ {
     nixpkgs,
     lanzaboote,
-    zen-browser,
     nix-gaming,
+    quickshell,
     ...
   }: {
     nixosConfigurations = {
