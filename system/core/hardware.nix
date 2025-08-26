@@ -30,7 +30,7 @@
       "v4l2loopback"
     ];
 
-    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
+    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" "amd_pstate=active" ];
     supportedFilesystems = [ "nfs" "ext4" "btrfs" "ntfs" ];
     extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback

@@ -16,6 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs"; 
+    };
+
+    cachy-proton.url = "github:jackgrahn/cachy-proton-nix";
   };
 
   outputs = inputs @ {
@@ -23,6 +29,8 @@
     lanzaboote,
     nix-gaming,
     quickshell,
+    aagl,
+    cachy-proton,
     ...
   }: {
     nixosConfigurations = {
@@ -36,6 +44,7 @@
           {
             imports = [
               lanzaboote.nixosModules.lanzaboote
+              aagl.nixosModules.default
             ];
           }
         ];
