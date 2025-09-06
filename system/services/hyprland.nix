@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ...}: {
 
-  programs.hyprlock.enable = true;
-  services.hypridle.enable = true;
+  # programs.hyprlock.enable = true;
+  # services.hypridle.enable = true;
   programs.hyprland = {
     enable = true; 
     withUWSM = true;
@@ -33,19 +33,20 @@
     fuzzel
     pavucontrol
     app2unit
-    inputs.quickshell.packages.x86_64-linux.default
+    tuigreet
+    # inputs.quickshell.packages.x86_64-linux.default
   ];
 
-  # services.greetd = {
-  #   enable = true;
-  #   package = pkgs.greetd;
-  #   vt = 7;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.greetd.tuigreet} -r -t --asterisks --cmd 'uwsm start -S hyprland-uwsm.desktop'";
-  #     };
-  #   };
-  # };
+  services.greetd = {
+    enable = true;
+    package = pkgs.greetd;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -S hyprland-uwsm.desktop'";
+        # user = "yunyun";
+      };
+    };
+  };
 
   # services.greetd = {
   #   enable = true;

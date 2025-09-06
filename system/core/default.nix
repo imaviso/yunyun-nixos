@@ -104,6 +104,7 @@
      universal-android-debloater
      yt-dlp
      ffmpeg
+     winetricks
   ];
   
 

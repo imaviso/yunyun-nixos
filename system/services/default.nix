@@ -10,7 +10,7 @@
     ./udev.nix
     # ./libvirt.nix
     # ./podman.nix
-    # ./docker.nix
+    ./docker.nix
     # ./flatpak.nix
   ];
 }

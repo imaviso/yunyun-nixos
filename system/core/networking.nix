@@ -4,7 +4,7 @@ networking = {
     timeServers = [ "0.ph.pool.ntp.org" "2.asia.pool.ntp.org" "0.asia.pool.ntp.org" ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-    nameservers = [ "127.0.0.1" ];
+    nameservers = [ "192.168.254.192" ];
     dhcpcd.extraConfig = "nohook resolv.conf";
     networkmanager.dns = "none";
 
@@ -45,19 +45,19 @@ networking = {
   };
 
 
-  services.dnsproxy = {
-    enable = true;
-    settings = {
-      bootstrap = [ "1.1.1.1" "9.9.9.9" ];
-      upstream = [ "https://d.adguard-dns.com/dns-query/a9d5463c" ];
-      fallback = [ "https://adblock.dns.mullvad.net/dns-query" ];
-      cache = true;
-      cache-optimistic = true;
-      cache-size = 2097152;
-      cache-min-ttl = 3600;
-      cache-max-ttl = 86400;
-      listen-addrs = [ "0.0.0.0" ];
-      listen-ports = [ 53 ];
-    };
-  };
+#   services.dnsproxy = {
+#     enable = true;
+#     settings = {
+#       bootstrap = [ "1.1.1.1" "9.9.9.9" ];
+#       upstream = [ "https://d.adguard-dns.com/dns-query/a9d5463c" ];
+#       fallback = [ "https://adblock.dns.mullvad.net/dns-query" ];
+#       cache = true;
+#       cache-optimistic = true;
+#       cache-size = 2097152;
+#       cache-min-ttl = 3600;
+#       cache-max-ttl = 86400;
+#       listen-addrs = [ "0.0.0.0" ];
+#       listen-ports = [ 53 ];
+#     };
+#   };
 }
