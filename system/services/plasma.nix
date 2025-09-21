@@ -7,19 +7,18 @@
     settings.General.DisplayServer = "wayland";
   };
   services.desktopManager.plasma6.enable = true;
-  services.dbus.implementation = "broker";
+  programs.kdeconnect.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    plasma-browser-integration
     konsole
     oxygen
     elisa
+    kate
+  ];
+  environment.systemPackages = with pkgs; [
+    kdePackages.kcalc # Calculator
+    wayland-utils # Wayland utilities
+    wl-clipboard # Command-line copy/paste utilities for Wayland
+    walker
   ];
 
-  programs.dconf.enable = true;
-
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
 }

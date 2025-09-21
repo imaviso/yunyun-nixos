@@ -10,17 +10,17 @@
     ];
 
   boot = {
-    loader = {
-      systemd-boot = {
-         enable = lib.mkForce false;
-         # enable = true;
-         consoleMode = "keep"; 
-      };
-      efi.canTouchEfiVariables = true;
-      timeout = 5; 
+     loader = {
+        systemd-boot = {
+         #enable = lib.mkForce false;
+         enable = true;
+         consoleMode = "keep";
+       };
+       efi.canTouchEfiVariables = true;
+       timeout = 5;
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
     initrd.kernelModules = [ 
       "amdgpu"
@@ -30,7 +30,7 @@
       "v4l2loopback"
     ];
 
-    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" "amd_pstate=active" ];
+    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
     supportedFilesystems = [ "nfs" "ext4" "btrfs" "ntfs" ];
     extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
@@ -80,10 +80,10 @@
       "net.core.default_qdisc" = "cake";
     };
 
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-    };
+   # lanzaboote = {
+   #   enable = true;
+   #   pkiBundle = "/var/lib/sbctl";
+   # };
 
   };
 
@@ -94,33 +94,54 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5e4e3e11-db99-402c-8511-0f87ba5d4520";
+    { device = "/dev/disk/by-uuid/2d82273c-1fa8-4119-9035-2d15d74ee27d";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/9C76-F857";
+    { device = "/dev/disk/by-uuid/9EB7-2CDC";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  # fileSystems."/mnt/nfs" =
-  #   { device = "192.168.254.191:/mnt/media2";
-  #     fsType = "nfs";
-  #     options = [ "x-systemd.automount" "noauto" ];
-  #   };
+  fileSystems."/mnt/nfs" =
+    { device = "192.168.254.191:/mnt/media2";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" ];
+    };
   
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/1c3aff10-d194-478a-9da8-c41768978c5b"; }
+    [ { device = "/dev/disk/by-uuid/5ff0b5a0-1f7a-4c58-b298-4a25c3ed7353"; }
     ];
 
   zramSwap.enable = true;
 
   hardware = {
     amdgpu.overdrive.ppfeaturemask.enable = true;
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluez;
+      powerOnBoot = true;
+      settings = {
+        General = {
+          # Shows battery charge of connected devices on supported
+          # Bluetooth adapters. Defaults to 'false'.
+          Experimental = true;
+          # When enabled other devices can connect faster to us, however
+          # the tradeoff is increased power consumption. Defaults to
+          # 'false'.
+          FastConnectable = true;
+        };
+        Policy = {
+          # Enable all controllers when they are found. This includes
+          # adapters present on start as well as adapters that are plugged
+          # in later on. Defaults to 'true'.
+          AutoEnable = true;
+        };
+      };
+    };
   };
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

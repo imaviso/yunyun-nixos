@@ -1,6 +1,6 @@
 {
   imports = [
-    # ./plasma.nix
+     # ./plasma.nix
     # ./gnome.nix
     ./hyprland.nix
     ./sunshine.nix

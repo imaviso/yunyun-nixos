@@ -29,7 +29,7 @@
      rustc
      rust-analyzer
      rustfmt
-     python3Full
+     #python3Full
      jdk
      maven
      ripgrep
@@ -61,7 +61,6 @@
      img2pdf
      tesseract
      imagemagick
-     wl-clipboard
      feishin
      bbe
     (pkgs.wrapOBS {
@@ -88,7 +87,7 @@
      wireguard-tools
      mkvtoolnix
      obs-studio
-     # handbrake
+     handbrake
      lsof
      komikku
      vial
@@ -99,7 +98,6 @@
      woeusb-ng
      efibootmgr
      os-prober
-     uutils-coreutils-noprefix
      authenticator
      universal-android-debloater
      yt-dlp

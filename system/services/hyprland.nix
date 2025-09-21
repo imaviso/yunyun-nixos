@@ -4,14 +4,15 @@
   # services.hypridle.enable = true;
   programs.hyprland = {
     enable = true; 
-    withUWSM = true;
+    withUWSM = false;
     xwayland.enable = true;
   };
   environment.systemPackages = with pkgs; [
-    kitty
-    walker 
+    walker
     swww
+    hyprpaper
     hyprpanel
+    hyprpicker
     apple-cursor
     colloid-icon-theme
     nwg-look
@@ -22,7 +23,6 @@
     font-manager
     nautilus
     xfce.thunar
-    hyprpicker
     swappy
     slurp
     grim
@@ -32,7 +32,6 @@
     wl-screenrec
     fuzzel
     pavucontrol
-    app2unit
     tuigreet
     # inputs.quickshell.packages.x86_64-linux.default
   ];
@@ -42,7 +41,7 @@
     package = pkgs.greetd;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -S hyprland-uwsm.desktop'";
+        command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'Hyprland'";
         # user = "yunyun";
       };
     };

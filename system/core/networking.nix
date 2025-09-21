@@ -4,7 +4,7 @@ networking = {
     timeServers = [ "0.ph.pool.ntp.org" "2.asia.pool.ntp.org" "0.asia.pool.ntp.org" ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-    nameservers = [ "192.168.254.192" ];
+    nameservers = [ "192.168.254.2" "192.168.254.1" ];
     dhcpcd.extraConfig = "nohook resolv.conf";
     networkmanager.dns = "none";
 
