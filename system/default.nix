@@ -4,5 +4,6 @@
     ./nix
     ./services
     ./programs
+    ./config
   ];
 }

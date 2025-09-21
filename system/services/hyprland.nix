@@ -4,10 +4,11 @@
   # services.hypridle.enable = true;
   programs.hyprland = {
     enable = true; 
-    withUWSM = false;
+    withUWSM = true;
     xwayland.enable = true;
   };
   environment.systemPackages = with pkgs; [
+    app2unit
     walker
     swww
     hyprpaper
@@ -22,7 +23,6 @@
     })
     font-manager
     nautilus
-    xfce.thunar
     swappy
     slurp
     grim
@@ -41,7 +41,7 @@
     package = pkgs.greetd;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'Hyprland'";
+        command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start hyprland-uwsm.desktop'";
         # user = "yunyun";
       };
     };
@@ -72,7 +72,7 @@
   #   };
   # };
 
-  # security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   services = {
     # needed for GNOME services outside of GNOME Desktop
@@ -83,8 +83,6 @@
 
     dbus.implementation = "broker";
     gnome.gnome-keyring.enable = true;
-
-    gvfs.enable = true;
 
     # profile-sync-daemon
     psd = {

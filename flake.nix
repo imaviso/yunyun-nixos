@@ -26,7 +26,7 @@
 
   outputs = inputs @ {
     nixpkgs,
-    #lanzaboote,
+    lanzaboote,
     nix-gaming,
     quickshell,
     aagl,
@@ -43,7 +43,7 @@
           ./hosts/desktop.nix
           {
             imports = [
-              #lanzaboote.nixosModules.lanzaboote
+              lanzaboote.nixosModules.lanzaboote
               aagl.nixosModules.default
             ];
           }

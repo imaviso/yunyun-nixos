@@ -72,9 +72,6 @@
       ];
     })
      dbeaver-bin
-     zed-editor
-     vscode
-     code-cursor
      mission-center
      vulkan-tools
      glxinfo
@@ -88,6 +85,7 @@
      mkvtoolnix
      obs-studio
      handbrake
+     losslesscut-bin
      lsof
      komikku
      vial

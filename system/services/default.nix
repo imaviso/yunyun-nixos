@@ -8,7 +8,7 @@
     ./keyboard.nix
     ./ssh.nix
     ./udev.nix
-    # ./libvirt.nix
+    ./libvirt.nix
     # ./podman.nix
     ./docker.nix
     # ./flatpak.nix
