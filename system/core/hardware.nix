@@ -94,14 +94,27 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2d82273c-1fa8-4119-9035-2d15d74ee27d";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/a9bc029b-2e9c-4c15-83bb-c8f30373f285";
+      fsType = "btrfs";
+      options = [ "subvol=root" "compress=zstd" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/a9bc029b-2e9c-4c15-83bb-c8f30373f285";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/a9bc029b-2e9c-4c15-83bb-c8f30373f285";
+      fsType = "btrfs";
+      options = [ "subvol=nix" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/9EB7-2CDC";
+    { device = "/dev/disk/by-uuid/D838-AE74";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/mnt/nfs" =
@@ -110,11 +123,14 @@
       options = [ "x-systemd.automount" "noauto" ];
     };
   
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/5ff0b5a0-1f7a-4c58-b298-4a25c3ed7353"; }
-    ];
+  #swapDevices =
+  #  [ { device = "/dev/disk/by-uuid/5ff0b5a0-1f7a-4c58-b298-4a25c3ed7353"; }
+  #  ];
 
   zramSwap.enable = true;
+  services.btrfs.autoScrub = {
+    enable = true;
+  };
 
   hardware = {
     amdgpu.overdrive.ppfeaturemask.enable = true;

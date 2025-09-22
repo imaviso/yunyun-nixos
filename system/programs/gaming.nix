@@ -17,8 +17,8 @@
   #   };
   # };
   environment.systemPackages = with pkgs; [
-     inputs.nix-gaming.packages.${pkgs.system}.wine-cachyos
-     # wineWowPackages.stagingFull
+     #inputs.nix-gaming.packages.${pkgs.system}.wine-cachyos
+     wineWowPackages.stagingFull
   ];
 
   programs.honkers-railway-launcher.enable = true;
