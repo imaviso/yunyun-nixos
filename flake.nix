@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,21 +14,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs"; 
-    };
-
-    cachy-proton.url = "github:jackgrahn/cachy-proton-nix";
+    apple-fonts.url= "github:Lyndeno/apple-fonts.nix";
   };
 
   outputs = inputs @ {
     nixpkgs,
     lanzaboote,
-    nix-gaming,
     quickshell,
-    aagl,
-    cachy-proton,
+    apple-fonts,
     ...
   }: {
     nixosConfigurations = {
@@ -44,7 +35,6 @@
           {
             imports = [
               lanzaboote.nixosModules.lanzaboote
-              aagl.nixosModules.default
             ];
           }
         ];

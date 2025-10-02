@@ -1,15 +1,33 @@
 { pkgs, ... }: {
   
-  programs.niri.enable = true;
-
+  programs.labwc.enable = true;
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      labwc = {
+        prettyName = "Labwc"; 
+        comment = "Labwc compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/labwc";
+      };
+    };
+  };
   security.polkit.enable = true; # polkit
   # security.pam.services.swaylock = {};
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
-    xwayland-satellite
-    waybar
-    walker 
+    quickshell
+    gpu-screen-recorder
+    brightnessctl
+    matugen
+    cava
+    wlsunset
+    labwc-menu-generator
+    labwc-gtktheme
+    labwc-tweaks-gtk
+    app2unit
+    anyrun
+    fuzzel
     swww
     apple-cursor
     colloid-icon-theme
@@ -28,10 +46,9 @@
     wl-clipboard
     cliphist
     wl-screenrec
-    fuzzel
-    pavucontrol
-    mako
-    # swayidle
+    kanshi
+    swayidle
+    wlopm
     # swaylock
   ];
 
@@ -39,13 +56,12 @@
 
   services = {
     # needed for GNOME services outside of GNOME Desktop
-    #
     greetd = {
       enable = true;
       package = pkgs.greetd;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'niri-session'";
+          command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -- labwc-uwsm.desktop'";
           # user = "yunyun";
         };
       };
@@ -84,61 +100,6 @@
         };
     };
 
-    user.services.waybar = {
-      description = "waybar panel";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.waybar}/bin/waybar";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-    };
-
-    # user.services.swww = {
-    #   description = "swww wallpapaer";
-    #   wantedBy = [ "graphical-session.target" ];
-    #   wants = [ "graphical-session.target" ];
-    #   after = [ "graphical-session.target" ];
-    #   serviceConfig = {
-    #       Type = "simple";
-    #       ExecStart = "${pkgs.swww}/bin/swww-daemon";
-    #       Restart = "on-failure";
-    #       RestartSec = 1;
-    #       TimeoutStopSec = 10;
-    #     };
-    # };
-
-    user.services.mako = {
-      description = "mako notifications";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.mako}/bin/mako";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-    };
-
-    user.services.foot-server = {
-      description = "foot-server";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.foot}/bin/foot -s";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-    };
   };
 
   programs.dconf.enable = true;

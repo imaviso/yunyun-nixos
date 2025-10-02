@@ -1,16 +1,17 @@
 {
   imports = [
-     # ./plasma.nix
+    # ./plasma.nix
     # ./gnome.nix
-    ./hyprland.nix
+    # ./hyprland.nix
     ./sunshine.nix
     ./audio.nix
     ./keyboard.nix
     ./ssh.nix
     ./udev.nix
-    ./libvirt.nix
+    # ./libvirt.nix
     # ./podman.nix
     ./docker.nix
     # ./flatpak.nix
+    ./lact.nix
   ];
 }

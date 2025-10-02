@@ -17,7 +17,7 @@
      curl
      git
      fastfetch
-     nitch
+     microfetch
      nmap
      btop
      mediainfo
@@ -33,6 +33,7 @@
      jdk
      maven
      ripgrep
+     dust
      bat
      eza
      fd
@@ -48,7 +49,6 @@
      yazi
      firefox
      brave
-     chromium
      ghostty
      foot
      heroic
@@ -90,7 +90,6 @@
      komikku
      vial
      anydesk
-     virt-manager
      sbctl
      telegram-desktop
      woeusb-ng

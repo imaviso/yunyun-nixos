@@ -20,24 +20,26 @@
        timeout = 5;
     };
 
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
     initrd.kernelModules = [ 
       "amdgpu"
+      "ntsync"
     ];
 
     kernelModules = [ "kvm-amd" 
-      "v4l2loopback"
+      "ntsync"
+      # "v4l2loopback"
     ];
 
     kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
     supportedFilesystems = [ "nfs" "ext4" "btrfs" "ntfs" ];
-    extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
-    extraModprobeConfig = ''
-      options v4l2loopback exclusive_caps=1 card_label="Virtual Webcam"
-    '';
+  #   extraModulePackages = with config.boot.kernelPackages; [
+  #   v4l2loopback
+  # ];
+    # extraModprobeConfig = ''
+    #   options v4l2loopback exclusive_caps=1 card_label="Virtual Webcam"
+    # '';
 
     kernel.sysctl = {
       # The Magic SysRq key is a key combo that allows users connected to the
@@ -78,6 +80,21 @@
       # Bufferbloat mitigations + slight improvement in throughput & latency
       "net.ipv4.tcp_congestion_control" = "bbr";
       "net.core.default_qdisc" = "cake";
+
+      # 20-shed.conf
+      "kernel.sched_cfs_bandwidth_slice_us" = 3000;
+      # 20-net-timeout.conf
+      # This is required due to some games being unable to reuse their TCP ports
+      # if they're killed and restarted quickly - the default timeout is too large.
+      "net.ipv4.tcp_fin_timeout" = 5;
+      # 30-splitlock.conf
+      # Prevents intentional slowdowns in case games experience split locks
+      # This is valid for kernels v6.0+
+      "kernel.split_lock_mitigate" = 0;
+      # 30-vm.conf
+      # USE MAX_INT - MAPCOUNT_ELF_CORE_MARGIN.
+      # see comment in include/linux/mm.h in the kernel tree.
+      "vm.max_map_count" = 2147483642;
     };
 
    # lanzaboote = {
@@ -85,12 +102,6 @@
    #   pkiBundle = "/var/lib/sbctl";
    # };
 
-  };
-
-  environment.systemPackages = with pkgs; [ lact ];
-  systemd = {
-    packages = with pkgs; [ lact ];
-    services.lactd.wantedBy = ["multi-user.target"];
   };
 
   fileSystems."/" =
@@ -117,6 +128,12 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  # fileSystems."/mnt/fanxiang" =
+  #   { device = "/dev/disk/by-uuid/986a0426-7ef9-4758-9b76-a5cd2c3ca550";
+  #     fsType = "btrfs";
+  #     options = [ "compress=zstd" ];
+  #   };
+
   fileSystems."/mnt/nfs" =
     { device = "192.168.254.191:/mnt/media2";
       fsType = "nfs";
@@ -139,7 +156,7 @@
     bluetooth = {
       enable = true;
       package = pkgs.bluez;
-      powerOnBoot = true;
+      powerOnBoot = false;
       settings = {
         General = {
           # Shows battery charge of connected devices on supported
