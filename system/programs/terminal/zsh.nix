@@ -19,7 +19,7 @@
       };
       interactiveShellInit = 
         ''
-        fastfetch
+        microfetch
         '';
     };
   };

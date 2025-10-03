@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+<menu id="client-menu">
+  <item label="Minimize">
+    <action name="Iconify" />
+  </item>
+  <item label="Maximize">
+    <action name="ToggleMaximize" />
+  </item>
+  <item label="Fullscreen">
+    <action name="ToggleFullscreen" />
+  </item>
+  <item label="Roll Up/Down">
+    <action name="ToggleShade" />
+  </item>
+  <item label="Decorations">
+    <action name="ToggleDecorations" />
+  </item>
+  <item label="Always on Top">
+    <action name="ToggleAlwaysOnTop" />
+  </item>
+  <!--
+    Any menu with the id "workspaces" will be hidden
+    if there is only a single workspace available.
+  -->
+  <menu id="workspaces" label="Workspace">
+    <item label="Move Left">
+      <action name="SendToDesktop" to="left" />
+    </item>
+    <item label="Move Right">
+      <action name="SendToDesktop" to="right" />
+    </item>
+    <separator />
+    <item label="Always on Visible Workspace">
+      <action name="ToggleOmnipresent" />
+    </item>
+  </menu>
+  <!--
+    openbox default workspace selector
+    to use replace above workspace menu with the example below
+    the label is required, but you can change the text.
+
+    <menu id="client-send-to-menu" label="Send to..." />
+  -->
+  <item label="Close">
+    <action name="Close" />
+  </item>
+</menu>
+
+<menu id="config-menu" label="config">
+  <!--
+    Creates menu title.
+    To create an empty header with no text,
+    set label=" ", not label=""
+  -->
+  <separator label="custom menu" />
+  <item label="Reconfigure">
+    <action name="Reconfigure" />
+  </item>
+  <item label="Exit">
+    <action name="Exit" />
+  </item>
+</menu>
+
+<menu id="root-menu" label="root-menu">
+  <menu id="Accessories" label="Accessories">
+    <item label="Authenticator">
+      <action name="Execute"><command>authenticator</command></action>
+    </item>
+    <item label="Bulk Rename">
+      <action name="Execute"><command>thunar --bulk-rename</command></action>
+    </item>
+    <item label="Disks">
+      <action name="Execute"><command>gnome-disks</command></action>
+    </item>
+    <item label="File Roller">
+      <action name="Execute"><command>file-roller</command></action>
+    </item>
+    <item label="Files">
+      <action name="Execute"><command>nautilus --new-window</command></action>
+    </item>
+    <item label="Font Manager">
+      <action name="Execute"><command>font-manager</command></action>
+    </item>
+    <item label="Font Viewer">
+      <action name="Execute"><command>/nix/store/gzqj4ixc8bicx4gvzp76z78bjkrkwsk9-font-manager-0.9.4/libexec/font-manager/font-viewer</command></action>
+    </item>
+    <item label="Helix">
+      <action name="Execute"><command>hx</command></action>
+    </item>
+    <item label="LibreOffice">
+      <action name="Execute"><command>libreoffice</command></action>
+    </item>
+    <item label="LocalSend">
+      <action name="Execute"><command>localsend_app</command></action>
+    </item>
+    <item label="Neovim wrapper">
+      <action name="Execute"><command>nvim</command></action>
+    </item>
+    <item label="scrcpy">
+      <action name="Execute"><command>/bin/sh -c "\$SHELL -i -c scrcpy"</command></action>
+    </item>
+    <item label="scrcpy (console)">
+      <action name="Execute"><command>/bin/sh -c "\$SHELL -i -c 'scrcpy --pause-on-exit=if-error'"</command></action>
+    </item>
+    <item label="Thunar File Manager">
+      <action name="Execute"><command>thunar</command></action>
+    </item>
+    <item label="uuctl">
+      <action name="Execute"><command>uuctl</command></action>
+    </item>
+    <item label="Vial">
+      <action name="Execute"><command>Vial</command></action>
+    </item>
+    <item label="Winetricks">
+      <action name="Execute"><command>winetricks --gui</command></action>
+    </item>
+    <item label="WoeUSB-ng">
+      <action name="Execute"><command>woeusbgui</command></action>
+    </item>
+    <item label="Yazi">
+      <action name="Execute"><command>yazi</command></action>
+    </item>
+  </menu> <!-- Accessories -->
+  <menu id="Development" label="Development">
+    <item label="dbeaver-ce">
+      <action name="Execute"><command>/nix/store/xqv8j1sachcgw6xbrkmkjnq375flc9ns-dbeaver-bin-25.2.0/bin/dbeaver</command></action>
+    </item>
+  </menu> <!-- Development -->
+  <menu id="Education" label="Education">
+    <item label="LibreOffice Math">
+      <action name="Execute"><command>libreoffice --math</command></action>
+    </item>
+  </menu> <!-- Education -->
+  <menu id="Games" label="Games">
+    <item label="Heroic Games Launcher">
+      <action name="Execute"><command>heroic</command></action>
+    </item>
+    <item label="Steam">
+      <action name="Execute"><command>steam</command></action>
+    </item>
+  </menu> <!-- Games -->
+  <menu id="Graphics" label="Graphics">
+    <item label="Komikku">
+      <action name="Execute"><command>/nix/store/n4xnw2vf9fgjnxmx3zcbrmykcn50p80s-komikku-1.86.0/bin/komikku</command></action>
+    </item>
+    <item label="LibreOffice Draw">
+      <action name="Execute"><command>libreoffice --draw</command></action>
+    </item>
+  </menu> <!-- Graphics -->
+  <menu id="Internet" label="Internet">
+    <item label="AnyDesk">
+      <action name="Execute"><command>anydesk</command></action>
+    </item>
+    <item label="Brave Web Browser">
+      <action name="Execute"><command>/nix/store/hh5rlnxjbqb8b21qjjsj77xli76znvrm-brave-1.82.170/bin/brave</command></action>
+    </item>
+    <item label="Chromium">
+      <action name="Execute"><command>chromium</command></action>
+    </item>
+    <item label="Firefox">
+      <action name="Execute"><command>firefox --name firefox</command></action>
+    </item>
+    <item label="Komikku">
+      <action name="Execute"><command>/nix/store/n4xnw2vf9fgjnxmx3zcbrmykcn50p80s-komikku-1.86.0/bin/komikku</command></action>
+    </item>
+    <item label="Microsoft Teams for Linux">
+      <action name="Execute"><command>teams-for-linux</command></action>
+    </item>
+    <item label="Steam">
+      <action name="Execute"><command>steam</command></action>
+    </item>
+    <item label="Sunshine">
+      <action name="Execute"><command>sunshine</command></action>
+    </item>
+    <item label="Telegram">
+      <action name="Execute"><command>Telegram --</command></action>
+    </item>
+    <item label="Vesktop">
+      <action name="Execute"><command>vesktop</command></action>
+    </item>
+  </menu> <!-- Internet -->
+  <menu id="Multimedia" label="Multimedia">
+    <item label="Easy Effects">
+      <action name="Execute"><command>easyeffects</command></action>
+    </item>
+    <item label="Feishin">
+      <action name="Execute"><command>feishin</command></action>
+    </item>
+    <item label="HandBrake">
+      <action name="Execute"><command>ghb</command></action>
+    </item>
+    <item label="LosslessCut">
+      <action name="Execute"><command>losslesscut --no-sandbox</command></action>
+    </item>
+    <item label="MKVToolNix GUI">
+      <action name="Execute"><command>mkvtoolnix-gui</command></action>
+    </item>
+    <item label="mpv Media Player">
+      <action name="Execute"><command>mpv --player-operation-mode=pseudo-gui --</command></action>
+    </item>
+    <item label="OBS Studio">
+      <action name="Execute"><command>obs</command></action>
+    </item>
+    <item label="Volume Control">
+      <action name="Execute"><command>pavucontrol</command></action>
+    </item>
+    <item label="YouTube Music">
+      <action name="Execute"><command>youtube-music</command></action>
+    </item>
+  </menu> <!-- Multimedia -->
+  <menu id="Office" label="Office">
+    <item label="LibreOffice">
+      <action name="Execute"><command>libreoffice</command></action>
+    </item>
+    <item label="LibreOffice Base">
+      <action name="Execute"><command>libreoffice --base</command></action>
+    </item>
+    <item label="LibreOffice Calc">
+      <action name="Execute"><command>libreoffice --calc</command></action>
+    </item>
+    <item label="LibreOffice Draw">
+      <action name="Execute"><command>libreoffice --draw</command></action>
+    </item>
+    <item label="LibreOffice Impress">
+      <action name="Execute"><command>libreoffice --impress</command></action>
+    </item>
+    <item label="LibreOffice Math">
+      <action name="Execute"><command>libreoffice --math</command></action>
+    </item>
+    <item label="LibreOffice Writer">
+      <action name="Execute"><command>libreoffice --writer</command></action>
+    </item>
+    <item label="PDFsam Basic">
+      <action name="Execute"><command>pdfsam-basic</command></action>
+    </item>
+  </menu> <!-- Office -->
+  <menu id="Settings" label="Settings">
+    <item label="GTK Settings">
+      <action name="Execute"><command>nwg-look</command></action>
+    </item>
+    <item label="Labwc Config">
+      <action name="Execute"><command>labwc-tweaks-gtk</command></action>
+    </item>
+    <item label="Thunar Preferences">
+      <action name="Execute"><command>thunar-settings</command></action>
+    </item>
+    <item label="uuctl">
+      <action name="Execute"><command>uuctl</command></action>
+    </item>
+    <item label="Volume Control">
+      <action name="Execute"><command>pavucontrol</command></action>
+    </item>
+  </menu> <!-- Settings -->
+  <menu id="System" label="System">
+    <item label="btop++">
+      <action name="Execute"><command>btop</command></action>
+    </item>
+    <item label="fish">
+      <action name="Execute"><command>fish</command></action>
+    </item>
+    <item label="Foot">
+      <action name="Execute"><command>foot</command></action>
+    </item>
+    <item label="Foot Client">
+      <action name="Execute"><command>footclient</command></action>
+    </item>
+    <item label="Foot Server">
+      <action name="Execute"><command>foot --server</command></action>
+    </item>
+    <item label="Ghostty">
+      <action name="Execute"><command>/nix/store/sq2miwkzr12xns1ik72h6c16s6wkivh9-ghostty-1.2.0/bin/ghostty --gtk-single-instance=true</command></action>
+    </item>
+    <item label="Labwc Config">
+      <action name="Execute"><command>labwc-tweaks-gtk</command></action>
+    </item>
+    <item label="LACT">
+      <action name="Execute"><command>lact gui</command></action>
+    </item>
+    <item label="Mission Center">
+      <action name="Execute"><command>missioncenter</command></action>
+    </item>
+    <item label="NixOS Manual">
+      <action name="Execute"><command>nixos-help</command></action>
+    </item>
+    <item label="Thunar File Manager">
+      <action name="Execute"><command>thunar</command></action>
+    </item>
+    <item label="Yazi">
+      <action name="Execute"><command>yazi</command></action>
+    </item>
+  </menu> <!-- System -->
+</menu> <!-- root-menu -->
+</openbox_menu>

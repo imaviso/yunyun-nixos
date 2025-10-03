@@ -34,22 +34,4 @@
     };
   };
 
-
-  environment.systemPackages = with pkgs; [
-    easyeffects
-  ];
-
-  systemd = {
-    user.services.easyeffects = {
-      description = "easyeffects";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.easyeffects}/bin/easyeffects --gapplication-service";
-          Restart = "always";
-        };
-    };
-  };
 }

@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   
   programs.labwc.enable = true;
+
   programs.uwsm = {
     enable = true;
     waylandCompositors = {
@@ -11,6 +12,7 @@
       };
     };
   };
+
   security.polkit.enable = true; # polkit
   # security.pam.services.swaylock = {};
   security.sudo.wheelNeedsPassword = false;
@@ -26,8 +28,8 @@
     labwc-gtktheme
     labwc-tweaks-gtk
     app2unit
-    anyrun
     fuzzel
+    wpgtk
     swww
     apple-cursor
     colloid-icon-theme
@@ -62,6 +64,7 @@
       settings = {
         default_session = {
           command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -- labwc-uwsm.desktop'";
+          # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'labwc'";
           # user = "yunyun";
         };
       };
@@ -84,24 +87,6 @@
     };
   };
   
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
-    };
-
-  };
-
   programs.dconf.enable = true;
 
   qt = {

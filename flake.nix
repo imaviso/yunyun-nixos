@@ -4,13 +4,13 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+    hm = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell/v0.2.0";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -19,8 +19,8 @@
 
   outputs = inputs @ {
     nixpkgs,
+    hm,
     lanzaboote,
-    quickshell,
     apple-fonts,
     ...
   }: {
@@ -32,10 +32,12 @@
         };
         modules = [
           ./hosts/desktop.nix
+          hm.nixosModules.home-manager
           {
-            imports = [
-              lanzaboote.nixosModules.lanzaboote
-            ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.yunyun = import ./home;
+            home-manager.backupFileExtension = "backup";
           }
         ];
       };

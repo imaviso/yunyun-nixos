@@ -1,0 +1,39 @@
+# Example autostart file
+# app2unit -- kanshi >/dev/null 2>&1 &
+# app2unit -- swww-daemon >/dev/null 2>&1 &
+# app2unit -- wl-paste --type text --watch cliphist store >/dev/null 2>&1 &
+# app2unit -- wl-paste --type image --watch cliphist store >/dev/null 2>&1 &
+# app2unit -- qs -c ~/.config/quickshell/noctalia-shell/ >/dev/null 2>&1 &
+# app2unit -- ghostty --initial-window=false --quit-after-last-window-closed=false
+
+# swayidle -w \
+	# timeout 600 'wlopm --off \*' \
+	# resume 'wlopm --on \*' >/dev/null 2>&1 &
+# app2unit -- fcitx5 >/dev/null 2>&1 &
+# app2unit -- dbus-update-activation-environment --all &
+# app2unit -- /usr/bin/gnome-keyring-daemon --start --components=secrets &
+# app2unit -- /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#wl-paste -t text -w xclip -selection clipboard &
+
+# Launch a panel such as yambar or waybar.
+# app2unit -- waybar >/dev/null 2>&1 &
+# app2unit -- foot -s >/dev/null 2>&1 &
+# Enable notifications. Typically GNOME/KDE application notifications go
+# through the org.freedesktop.Notifications D-Bus API and require a client such
+# as mako to function correctly. Thunderbird is an example of this.
+# app2unit -- swaync >/dev/null 2>&1 &
+# app2unit -- easyeffects --gapplication-service &
+# app2unit -- corectrl &
+# app2unit -- walker --gapplication-service &
+# Lock screen after 5 minutes; turn off display after another 5 minutes.
+#
+# Note that in the context of idle system power management, it is *NOT* a good
+# idea to turn off displays by 'disabling outputs' for example by
+# `wlr-randr --output <whatever> --off` because this re-arranges views
+# (since a837fef). Instead use a wlr-output-power-management client such as
+# https://git.sr.ht/~leon_plickat/wlopm
+# swayidle -w \
+# 	timeout 300 'swaylock -f -c 000000' \
+# 	timeout 600 'wlopm --off \*' \
+# 	resume 'wlopm --on \*' \
+# 	before-sleep 'swaylock -f -c 000000' >/dev/null 2>&1 &

@@ -1,8 +1,8 @@
 {
   imports = [
-    ./fish.nix
+    # ./fish.nix
     ./zsh.nix
-    ./starship.nix
+    # ./starship.nix
     ./zoxide.nix
   ];
 }

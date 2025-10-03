@@ -4,6 +4,7 @@
     ./nix
     ./services
     ./programs
+    ./wayland
     ./config
   ];
 }
