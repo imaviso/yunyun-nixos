@@ -3,7 +3,7 @@
   imports = [
     ./fontconfig.nix
     ./cursor.nix
-    ./gtk.nix
+    ./theme
     ./xdg.nix
     ./git.nix
     ./terminal

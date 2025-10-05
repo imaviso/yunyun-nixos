@@ -71,7 +71,7 @@
     <default/>
     <!-- Use a different terminal emulator -->
     <keybind key="W-Return">
-      <action name="Execute" command="app2unit -- ghostty"/>
+      <action name="Execute" command="app2unit -- footclient"/>
     </keybind>
     <keybind key="W-S-q">
       <action name="Close"/>
@@ -83,7 +83,7 @@
       <action name="Execute" command="sh -c 'pkill anyrun || anyrun'"/>
     </keybind>
     <keybind key="W-e">
-      <action name="Execute" command="app2unit -- thunar"/>
+      <action name="Execute" command="app2unit -- nautilus"/>
     </keybind>
     <keybind key="W-S-e">
       <action name="Execute" command="app2unit -- foot -e 'yazi' yazi"/>

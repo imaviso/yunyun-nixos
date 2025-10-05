@@ -6,5 +6,6 @@
     ./clipboard.nix
     ./easyeffects.nix
     ./kanshi.nix
+    ./footserver.nix
   ];
 }

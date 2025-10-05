@@ -1,8 +1,9 @@
 {
   imports = [
-    ./zsh.nix
-    ./starship.nix
-    ./foot.nix
-    ./ghostty.nix
+    ./emulators/foot.nix
+    ./emulators/ghostty.nix
+    ./shell/starship.nix
+    ./shell/zsh.nix
+    ./editors/helix
   ];
 }
