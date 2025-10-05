@@ -9,7 +9,7 @@
       serif = [ "SFProText Nerd Font" ];
       sansSerif = [ "SFProText Nerd Font" ];
       monospace = [ "SFMono Nerd Font" ];
-      emoji = [ "Noto Color Emoji"];
+      emoji = [ "Noto Color Emoji" ];
     };
   };
 }

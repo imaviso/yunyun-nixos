@@ -1,20 +1,32 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
     ../system
   ];
 
-  users = { 
+  users = {
     defaultUserShell = pkgs.zsh;
-    users.yunyun= {
+    users.yunyun = {
       isNormalUser = true;
       description = "yunyun";
       createHome = true;
       home = "/home/yunyun";
-      extraGroups = [ "wheel" "users" "networkmanager" "docker" "video" "plugdev" "input" "libvirtd" ];
+      extraGroups = [
+        "wheel"
+        "users"
+        "networkmanager"
+        "docker"
+        "video"
+        "plugdev"
+        "input"
+        "libvirtd"
+      ];
     };
   };
 }
-
-

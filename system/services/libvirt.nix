@@ -1,6 +1,7 @@
-{ pkgs, lib, ...} : {
+{ pkgs, lib, ... }:
+{
 
-    boot = {
+  boot = {
     initrd.kernelModules = [
       "vfio_pci"
       "vfio"
@@ -37,10 +38,12 @@
       swtpm.enable = true;
       ovmf = {
         enable = true;
-        packages = [(pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        }).fd];
+        packages = [
+          (pkgs.OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+          }).fd
+        ];
       };
     };
   };

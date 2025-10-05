@@ -1,4 +1,3 @@
-
 { pkgs, ... }:
 {
   systemd.user.services.clipboard-text = {

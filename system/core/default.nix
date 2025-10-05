@@ -1,4 +1,5 @@
-{ inputs, pkgs, ...}: {
+{ inputs, pkgs, ... }:
+{
   imports = [
     ./hardware.nix
     ./networking.nix
@@ -11,58 +12,58 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.variables.FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   environment.systemPackages = with pkgs; [
-     neovim
-     helix
-     wget
-     curl
-     git
-     fastfetch
-     microfetch
-     nmap
-     btop
-     mediainfo
-     clang
-     unzip
-     zig
-     go
-     cargo
-     rustc
-     rust-analyzer
-     rustfmt
-     #python3Full
-     jdk
-     maven
-     ripgrep
-     dust
-     bat
-     eza
-     fd
-     jq
-     p7zip-rar
-     lazygit
-     zellij
-     uv
-     fzf
-     nodejs
-     bun
-     pnpm
-     yazi
-     firefox
-     brave
-     ghostty
-     foot
-     heroic
-     gamescope
-     libreoffice-fresh
-     vesktop
-     youtube-music
-     teams-for-linux
-     mpv
-     img2pdf
-     tesseract
-     imagemagick
-     feishin
-     bbe
+    neovim
+    helix
+    wget
+    curl
+    git
+    fastfetch
+    microfetch
+    nmap
+    btop
+    mediainfo
+    clang
+    unzip
+    zig
+    go
+    cargo
+    rustc
+    rust-analyzer
+    rustfmt
+    #python3Full
+    jdk
+    maven
+    ripgrep
+    dust
+    bat
+    eza
+    fd
+    jq
+    p7zip-rar
+    lazygit
+    zellij
+    uv
+    fzf
+    nodejs
+    bun
+    pnpm
+    yazi
+    firefox
+    brave
+    ghostty
+    foot
+    heroic
+    gamescope
+    libreoffice-fresh
+    vesktop
+    youtube-music
+    teams-for-linux
+    mpv
+    img2pdf
+    tesseract
+    imagemagick
+    feishin
+    bbe
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
@@ -71,40 +72,37 @@
         droidcam-obs
       ];
     })
-     dbeaver-bin
-     mission-center
-     vulkan-tools
-     glxinfo
-     libva-utils
-     android-tools
-     scrcpy
-     pdfsam-basic
-     gnome-disk-utility
-     wgcf
-     wireguard-tools
-     mkvtoolnix
-     obs-studio
-     handbrake
-     losslesscut-bin
-     lsof
-     komikku
-     vial
-     anydesk
-     sbctl
-     telegram-desktop
-     woeusb-ng
-     efibootmgr
-     os-prober
-     authenticator
-     universal-android-debloater
-     yt-dlp
-     ffmpeg
-     winetricks
+    dbeaver-bin
+    mission-center
+    vulkan-tools
+    glxinfo
+    libva-utils
+    android-tools
+    scrcpy
+    pdfsam-basic
+    gnome-disk-utility
+    wgcf
+    wireguard-tools
+    mkvtoolnix
+    obs-studio
+    handbrake
+    losslesscut-bin
+    lsof
+    komikku
+    vial
+    anydesk
+    sbctl
+    telegram-desktop
+    woeusb-ng
+    efibootmgr
+    os-prober
+    authenticator
+    universal-android-debloater
+    yt-dlp
+    ffmpeg
+    winetricks
   ];
-  
 
-
- 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -112,8 +110,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

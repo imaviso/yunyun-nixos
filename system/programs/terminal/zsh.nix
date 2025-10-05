@@ -1,6 +1,7 @@
-{config, ...}: {
+{ config, ... }:
+{
   # enable zsh autocompletion for system packages (systemd, etc)
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   programs = {
     zsh = {
@@ -9,18 +10,25 @@
       autosuggestions.enable = true;
       syntaxHighlighting = {
         enable = true;
-        patterns = {"rm -rf *" = "fg=black,bg=red";};
-        styles = {"alias" = "fg=magenta";};
-        highlighters = ["main" "brackets" "pattern"];
+        patterns = {
+          "rm -rf *" = "fg=black,bg=red";
+        };
+        styles = {
+          "alias" = "fg=magenta";
+        };
+        highlighters = [
+          "main"
+          "brackets"
+          "pattern"
+        ];
       };
       shellAliases = {
         ls = "eza";
         ll = "eza -l";
       };
-      interactiveShellInit = 
-        ''
+      interactiveShellInit = ''
         microfetch
-        '';
+      '';
     };
   };
 }

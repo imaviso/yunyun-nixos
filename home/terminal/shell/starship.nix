@@ -1,9 +1,10 @@
-{ lib, ...} : {
+{ lib, ... }:
+{
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
     settings = {
-    format = lib.concatStrings [
+      format = lib.concatStrings [
         "[](color_orange)"
         "$os"
         "$username"
@@ -32,7 +33,7 @@
         "[ ](fg:color_bg1)"
         "$line_break"
         "$character"
-    ];
+      ];
 
       palette = "minimal";
 

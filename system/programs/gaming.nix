@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
 
   # programs.gamemode = {
   #   enable = true;
@@ -10,7 +11,7 @@
   #   };
   # };
   environment.systemPackages = with pkgs; [
-     wineWow64Packages.wayland
+    wineWow64Packages.wayland
   ];
 
   programs.steam = {

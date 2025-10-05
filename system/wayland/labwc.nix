@@ -1,12 +1,13 @@
-{ pkgs, ... }: {
-  
+{ pkgs, ... }:
+{
+
   programs.labwc.enable = true;
 
   programs.uwsm = {
     enable = true;
     waylandCompositors = {
       labwc = {
-        prettyName = "Labwc"; 
+        prettyName = "Labwc";
         comment = "Labwc compositor managed by UWSM";
         binPath = "/run/current-system/sw/bin/labwc";
       };
@@ -86,7 +87,7 @@
       resyncTimer = "10m";
     };
   };
-  
+
   programs.dconf.enable = true;
 
   qt = {
@@ -99,7 +100,10 @@
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = ["gtk" "gnome"];
+      common.default = [
+        "gtk"
+        "gnome"
+      ];
     };
 
     extraPortals = [

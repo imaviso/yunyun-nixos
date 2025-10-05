@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  wallpaperPath = ./dan-otis.jpg; 
+  wallpaperPath = ./dan-otis.jpg;
 
 in
 {

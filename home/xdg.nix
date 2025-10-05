@@ -58,18 +58,17 @@ let
       "unknown"
     ]);
 
-  archives =
-    xdgAssociations "application" archive [
-      "zip"
-      "vnd.rar"
-      "x-7z-compressed"
-      "x-tar"
-      "gzip"
-      "x-bzip"
-      "x-bzip2"
-      "x-xz"
-      "x-rar-compressed"
-    ];
+  archives = xdgAssociations "application" archive [
+    "zip"
+    "vnd.rar"
+    "x-7z-compressed"
+    "x-tar"
+    "gzip"
+    "x-bzip"
+    "x-bzip2"
+    "x-xz"
+    "x-rar-compressed"
+  ];
 
   # XDG MIME types
   associations = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) (

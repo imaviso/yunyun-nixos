@@ -14,33 +14,35 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    apple-fonts.url= "github:Lyndeno/apple-fonts.nix";
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
-  outputs = inputs @ {
-    nixpkgs,
-    hm,
-    lanzaboote,
-    apple-fonts,
-    ...
-  }: {
-    nixosConfigurations = {
-      yunyun = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
+  outputs =
+    inputs@{
+      nixpkgs,
+      hm,
+      lanzaboote,
+      apple-fonts,
+      ...
+    }:
+    {
+      nixosConfigurations = {
+        yunyun = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/desktop.nix
+            hm.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.yunyun = import ./home;
+              home-manager.backupFileExtension = "backup";
+            }
+          ];
         };
-        modules = [
-          ./hosts/desktop.nix
-          hm.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.yunyun = import ./home;
-            home-manager.backupFileExtension = "backup";
-          }
-        ];
       };
     };
-  };
 }

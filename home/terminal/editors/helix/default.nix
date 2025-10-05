@@ -2,12 +2,13 @@
 {
   imports = [
     ./languages.nix
-    ./keybinds.nix
+    # ./keybinds.nix
     ./theme.nix
   ];
 
   programs.helix = {
     enable = true;
+    package = pkgs.evil-helix;
     defaultEditor = true;
     extraPackages = with pkgs; [
       markdown-oxide
@@ -18,6 +19,7 @@
     settings = {
       theme = "minimal";
       editor = {
+        evil = true;
         color-modes = true;
         completion-trigger-len = 1;
         completion-replace = true;
@@ -25,7 +27,7 @@
         cursor-shape = {
           insert = "bar";
           normal = "block";
-            select = "underline";
+          select = "underline";
         };
         indent-guides.render = true;
         inline-diagnostics = {

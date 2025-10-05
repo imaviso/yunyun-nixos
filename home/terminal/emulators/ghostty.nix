@@ -3,15 +3,15 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      font-family="JetBrainsMono Nerd Font";
-      font-size=11;
-      gtk-single-instance=true;
-      gtk-titlebar=false;
-      window-decoration=true;
-      window-padding-x=10;
-      window-padding-y=10;
-      theme="minimal";
-      confirm-close-surface=false;
+      font-family = "JetBrainsMono Nerd Font";
+      font-size = 11;
+      gtk-single-instance = true;
+      gtk-titlebar = false;
+      window-decoration = true;
+      window-padding-x = 10;
+      window-padding-y = 10;
+      theme = "minimal";
+      confirm-close-surface = false;
     };
     themes = {
       minimal = {

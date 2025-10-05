@@ -1,9 +1,16 @@
-{ config, lib, pkgs, inputs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
 
   # programs.hyprlock.enable = true;
   # services.hypridle.enable = true;
   programs.hyprland = {
-    enable = true; 
+    enable = true;
     withUWSM = true;
     xwayland.enable = true;
   };
@@ -83,9 +90,8 @@
       resyncTimer = "10m";
     };
   };
-  
-  programs.dconf.enable = true;
 
+  programs.dconf.enable = true;
 
   qt = {
     enable = true;
@@ -97,8 +103,11 @@
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
+      common.default = [ "gtk" ];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
     };
 
     extraPortals = [

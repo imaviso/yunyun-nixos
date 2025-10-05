@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   biome = ext: {
     command = lib.getExe pkgs.biome;
@@ -18,7 +23,10 @@ in
         auto-format = true;
         formatter = {
           command = lib.getExe pkgs.shfmt;
-          args = [ "-i" "2" ];
+          args = [
+            "-i"
+            "2"
+          ];
         };
       }
       {
@@ -34,7 +42,10 @@ in
         name = "css";
         formatter = {
           command = lib.getExe pkgs.nodePackages.prettier;
-          args = [ "--parser" "css" ];
+          args = [
+            "--parser"
+            "css"
+          ];
         };
         language-servers = [
           "vscode-css-language-server"
@@ -58,7 +69,10 @@ in
         name = "html";
         formatter = {
           command = lib.getExe pkgs.nodePackages.prettier;
-          args = [ "--parser" "html" ];
+          args = [
+            "--parser"
+            "html"
+          ];
         };
         language-servers = [
           "vscode-html-language-server"
@@ -95,7 +109,10 @@ in
         name = "scss";
         formatter = {
           command = lib.getExe pkgs.nodePackages.prettier;
-          args = [ "--parser" "scss" ];
+          args = [
+            "--parser"
+            "scss"
+          ];
         };
         language-servers = [
           "vscode-css-language-server"
@@ -118,7 +135,7 @@ in
       {
         name = "java";
         auto-format = true;
-        language-servers = [ "jdtls"];
+        language-servers = [ "jdtls" ];
       }
     ];
 
@@ -139,7 +156,7 @@ in
         command = lib.getExe pkgs.cmake-language-server;
       };
 
-        nil = {
+      nil = {
         command = lib.getExe pkgs.nil;
         config.nil.formatting.command = [
           "${lib.getExe pkgs.nixfmt}"
@@ -175,7 +192,8 @@ in
       jdtls = {
         command = "${pkgs.jdt-language-server}/bin/jdtls";
         args = [
-          "-data" "${config.home.homeDirectory}/.local/share/jdtls-workspace"
+          "-data"
+          "${config.home.homeDirectory}/.local/share/jdtls-workspace"
         ];
         config = {
           java = {
@@ -217,7 +235,7 @@ in
         config = {
           provideFormatter = true;
           css.validate.enable = true;
-            scss.validate.enable = true;
+          scss.validate.enable = true;
         };
       };
     };

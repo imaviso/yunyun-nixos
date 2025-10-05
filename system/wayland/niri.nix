@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
-  
+{ pkgs, ... }:
+{
+
   programs.niri.enable = true;
 
   security.polkit.enable = true; # polkit
@@ -9,7 +10,7 @@
   environment.systemPackages = with pkgs; [
     xwayland-satellite
     waybar
-    walker 
+    walker
     swww
     apple-cursor
     colloid-icon-theme
@@ -67,7 +68,7 @@
       resyncTimer = "10m";
     };
   };
-  
+
   programs.dconf.enable = true;
 
   qt = {
@@ -80,7 +81,10 @@
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = ["gtk" "gnome"];
+      common.default = [
+        "gtk"
+        "gnome"
+      ];
     };
 
     extraPortals = [
