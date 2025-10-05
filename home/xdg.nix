@@ -42,7 +42,6 @@ let
   ];
   browserTypes =
     (xdgAssociations "application" browser [
-      "json"
       "x-extension-htm"
       "x-extension-html"
       "x-extension-shtml"
@@ -77,7 +76,8 @@ let
     {
       "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf" ];
       "text/html" = browser;
-      "text/plain" = [ "nvim" ];
+      "text/plain" = [ "Helix" ];
+      "json" = [ "Helix" ];
       "inode/directory" = [ "yazi" ];
       "x-scheme-handler/magnet" = [ "transmission-gtk" ];
       # Full entry is org.telegram.desktop.desktop
