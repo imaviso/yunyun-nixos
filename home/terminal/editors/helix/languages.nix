@@ -87,6 +87,7 @@ in
       }
       {
         name = "nix";
+        auto-format = true;
         language-servers = [
           "nil"
         ];

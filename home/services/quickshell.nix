@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.packages = [
+    pkgs.quickshell
+  ];
+
   systemd.user.services.quickshell = {
     Unit.Description = "quickshell";
     Install = {
@@ -16,4 +20,5 @@
       TimeoutStopSec = 10;
     };
   };
+
 }

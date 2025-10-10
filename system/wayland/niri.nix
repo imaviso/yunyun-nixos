@@ -16,9 +16,6 @@
     colloid-icon-theme
     nwg-look
     colloid-gtk-theme
-    (orchis-theme.override {
-      tweaks = [ "black" ];
-    })
     font-manager
     nautilus
     hyprpicker

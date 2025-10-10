@@ -1,6 +1,4 @@
-{ inputs, ... }:
 {
-
   imports = [
     ./fontconfig.nix
     ./cursor.nix

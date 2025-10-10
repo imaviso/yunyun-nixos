@@ -12,7 +12,7 @@
     <reuseOutputMode>no</reuseOutputMode>
     <xwaylandPersistence>no</xwaylandPersistence>
   </core>
-  <desktops number="5"/>
+  <desktops number="1"/>
   <windowSwitcher show="yes" style="thumbnail" preview="yes" outlines="yes" allWorkspaces="no">
     <fields>
       <field content="icon" width="5%" />
@@ -73,6 +73,9 @@
     <keybind key="W-Return">
       <action name="Execute" command="app2unit -- footclient"/>
     </keybind>
+    <keybind key="W-Space">
+      <action name="Execute" command="app2unit -- kitty"/>
+    </keybind>
     <keybind key="W-S-q">
       <action name="Close"/>
     </keybind>
@@ -86,7 +89,7 @@
       <action name="Execute" command="app2unit -- nautilus"/>
     </keybind>
     <keybind key="W-S-e">
-      <action name="Execute" command="app2unit -- foot -e 'yazi' yazi"/>
+      <action name="Execute" command="app2unit -- foot -e yazi"/>
     </keybind>
     <keybind key="W-f">
       <action name="ToggleMaximize"/>
@@ -189,6 +192,14 @@
   </mouse>
   <windowRules>
     <windowRule identifier="footclient">
+      <action name="ResizeTo" width="1000" height="800"/>
+      <action name="AutoPlace" policy="center"/>
+    </windowRule>
+    <windowRule identifier="foot">
+      <action name="ResizeTo" width="1000" height="800"/>
+      <action name="AutoPlace" policy="center"/>
+    </windowRule>
+    <windowRule identifier="kitty">
       <action name="ResizeTo" width="1000" height="800"/>
       <action name="AutoPlace" policy="center"/>
     </windowRule>

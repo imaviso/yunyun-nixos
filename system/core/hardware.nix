@@ -8,9 +8,7 @@
   pkgs,
   modulesPath,
   ...
-}:
-
-{
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     inputs.lanzaboote.nixosModules.lanzaboote
@@ -19,8 +17,8 @@
   boot = {
     loader = {
       systemd-boot = {
-        #enable = lib.mkForce false;
-        enable = true;
+        enable = lib.mkForce false;
+        # enable = true;
         consoleMode = "keep";
       };
       efi.canTouchEfiVariables = true;
@@ -44,10 +42,11 @@
     kernelModules = [
       "kvm-amd"
       "ntsync"
+      "btintel"
       # "v4l2loopback"
     ];
 
-    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ];
+    kernelParams = ["amdgpu.ppfeaturemask=0xffffffff"];
     supportedFilesystems = [
       "nfs"
       "ext4"
@@ -117,11 +116,10 @@
       "vm.max_map_count" = 2147483642;
     };
 
-    # lanzaboote = {
-    #   enable = true;
-    #   pkiBundle = "/var/lib/sbctl";
-    # };
-
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
   };
 
   fileSystems."/" = {
@@ -191,22 +189,13 @@
 
     bluetooth = {
       enable = true;
-      package = pkgs.bluez;
       powerOnBoot = true;
       settings = {
         General = {
-          # Shows battery charge of connected devices on supported
-          # Bluetooth adapters. Defaults to 'false'.
           Experimental = true;
-          # When enabled other devices can connect faster to us, however
-          # the tradeoff is increased power consumption. Defaults to
-          # 'false'.
           FastConnectable = true;
         };
         Policy = {
-          # Enable all controllers when they are found. This includes
-          # adapters present on start as well as adapters that are plugged
-          # in later on. Defaults to 'true'.
           AutoEnable = true;
         };
       };

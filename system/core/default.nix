@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware.nix
     ./networking.nix
@@ -13,7 +16,6 @@
   environment.variables.FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   environment.systemPackages = with pkgs; [
     neovim
-    helix
     wget
     curl
     git
@@ -22,17 +24,7 @@
     nmap
     btop
     mediainfo
-    clang
     unzip
-    zig
-    go
-    cargo
-    rustc
-    rust-analyzer
-    rustfmt
-    #python3Full
-    jdk
-    maven
     ripgrep
     dust
     bat
@@ -41,13 +33,7 @@
     jq
     p7zip-rar
     lazygit
-    zellij
-    uv
     fzf
-    nodejs
-    bun
-    pnpm
-    yazi
     firefox
     brave
     ghostty
@@ -61,9 +47,7 @@
     mpv
     img2pdf
     tesseract
-    imagemagick
     feishin
-    bbe
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
@@ -101,6 +85,8 @@
     yt-dlp
     ffmpeg
     winetricks
+    nicotine-plus
+    pavucontrol
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -118,5 +104,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

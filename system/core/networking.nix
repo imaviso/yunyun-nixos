@@ -2,9 +2,8 @@
   networking = {
     hostName = "nixos"; # Define your hostname.
     timeServers = [
+      "time.cloudflare.com"
       "0.ph.pool.ntp.org"
-      "2.asia.pool.ntp.org"
-      "0.asia.pool.ntp.org"
     ];
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

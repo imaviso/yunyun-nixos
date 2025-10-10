@@ -1,10 +1,11 @@
 {
   imports = [
-    ./wallpaper
+    ./wpaperd.nix
+    ./swayidle.nix
+    ./easyeffects
     ./polkit-agent.nix
     ./quickshell.nix
     ./clipboard.nix
-    ./easyeffects.nix
     ./kanshi.nix
     ./footserver.nix
   ];

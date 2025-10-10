@@ -15,6 +15,11 @@
     };
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -23,6 +28,7 @@
       hm,
       lanzaboote,
       apple-fonts,
+      nvf,
       ...
     }:
     {
@@ -39,6 +45,9 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.yunyun = import ./home;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+              };
               home-manager.backupFileExtension = "backup";
             }
           ];

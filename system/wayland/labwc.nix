@@ -19,7 +19,6 @@
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
-    quickshell
     gpu-screen-recorder
     brightnessctl
     matugen
@@ -36,9 +35,6 @@
     colloid-icon-theme
     nwg-look
     colloid-gtk-theme
-    (orchis-theme.override {
-      tweaks = [ "black" ];
-    })
     font-manager
     nautilus
     hyprpicker
