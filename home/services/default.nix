@@ -1,7 +1,7 @@
 {
   imports = [
-    ./wpaperd.nix
-    ./swayidle.nix
+    # ./wpaperd.nix
+    # ./swayidle.nix
     ./easyeffects
     ./polkit-agent.nix
     ./quickshell.nix

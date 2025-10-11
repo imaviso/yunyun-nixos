@@ -16,16 +16,15 @@ in {
     enable = true;
     settings = {
       vim = {
+        clipboard = {
+          enable = true;
+          registers = "unnamedplus";
+        };
         diagnostics = {
           nvim-lint.enable = true;
         };
         visuals = {
           indent-blankline.enable = true;
-        };
-        ui = {
-          noice = {
-            enable = true;
-          };
         };
         notes.todo-comments.enable = true;
         lsp = {
@@ -36,21 +35,25 @@ in {
           trouble.enable = true;
         };
         mini = {
-          basics = {
-            enable = true;
-          };
-          bracketed = {
-            enable = true;
-          };
-          bufremove = {
-            enable = true;
-          };
-          clue = {
-            enable = true;
-          };
+          ai.enable = true;
+          basics.enable = true;
+          bracketed.enable = true;
+          bufremove.enable = true;
+          clue.enable = true;
+          icons.enable = true;
+          files.enable = true;
+          pick.enable = true;
+          notify.enable = true;
+          snippets.enable = true;
+          surround.enable = true;
+          starter.enable = true;
+          statusline.enable = true;
+          tabline.enable = true;
+
           completion = {
             enable = true;
           };
+
           pairs = {
             enable = true;
             setupOpts = {
@@ -65,32 +68,23 @@ in {
               markdown = true;
             };
           };
+        };
 
-          icons = {
-            enable = true;
-          };
-
-          snippets = {
-            enable = true;
-          };
-
-          starter = {
-            enable = true;
-          };
-
-          statusline = {
-            enable = true;
-          };
-
-          tabline = {
-            enable = true;
-          };
-
-          files = {
-            enable = true;
-          };
-          pick = {
-            enable = true;
+        ui.colorizer = {
+          enable = true;
+          setupOpts.filetypes = {
+            "*" = {
+              RRGGBB = true;
+              names = false;
+              RRGGBBAA = true;
+              AARRGGBB = true;
+              rgb_fn = true;
+              hsl_fn = true;
+              css = true;
+              css_fn = true;
+              tailwind = true;
+              sass = true;
+            };
           };
         };
       };

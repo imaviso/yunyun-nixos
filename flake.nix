@@ -20,38 +20,41 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    inputs@{
-      nixpkgs,
-      hm,
-      lanzaboote,
-      apple-fonts,
-      nvf,
-      ...
-    }:
-    {
-      nixosConfigurations = {
-        yunyun = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-          };
-          modules = [
-            ./hosts/desktop.nix
-            hm.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.yunyun = import ./home;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-              };
-              home-manager.backupFileExtension = "backup";
-            }
-          ];
+  outputs = inputs @ {
+    nixpkgs,
+    hm,
+    lanzaboote,
+    apple-fonts,
+    nvf,
+    dms,
+    ...
+  }: {
+    nixosConfigurations = {
+      yunyun = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
         };
+        modules = [
+          ./hosts/desktop.nix
+          hm.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.yunyun = import ./home;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
+            home-manager.backupFileExtension = "backup";
+          }
+        ];
       };
     };
+  };
 }

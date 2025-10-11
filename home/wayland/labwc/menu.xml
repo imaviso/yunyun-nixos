@@ -47,22 +47,23 @@
   </item>
 </menu>
 
-<menu id="config-menu" label="config">
+
+
+<menu id="root-menu" label="root-menu">
+   <menu id="config-menu" label="config">
   <!--
     Creates menu title.
     To create an empty header with no text,
     set label=" ", not label=""
   -->
-  <separator label="custom menu" />
-  <item label="Reconfigure">
-    <action name="Reconfigure" />
-  </item>
-  <item label="Exit">
-    <action name="Exit" />
-  </item>
+   <separator label="custom menu" />
+      <item label="Reconfigure">
+         <action name="Reconfigure" />
+      </item>
+      <item label="Exit">
+         <action name="Exit" />
+      </item>
 </menu>
-
-<menu id="root-menu" label="root-menu">
   <menu id="Accessories" label="Accessories">
     <item label="Authenticator">
       <action name="Execute"><command>authenticator</command></action>

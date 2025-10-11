@@ -82,8 +82,11 @@
     <!-- <keybind key="W-a"> -->
     <!--   <action name="Execute" command="walker" /> -->
     <!-- </keybind> -->
+    <!-- <keybind key="W-d"> -->
+    <!--   <action name="Execute" command="sh -c 'pkill anyrun || anyrun'"/> -->
+    <!-- </keybind> -->
     <keybind key="W-d">
-      <action name="Execute" command="sh -c 'pkill anyrun || anyrun'"/>
+      <action name="Execute" command="dms ipc call spotlight toggle"/>
     </keybind>
     <keybind key="W-e">
       <action name="Execute" command="app2unit -- nautilus"/>
@@ -100,7 +103,9 @@
       </action>
     </keybind>
     <keybind key="W-c">
-      <action name="Execute" command="sh -c 'pkill anyrun || cliphist list | anyrun --show-results-immediately true --plugins libstdin.so | cliphist decode | wl-copy'"/>
+      <action name="Execute">
+        <command>dms ipc call clipboard toggle</command>
+      </action>
     </keybind>
     <keybind key="W-p">
       <action name="Execute" command="hyprpicker -a"/>
@@ -111,11 +116,26 @@
     <keybind key="W-j">
       <action name="Execute" command="~/.config/labwc/scripts/ocr-jp.sh"/>
     </keybind>
+    <!-- <keybind key="W-l"> -->
+    <!--   <action name="Execute" command="sh -c 'qs -c noctalia-shell ipc call sessionMenu toggle'"/> -->
+    <!-- </keybind> -->
     <keybind key="W-l">
-      <action name="Execute" command="sh -c 'qs -c noctalia-shell ipc call sessionMenu toggle'"/>
+      <action name="Execute" command="dms ipc call powermenu toggle"/>
     </keybind>
     <keybind key="W-n">
-      <action name="Execute" command="sh -c 'qs -c noctalia-shell ipc call notifications toggleHistory'"/>
+      <action name="Execute" command="dms ipc call notifications toggle"/>
+      </keybind> 
+    <keybind key="W-m">
+      <action name="Execute" command="dms ipc call processlist toggle"/>
+    </keybind>
+    <keybind key="W-w">
+      <action name="Execute" command="dms ipc call notepad toggle"/>
+    </keybind>
+    <keybind key="W-S-Escape">
+      <action name="Execute" command="dms ipc call control-center toggle"/>
+    </keybind>
+    <keybind key="W-Comma">
+      <action name="Execute" command="dms ipc call settings toggle"/>
     </keybind>
     <!-- <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind> -->
     <!-- <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind> -->
@@ -154,14 +174,23 @@
     <keybind key="W-S-minus">
       <action name="ResizeRelative" right="-50" bottom="-50" top="-50" left="-50"/>
     </keybind>
+    <!-- <keybind key="XF86AudioRaiseVolume"> -->
+    <!--   <action name="execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+" /> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="XF86AudioLowerVolume"> -->
+    <!--   <action name="execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" /> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="XF86AudioMute"> -->
+    <!--   <action name="execute" command="wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" /> -->
+    <!-- </keybind> -->
     <keybind key="XF86AudioRaiseVolume">
-      <action name="execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+" />
+      <action name="execute" command="dms ipc call audio increment 3" />
     </keybind>
     <keybind key="XF86AudioLowerVolume">
-      <action name="execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-" />
+      <action name="execute" command="dms ipc call audio decrement 3" />
     </keybind>
     <keybind key="XF86AudioMute">
-      <action name="execute" command="wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" />
+      <action name="execute" command="dms ipc call audio mute" />
     </keybind>
   </keyboard>
 

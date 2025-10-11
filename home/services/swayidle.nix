@@ -1,11 +1,10 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.swayidle = {
     enable = true;
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.quickshell}/bin/qs -c noctalia-shell ipc call lockScreen toggle";
+        command = "${pkgs.dms}/bin/dms ipc call lock lock";
       }
       {
         timeout = 600;

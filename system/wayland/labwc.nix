@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   programs.labwc.enable = true;
 
   programs.uwsm = {
@@ -28,9 +26,6 @@
     labwc-gtktheme
     labwc-tweaks-gtk
     app2unit
-    fuzzel
-    wpgtk
-    swww
     apple-cursor
     colloid-icon-theme
     nwg-look
