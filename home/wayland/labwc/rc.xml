@@ -9,6 +9,7 @@
     <gap>0</gap>
     <adaptiveSync>yes</adaptiveSync>
     <allowTearing>no</allowTearing>
+    <autoEnableOutputs>no</autoEnableOutputs>
     <reuseOutputMode>no</reuseOutputMode>
     <xwaylandPersistence>no</xwaylandPersistence>
   </core>
@@ -88,10 +89,10 @@
     <keybind key="W-d">
       <action name="Execute" command="dms ipc call spotlight toggle"/>
     </keybind>
-    <keybind key="W-e">
+    <keybind key="W-S-e">
       <action name="Execute" command="app2unit -- nautilus"/>
     </keybind>
-    <keybind key="W-S-e">
+    <keybind key="W-e">
       <action name="Execute" command="app2unit -- foot -e yazi"/>
     </keybind>
     <keybind key="W-f">
