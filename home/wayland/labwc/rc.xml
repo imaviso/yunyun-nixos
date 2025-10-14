@@ -9,7 +9,7 @@
     <gap>0</gap>
     <adaptiveSync>yes</adaptiveSync>
     <allowTearing>no</allowTearing>
-    <autoEnableOutputs>no</autoEnableOutputs>
+    <autoEnableOutputs>yes</autoEnableOutputs>
     <reuseOutputMode>no</reuseOutputMode>
     <xwaylandPersistence>no</xwaylandPersistence>
   </core>

@@ -1,5 +1,5 @@
 {
   imports = [
-    ./labwc.nix
+    ./wayfire.nix
   ];
 }

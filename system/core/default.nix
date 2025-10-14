@@ -48,14 +48,14 @@
     img2pdf
     tesseract
     feishin
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-        droidcam-obs
-      ];
-    })
+    # (pkgs.wrapOBS {
+    #   plugins = with pkgs.obs-studio-plugins; [
+    #     wlrobs
+    #     obs-backgroundremoval
+    #     obs-pipewire-audio-capture
+    #     droidcam-obs
+    #   ];
+    # })
     dbeaver-bin
     mission-center
     vulkan-tools
@@ -85,7 +85,6 @@
     yt-dlp
     ffmpeg
     winetricks
-    nicotine-plus
     pavucontrol
   ];
 
