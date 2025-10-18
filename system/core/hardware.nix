@@ -174,11 +174,13 @@
     ];
   };
 
-  #swapDevices =
-  #  [ { device = "/dev/disk/by-uuid/5ff0b5a0-1f7a-4c58-b298-4a25c3ed7353"; }
-  #  ];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
-  zramSwap.enable = true;
   services.btrfs.autoScrub = {
     enable = true;
   };
@@ -189,7 +191,6 @@
 
     bluetooth = {
       enable = true;
-      powerOnBoot = true;
       settings = {
         General = {
           Experimental = true;

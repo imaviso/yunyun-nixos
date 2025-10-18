@@ -10,11 +10,12 @@
       wcm
       wayfire-plugins-extra
       wayfire-shadows
+      wwp-switcher
       windecor
     ];
     settings = {
       core = {
-        plugins = "animate command decoration expo follow-focus focus-change grid foreign-toplevel move oswitch place resize session-lock scale switcher shortcuts-inhibit vswitch window-rules wm-actions winshadows";
+        plugins = "animate command expo follow-focus focus-change grid foreign-toplevel ipc ipc-rules input-method-v1 move oswitch place resize session-lock scale switcher shortcuts-inhibit security-context-v1 session-lock vswitch window-rules wm-actions winshadows xdg-activation";
         close_top_view = "<super> <shift> KEY_Q";
         vwidth = 3;
         vheight = 3;
@@ -100,13 +101,13 @@
         close_animation = "fade";
         open_animation = "fade";
       };
-      decoration = {
-        font = "SFPro Text Nerd Font 12";
-        active_color = "0.10 0.10 0.10 1.0";
-        inactive_color = "0.23 0.23 0.23 1.0";
-        border_size = 3;
-        title_height = 18;
-      };
+      # decoration = {
+      #   font = "SFPro Text Nerd Font 12";
+      #   active_color = "0.10 0.10 0.10 1.0";
+      #   inactive_color = "0.23 0.23 0.23 1.0";
+      #   border_size = 3;
+      #   title_height = 18;
+      # };
       scale = {
         toggle = "<super> KEY_W";
         duration = 200;

@@ -19,10 +19,15 @@ in {
         (mkKeymap "n" "<leader>/" ":Pick grep_live<CR>" {})
 
         (mkKeymap "n" "<leader>dd" ":lua MiniBufremove.delete()<CR>" {})
-        (mkKeymap "n" "S-h" ":bprevious<CR>" {})
-        (mkKeymap "n" "S-l" ":bnext<CR>" {})
+        (mkKeymap "n" "<S-h>" ":bprevious<CR>" {})
+        (mkKeymap "n" "<S-l>" ":bnext<CR>" {})
         (mkKeymap "n" "[b" ":bprevious<CR>" {})
         (mkKeymap "n" "]b" ":bnext<CR>" {})
+
+        (mkKeymap "n" "<C-Up>" ":resize +2<cr>" {})
+        (mkKeymap "n" "<C-Down>" ":resize -2<cr>" {})
+        (mkKeymap "n" "<C-Left>" ":vertical resize -2<cr>" {})
+        (mkKeymap "n" "<C-Right>" ":vertical resize +2<cr>" {})
 
         (mkKeymap "n" "<leader>tt" ":terminal<CR>" {})
         (mkKeymap "n" "<leader>ts" ":split | execute 'resize 15' | terminal<CR>" {})

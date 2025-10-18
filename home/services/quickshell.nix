@@ -9,12 +9,13 @@
 
   programs.dankMaterialShell = {
     enable = true;
+    quickshell.package = inputs.quickshell.packages.${pkgs.system}.default;
     enableSystemd = true;
     enableDynamicTheming = false;
     enableBrightnessControl = false;
   };
   # home.packages = [
-  #   pkgs.quickshell
+  #   pkgs.quickshell f
   # ];
 
   # systemd.user.services.quickshell = {

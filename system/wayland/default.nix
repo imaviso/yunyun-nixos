@@ -1,5 +1,5 @@
 {
   imports = [
-    ./wayfire.nix
+    ./niri.nix
   ];
 }

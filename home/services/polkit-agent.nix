@@ -1,22 +1,20 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      Unit.Description = "polkit-gnome-authentication-agent-1";
+    user.services.polkit-mate-authentication-agent-1 = {
+      Unit.Description = "polkit-mate-authentication-agent-1";
 
       Install = {
-        WantedBy = [ "graphical-session.target" ];
-        Wants = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        WantedBy = ["graphical-session.target"];
+        Wants = ["graphical-session.target"];
+        After = ["graphical-session.target"];
       };
       Service = {
         Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        ExecStart = "${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
       };
     };
   };
-
 }

@@ -4,11 +4,11 @@
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.dms}/bin/dms ipc call lock lock";
+        command = "${pkgs.systemd}/bin/systemctl suspend";
       }
       {
-        timeout = 600;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
+        timeout = 900;
+        command = "${pkgs.systemd}/bin/systemctl hibernate";
       }
     ];
   };

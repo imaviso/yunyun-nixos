@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   programs.niri.enable = true;
 
   security.polkit.enable = true; # polkit
@@ -9,13 +7,16 @@
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite
-    waybar
-    walker
-    swww
+    gpu-screen-recorder
+    brightnessctl
+    matugen
+    cava
+    wlsunset
+    app2unit
     apple-cursor
     colloid-icon-theme
-    nwg-look
     colloid-gtk-theme
+    nwg-look
     font-manager
     nautilus
     hyprpicker
@@ -26,11 +27,8 @@
     wl-clipboard
     cliphist
     wl-screenrec
-    fuzzel
-    pavucontrol
-    mako
-    # swayidle
-    # swaylock
+    swayidle
+    wlopm
   ];
 
   security.pam.services.greetd.enableGnomeKeyring = true;
