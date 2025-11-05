@@ -11,11 +11,13 @@
       # utility
       "Super, Return, exec, app2unit -- footclient"
       "Super, E, exec, app2unit -- footclient -e yazi"
+      "Super, P, exec, hyprpicker -a"
       "SuperShift, E, exec, app2unit -- nautilus"
       "Super, L, exec, dms ipc call powermenu toggle"
       "Super, C, exec, dms ipc call clipboard toggle"
       "Super, D, exec, dms ipc call spotlight toggle"
-      "Super, M, exec, dms ipc call control-center toggle"
+      "Super, N, exec, dms ipc call control-center toggle"
+      "Super, M, exec, dms ipc call processlist toggle"
       "Super, Comma, exec, dms ipc call settings toggle"
 
       # move focus

@@ -7,13 +7,13 @@
   <core>
     <decoration>server</decoration>
     <gap>0</gap>
-    <adaptiveSync>yes</adaptiveSync>
+    <adaptiveSync>no</adaptiveSync>
     <allowTearing>no</allowTearing>
     <autoEnableOutputs>yes</autoEnableOutputs>
     <reuseOutputMode>no</reuseOutputMode>
     <xwaylandPersistence>no</xwaylandPersistence>
   </core>
-  <desktops number="1"/>
+  <desktops number="5"/>
   <windowSwitcher show="yes" style="thumbnail" preview="yes" outlines="yes" allWorkspaces="no">
     <fields>
       <field content="icon" width="5%" />
@@ -27,7 +27,7 @@
   <theme>
     <name>openbox-3</name>
     <cornerRadius>0</cornerRadius>
-    <font name="SFProText Nerd Font" size="9"/>
+    <font name="Geist" size="9"/>
     <dropShadows>yes</dropShadows>
     <keepBorder>no</keepBorder>
   </theme>
@@ -72,10 +72,10 @@
     <default/>
     <!-- Use a different terminal emulator -->
     <keybind key="W-Return">
-      <action name="Execute" command="app2unit -- footclient"/>
+      <action name="Execute" command="app2unit -- ghostty"/>
     </keybind>
     <keybind key="W-Space">
-      <action name="Execute" command="app2unit -- kitty"/>
+      <action name="Execute" command="app2unit -- footclient"/>
     </keybind>
     <keybind key="W-S-q">
       <action name="Close"/>
@@ -138,28 +138,29 @@
     <keybind key="W-Comma">
       <action name="Execute" command="dms ipc call settings toggle"/>
     </keybind>
-    <!-- <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind> -->
-    <!-- <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind> -->
-    <!-- <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind> -->
-    <!-- <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind> -->
-    <!-- <keybind key="W-5"><action name="GoToDesktop" to="5" /></keybind> -->
-    <!-- <keybind key="W-S-1"> <action name="SendToDesktop" to="1" /> </keybind> -->
-    <!-- <keybind key="W-S-2"> <action name="SendToDesktop" to="2" /> </keybind> -->
-    <!-- <keybind key="W-S-3"> <action name="SendToDesktop" to="3" /> </keybind> -->
-    <!-- <keybind key="W-S-4"> <action name="SendToDesktop" to="4" /> </keybind> -->
-    <!-- <keybind key="W-S-5"> <action name="SendToDesktop" to="5" /> </keybind> -->
-    <keybind key="W-S-1">
-      <action name="MoveToOutput" direction="left"/>
+    <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
+    <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind>
+    <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind>
+    <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind>
+    <keybind key="W-5"><action name="GoToDesktop" to="5" /></keybind>
+    <keybind key="W-S-1"> <action name="SendToDesktop" to="1" /> </keybind>
+    <keybind key="W-S-2"> <action name="SendToDesktop" to="2" /> </keybind>
+    <keybind key="W-S-3"> <action name="SendToDesktop" to="3" /> </keybind>
+    <keybind key="W-S-4"> <action name="SendToDesktop" to="4" /> </keybind>
+    <keybind key="W-S-5"> <action name="SendToDesktop" to="5" /> </keybind>
+
+    <keybind key="W-Tab">
+      <action name="FocusOutput" direction="right" wrap="yes" />
     </keybind>
-    <keybind key="W-S-2">
-      <action name="MoveToOutput" direction="right"/>
+    <keybind key="W-S-Tab">
+      <action name="MoveToOutput" direction="right" wrap="yes" />
     </keybind>
-    <keybind key="W-1">
-      <action name="FocusOutput" direction="left"/>
-    </keybind>
-    <keybind key="W-2">
-      <action name="FocusOutput" direction="right"/>
-    </keybind>
+    <!-- <keybind key="W-2"> -->
+    <!--   <action name="FocusOutput" direction="right"/> -->
+    <!-- </keybind> -->
+    <!-- <keybind key="W-S-2"> -->
+    <!--   <action name="MoveToOutput" direction="right"/> -->
+    <!-- </keybind> -->
     <keybind key="W-C-r">
       <action name="Reconfigure"/>
     </keybind>
@@ -233,7 +234,7 @@
       <action name="ResizeTo" width="1000" height="800"/>
       <action name="AutoPlace" policy="center"/>
     </windowRule>
-    <windowRule identifier="ghostty">
+    <windowRule title="Ghostty">
       <action name="ResizeTo" width="1000" height="800"/>
       <action name="AutoPlace" policy="center"/>
     </windowRule>

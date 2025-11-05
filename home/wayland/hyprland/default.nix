@@ -29,6 +29,8 @@
           gradients = true;
           height = 14;
           font_size = 10;
+          font_weight_active = "bold";
+          font_weight_inactive = "bold";
           render_titles = true;
           text_color = "rgba(e5e5e5e5)";
           "col.active" = "rgba(71717a71)";
@@ -79,16 +81,23 @@
       };
       misc = {
         vfr = true;
-        vrr = 1;
+        vrr = 2;
+        render_unfocused_fps = 30;
         focus_on_activate = true;
         animate_manual_resizes = false;
         animate_mouse_windowdragging = false;
         disable_hyprland_logo = true;
         allow_session_lock_restore = true;
-        font_family = "SFProText Nerd Font";
+        initial_workspace_tracking = 2;
+        font_family = "Geist";
+      };
+      render = {
+        direct_scanout = 1;
       };
       windowrulev2 = [
         "float, title:^(.*Bitwarden Password Manager.*)$"
+        "renderunfocused, class:^(client-win64-shipping.exe)$"
+        "renderunfocused, class:^(starrail.exe)$"
       ];
       layerrule = [
         "noanim, quickshell"

@@ -1,10 +1,8 @@
-{ inputs, pkgs, ... }:
-{
-
+{pkgs, ...}: {
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     liberation_ttf
     inter
     roboto
@@ -14,8 +12,5 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.adwaita-mono
     material-symbols
-    inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
-    inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
   ];
-
 }

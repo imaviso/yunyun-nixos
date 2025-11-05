@@ -2,13 +2,11 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.programs.git;
   key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC3QD9S9+LuBdHXloH2jRkqBVzLTnZeXD41LIiyLlfwS yunyun@nixos";
-in
-{
-  home.packages = [ pkgs.gh ];
+in {
+  home.packages = [pkgs.gh];
 
   # enable scrolling in git diff
   home.sessionVariables.DELTA_PAGER = "less -R";
@@ -16,21 +14,20 @@ in
   programs.git = {
     enable = true;
 
-    delta = {
-      enable = true;
-      options.dark = true;
-    };
+    settings = {
+      delta = {
+        enable = true;
+        options.dark = true;
+      };
 
-    extraConfig = {
-      diff.colorMoved = "default";
-      merge.conflictstyle = "diff3";
-    };
+      extraConfig = {
+        diff.colorMoved = "default";
+        merge.conflictstyle = "diff3";
+      };
 
-    aliases =
-      let
+      aliases = let
         log = "log --show-notes='*' --abbrev-commit --pretty=format:'%Cred%h %Cgreen(%aD)%Creset -%C(bold red)%d%Creset %s %C(bold blue)<%an>% %Creset' --graph";
-      in
-      {
+      in {
         a = "add --patch"; # make it a habit to consciosly add hunks
         ad = "add";
 
@@ -89,6 +86,23 @@ in
         oops = "checkout --";
       };
 
+      signing = {
+        key = "${config.home.homeDirectory}/.ssh/id_ed25519";
+        signByDefault = true;
+        format = "ssh";
+      };
+
+      user = {
+        email = "imaviso@protonmail.com";
+        name = "Momoyaan";
+      };
+
+      gpg.ssh.allowedSignersFile =
+        config.home.homeDirectory + "/" + config.xdg.configFile."git/allowed_signers".target;
+
+      pull.rebase = true;
+    };
+
     ignores = [
       "*~"
       "*.swp"
@@ -96,25 +110,8 @@ in
       ".direnv"
       "node_modules"
     ];
-
-    signing = {
-      key = "${config.home.homeDirectory}/.ssh/id_ed25519";
-      signByDefault = true;
-      format = "ssh";
-    };
-
-    extraConfig = {
-      gpg.ssh.allowedSignersFile =
-        config.home.homeDirectory + "/" + config.xdg.configFile."git/allowed_signers".target;
-
-      pull.rebase = true;
-    };
-
-    userEmail = "imaviso@protonmail.com";
-    userName = "Momoyaan";
   };
-
   xdg.configFile."git/allowed_signers".text = ''
-    ${cfg.userEmail} namespaces="git" ${key}
+    ${cfg.settings.user.email} namespaces="git" ${key}
   '';
 }

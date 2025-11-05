@@ -6,10 +6,10 @@
     subpixelRendering = "rgb";
 
     defaultFonts = {
-      serif = [ "SFProText Nerd Font" ];
-      sansSerif = [ "SFProText Nerd Font" ];
-      monospace = [ "SFMono Nerd Font" ];
-      emoji = [ "Noto Color Emoji" ];
+      serif = ["Geist"];
+      sansSerif = ["Geist"];
+      monospace = ["GeistMono Nerd Font"];
+      emoji = ["Noto Color Emoji"];
     };
   };
 }

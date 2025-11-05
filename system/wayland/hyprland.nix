@@ -3,7 +3,7 @@
   # services.hypridle.enable = true;
   programs.hyprland = {
     enable = true;
-    # withUWSM = true;
+    withUWSM = true;
     xwayland.enable = true;
   };
   environment.systemPackages = with pkgs; [
@@ -33,8 +33,8 @@
     package = pkgs.greetd;
     settings = {
       default_session = {
-        # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start hyprland-uwsm.desktop'";
-        command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'Hyprland'";
+        command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start hyprland-uwsm.desktop'";
+        # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'Hyprland'";
         # user = "yunyun";
       };
     };

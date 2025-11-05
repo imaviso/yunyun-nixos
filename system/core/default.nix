@@ -16,7 +16,6 @@
   environment.variables.FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   environment.systemPackages = with pkgs; [
     dash
-    neovim
     wget
     curl
     git
@@ -38,18 +37,16 @@
     fzf
     firefox
     brave
-    ghostty
-    foot
     heroic
     gamescope
     libreoffice-fresh
-    vesktop
     youtube-music
     teams-for-linux
-    mpv
     img2pdf
     tesseract
     feishin
+    supersonic
+    obs-studio
     # (pkgs.wrapOBS {
     #   plugins = with pkgs.obs-studio-plugins; [
     #     wlrobs
@@ -61,33 +58,25 @@
     dbeaver-bin
     mission-center
     vulkan-tools
-    glxinfo
     libva-utils
     android-tools
     scrcpy
     pdfsam-basic
-    gnome-disk-utility
     wgcf
     wireguard-tools
     mkvtoolnix
-    obs-studio
     handbrake
     losslesscut-bin
     lsof
     komikku
     vial
     anydesk
-    sbctl
     telegram-desktop
-    woeusb-ng
-    efibootmgr
-    os-prober
     authenticator
     universal-android-debloater
-    yt-dlp
-    ffmpeg
     winetricks
     pavucontrol
+    tigervnc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

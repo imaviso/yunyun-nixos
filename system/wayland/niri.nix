@@ -19,15 +19,12 @@
     nwg-look
     font-manager
     nautilus
-    hyprpicker
     swappy
     slurp
     grim
-    grimblast
     wl-clipboard
     cliphist
     wl-screenrec
-    swayidle
     wlopm
   ];
 

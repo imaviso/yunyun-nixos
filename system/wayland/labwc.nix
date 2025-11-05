@@ -41,7 +41,6 @@
     cliphist
     wl-screenrec
     kanshi
-    swayidle
     wlopm
     # swaylock
   ];

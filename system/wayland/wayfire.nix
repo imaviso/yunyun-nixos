@@ -46,9 +46,7 @@
     cliphist
     wl-screenrec
     kanshi
-    swayidle
     wlopm
-    # swaylock
   ];
 
   security.pam.services.greetd.enableGnomeKeyring = true;

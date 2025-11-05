@@ -10,7 +10,7 @@
               criteria = "DP-3";
               mode = "1920x1080@165.001007Hz";
               position = "0,0";
-              adaptiveSync = true;
+              # adaptiveSync = true;
             }
             {
               criteria = "HDMI-A-1";

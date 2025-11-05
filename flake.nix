@@ -2,7 +2,7 @@
   description = "Yunyun's simple NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     hm = {
       url = "github:nix-community/home-manager";
@@ -11,10 +11,17 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+    };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     nvf = {
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,16 +36,25 @@
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    cachy-proton = {
+      url = "github:Momoyaan/cachy-proton-nix";
+    };
   };
 
   outputs = inputs @ {
     nixpkgs,
     hm,
     lanzaboote,
-    apple-fonts,
     nvf,
     quickshell,
     dms,
+    cachy-proton,
     ...
   }: {
     nixosConfigurations = {

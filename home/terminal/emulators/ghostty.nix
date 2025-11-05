@@ -1,10 +1,15 @@
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.ghostty = {
     enable = true;
+    package = inputs.ghostty.packages.${pkgs.system}.default;
     enableZshIntegration = true;
     settings = {
       font-family = "JetBrainsMono Nerd Font";
-      font-size = 11;
+      font-size = 12;
       gtk-single-instance = true;
       gtk-titlebar = false;
       window-decoration = true;

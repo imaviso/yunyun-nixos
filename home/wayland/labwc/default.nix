@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  labwcConfigDir = "${config.xdg.configHome}/labwc";
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  labwcConfigDir = "${config.xdg.configHome}/labwc";
+in {
   wayland.windowManager.labwc = {
     enable = true;
     systemd.enable = true;

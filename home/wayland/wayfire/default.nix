@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   wayland.windowManager.wayfire = {
     enable = true;
     systemd.enable = true;
@@ -15,7 +11,7 @@
     ];
     settings = {
       core = {
-        plugins = "animate command expo follow-focus focus-change grid foreign-toplevel ipc ipc-rules input-method-v1 move oswitch place resize session-lock scale switcher shortcuts-inhibit security-context-v1 session-lock vswitch window-rules wm-actions winshadows xdg-activation";
+        plugins = "animate command expo follow-focus focus-change grid foreign-toplevel ipc ipc-rules input-method-v1 move oswitch place resize session-lock scale switcher shortcuts-inhibit session-lock vswitch window-rules wm-actions winshadows xdg-activation";
         close_top_view = "<super> <shift> KEY_Q";
         vwidth = 3;
         vheight = 3;
@@ -27,6 +23,15 @@
         kb_repeat_delay = 250;
         kb_repeat_rate = 35;
       };
+      "output:DP-3" = {
+        mode = "1920x1080@165.001";
+        position = "0,0";
+      };
+      "output:HDMI-A-1" = {
+        mode = "1920x1080@143.999";
+        position = "1920,-400";
+        transform = 270;
+      };
       autostart = {
         autostart_wf_shell = false;
         outputs = false;
@@ -35,7 +40,6 @@
         idle = false;
         portal = false;
         background = false;
-        # systemdActivation = lib.mkForce false;
       };
       move.activate = "<super> BTN_LEFT";
       resize.activate = "<super> BTN_RIGHT";
