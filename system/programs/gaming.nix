@@ -23,7 +23,8 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
     extraCompatPackages = [
-      inputs.cachy-proton.packages.${pkgs.system}.proton-cachyos
+      inputs.cachy-proton.packages.${pkgs.stdenv.hostPlatform.system}.proton-cachyos
+      inputs.dw-proton.packages.${pkgs.stdenv.hostPlatform.system}.dw-proton
     ];
   };
 }

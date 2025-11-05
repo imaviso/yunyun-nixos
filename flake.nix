@@ -45,6 +45,10 @@
     cachy-proton = {
       url = "github:Momoyaan/cachy-proton-nix";
     };
+
+    dw-proton = {
+      url = "github:Momoyaan/dwproton-flake";
+    };
   };
 
   outputs = inputs @ {
@@ -55,6 +59,7 @@
     quickshell,
     dms,
     cachy-proton,
+    dw-proton,
     ...
   }: {
     nixosConfigurations = {

@@ -38,6 +38,7 @@
     firefox
     brave
     heroic
+    faugus-launcher
     gamescope
     libreoffice-fresh
     youtube-music
