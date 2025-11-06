@@ -69,7 +69,7 @@
           inherit inputs;
         };
         modules = [
-          ./hosts/desktop.nix
+          ./hosts/desktop
           hm.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

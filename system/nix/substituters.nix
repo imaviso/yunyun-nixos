@@ -2,6 +2,7 @@
   nix.settings = {
     substituters = [
       # high priority since it's almost always used
+      "https://s3.momoyan.org/nix-cache"
       "https://cache.nixos.org?priority=10"
 
       "https://chaotic-nyx.cachix.org/"
@@ -12,6 +13,7 @@
     ];
 
     trusted-public-keys = [
+      "s3.momoyan.org-1:MWeCpdqTksK79tC2ci+wHkuGxtT/E7h2ZHfS49drxqI="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
 
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="

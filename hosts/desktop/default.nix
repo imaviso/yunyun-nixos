@@ -1,17 +1,34 @@
 {
-  inputs,
+  config,
+  lib,
   pkgs,
   ...
 }: {
   imports = [
     ./hardware.nix
-    ./networking.nix
-    ./fonts.nix
-    ./i18n.nix
+    ../../system
   ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.yunyun = {
+      isNormalUser = true;
+      description = "yunyun";
+      createHome = true;
+      home = "/home/yunyun";
+      extraGroups = [
+        "wheel"
+        "users"
+        "networkmanager"
+        "docker"
+        "video"
+        "plugdev"
+        "input"
+        "libvirtd"
+      ];
+    };
+  };
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.variables.FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
   environment.systemPackages = with pkgs; [

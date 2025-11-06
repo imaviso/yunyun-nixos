@@ -1,11 +1,9 @@
-{ ... }:
-{
+{...}: {
   imports = [
-    ./core
+    ./config
     ./nix
     ./services
     ./programs
     ./wayland
-    ./config
   ];
 }
