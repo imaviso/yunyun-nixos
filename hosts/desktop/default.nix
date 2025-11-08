@@ -10,7 +10,7 @@
   ];
 
   users = {
-    defaultUserShell = pkgs.zsh;
+    defaultUserShell = pkgs.fish;
     users.yunyun = {
       isNormalUser = true;
       description = "yunyun";

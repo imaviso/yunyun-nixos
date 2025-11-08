@@ -6,7 +6,7 @@
   programs.ghostty = {
     enable = true;
     package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
     settings = {
       font-family = "JetBrainsMono Nerd Font";
       font-size = 12;

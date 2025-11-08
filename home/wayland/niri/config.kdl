@@ -352,11 +352,12 @@ window-rule {
 }
 
 layer-rule {
-    // match namespace="quickshell:popout"
-    // match at-startup=true
-    // shadow {
-    //     on
-    // }
+    match namespace="vicinae"
+    match at-startup=true
+    geometry-corner-radius 10
+    shadow {
+        on
+    }
 }
 
 binds {

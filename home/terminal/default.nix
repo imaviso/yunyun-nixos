@@ -4,10 +4,10 @@
     ./emulators/ghostty.nix
     ./emulators/kitty.nix
     ./shell/starship.nix
-    ./shell/zsh.nix
+    ./shell/fish.nix
     ./editors/helix
     ./editors/neovim
     ./yazi.nix
-    ./zellij.nix
+    # ./zellij.nix
   ];
 }
