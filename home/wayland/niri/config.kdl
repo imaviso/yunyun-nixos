@@ -376,9 +376,10 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "app2unit" "--" "ghostty"; }
-    Mod+D { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
-    Alt+Tab { spawn "dms" "ipc" "call" "spotlight" "openQuery" "!"; }
-    Mod+C { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+D { spawn "vicinae" "vicinae://toggle"; }
+    Mod+C { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
+    // Mod+D { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    // Mod+C { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
     Mod+Shift+M { spawn "dms" "ipc" "call" "processlist" "toggle"; }
     Mod+Shift+N { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
     Mod+Shift+Escape { spawn "dms" "ipc" "call" "control-center" "toggle"; }

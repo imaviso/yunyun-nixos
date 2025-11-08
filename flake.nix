@@ -37,18 +37,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ghostty.url = "github:ghostty-org/ghostty";
 
-    cachy-proton = {
-      url = "github:Momoyaan/cachy-proton-nix";
-    };
+    cachy-proton.url = "github:Momoyaan/cachy-proton-nix";
 
-    dw-proton = {
-      url = "github:Momoyaan/dwproton-flake";
-    };
+    dw-proton.url = "github:Momoyaan/dwproton-flake";
+
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs @ {
@@ -60,6 +55,7 @@
     dms,
     cachy-proton,
     dw-proton,
+    vicinae,
     ...
   }: {
     nixosConfigurations = {

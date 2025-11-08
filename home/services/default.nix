@@ -8,5 +8,6 @@
     ./quickshell.nix
     ./clipboard.nix
     ./footserver.nix
+    ./vicinae.nix
   ];
 }

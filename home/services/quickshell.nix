@@ -9,8 +9,8 @@
 
   programs.dankMaterialShell = {
     enable = true;
+    systemd.enable = true;
     quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    enableSystemd = true;
     enableDynamicTheming = false;
     enableBrightnessControl = false;
   };
