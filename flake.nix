@@ -44,23 +44,18 @@
     dw-proton.url = "github:Momoyaan/dwproton-flake";
 
     vicinae.url = "github:vicinaehq/vicinae";
+
+    berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
     hm,
-    lanzaboote,
-    nvf,
-    quickshell,
-    dms,
-    cachy-proton,
-    dw-proton,
-    vicinae,
     ...
   }: {
     nixosConfigurations = {
       yunyun = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
         };
@@ -74,7 +69,7 @@
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };
-            home-manager.backupFileExtension = "backup";
+            home-manager.backupFileExtension = "bak";
           }
         ];
       };

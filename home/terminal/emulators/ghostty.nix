@@ -8,7 +8,7 @@
     package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableFishIntegration = true;
     settings = {
-      font-family = "JetBrainsMono Nerd Font";
+      font-family = "TX-02";
       font-size = 12;
       gtk-single-instance = true;
       gtk-titlebar = false;

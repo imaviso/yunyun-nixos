@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
@@ -12,5 +16,7 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.adwaita-mono
     material-symbols
+    nerd-fonts.symbols-only
+    inputs.berkeley-mono.packages.${pkgs.stdenv.hostPlatform.system}.berkeleyMono
   ];
 }
