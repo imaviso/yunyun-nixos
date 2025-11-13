@@ -67,7 +67,7 @@
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };
-            home-manager.backupFileExtension = "bak";
+            home-manager.backupFileExtension = "bk";
           }
         ];
       };
