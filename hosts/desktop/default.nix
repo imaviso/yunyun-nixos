@@ -29,73 +29,72 @@
     };
   };
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.variables.FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
-  environment.systemPackages = with pkgs; [
-    dash
-    wget
-    curl
-    git
-    fastfetch
-    microfetch
-    nmap
-    btop
-    mediainfo
-    unzip
-    ripgrep
-    dust
-    bat
-    eza
-    fd
-    jq
-    bun
-    p7zip-rar
-    lazygit
-    fzf
-    firefox
-    brave
-    heroic
-    faugus-launcher
-    gamescope
-    libreoffice-fresh
-    youtube-music
-    teams-for-linux
-    img2pdf
-    tesseract
-    feishin
-    supersonic
-    obs-studio
-    # (pkgs.wrapOBS {
-    #   plugins = with pkgs.obs-studio-plugins; [
-    #     wlrobs
-    #     obs-backgroundremoval
-    #     obs-pipewire-audio-capture
-    #     droidcam-obs
-    #   ];
-    # })
-    dbeaver-bin
-    mission-center
-    vulkan-tools
-    libva-utils
-    android-tools
-    scrcpy
-    pdfsam-basic
-    wgcf
-    wireguard-tools
-    mkvtoolnix
-    handbrake
-    losslesscut-bin
-    lsof
-    komikku
-    vial
-    anydesk
-    telegram-desktop
-    authenticator
-    universal-android-debloater
-    winetricks
-    pavucontrol
-    tigervnc
-  ];
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = "1";
+    variables.FREETYPE_PROPERTIES = "truetype:interpreter-version=40 cff:no-stem-darkening=0 autofitter:no-stem-darkening=0";
+    systemPackages = with pkgs; [
+      dash
+      wget
+      curl
+      git
+      fastfetch
+      microfetch
+      nmap
+      btop
+      mediainfo
+      unzip
+      ripgrep
+      dust
+      bat
+      eza
+      fd
+      jq
+      bun
+      p7zip-rar
+      lazygit
+      fzf
+      firefox
+      brave
+      gamescope
+      libreoffice-fresh
+      youtube-music
+      # teams-for-linux
+      img2pdf
+      tesseract
+      # feishin
+      supersonic
+      obs-studio
+      # (pkgs.wrapOBS {
+      #   plugins = with pkgs.obs-studio-plugins; [
+      #     wlrobs
+      #     obs-backgroundremoval
+      #     obs-pipewire-audio-capture
+      #     droidcam-obs
+      #   ];
+      # })
+      dbeaver-bin
+      mission-center
+      vulkan-tools
+      libva-utils
+      android-tools
+      scrcpy
+      pdfsam-basic
+      wgcf
+      wireguard-tools
+      mkvtoolnix
+      handbrake
+      losslesscut-bin
+      lsof
+      komikku
+      vial
+      # anydesk
+      # telegram-desktop
+      authenticator
+      universal-android-debloater
+      pavucontrol
+      tigervnc
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
