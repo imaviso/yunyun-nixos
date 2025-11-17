@@ -13,22 +13,23 @@
   ];
 
   environment.systemPackages = [pkgs.git];
-  nixpkgs.overlays = [
-    (final: prev: {
-      inherit
-        (prev.lixPackageSets.latest)
-        nixpkgs-review
-        nix-eval-jobs
-        nix-fast-build
-        colmena
-        ;
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     inherit
+  #       (prev.lixPackageSets.latest)
+  #       nixpkgs-review
+  #       nix-eval-jobs
+  #       nix-fast-build
+  #       colmena
+  #       ;
+  #   })
+  # ];
 
   nix = let
     flakeInputs = lib.filterAttrs (_: v: lib.isType "flake" v) inputs;
   in {
-    package = pkgs.lixPackageSets.latest.lix;
+    # package = pkgs.lixPackageSets.latest.lix;
+    package = pkgs.nixVersions.latest;
 
     # pin the registry to avoid downloading and evaling a new nixpkgs version every time
     registry = lib.mapAttrs (_: v: {flake = v;}) flakeInputs;

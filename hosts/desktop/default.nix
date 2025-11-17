@@ -61,7 +61,8 @@
       # teams-for-linux
       img2pdf
       tesseract
-      # feishin
+      feishin
+      vesktop
       supersonic
       obs-studio
       # (pkgs.wrapOBS {
@@ -89,6 +90,7 @@
       vial
       # anydesk
       # telegram-desktop
+      thunderbird
       authenticator
       universal-android-debloater
       pavucontrol

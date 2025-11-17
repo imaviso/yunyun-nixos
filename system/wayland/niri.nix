@@ -1,9 +1,28 @@
-{pkgs, ...}: {
-  programs.niri.enable = true;
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.dms.nixosModules.greeter
+  ];
 
-  security.polkit.enable = true; # polkit
-  # security.pam.services.swaylock = {};
-  security.sudo.wheelNeedsPassword = false;
+  programs = {
+    niri.enable = true;
+    dankMaterialShell.greeter = {
+      enable = true;
+      compositor.name = "niri";
+      quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      configHome = "/home/yunyun";
+      configFiles = ["/home/yunyun/.config/DankMaterialShell/settings.json"];
+    };
+  };
+
+  security = {
+    polkit.enable = true;
+    sudo.wheelNeedsPassword = false;
+    pam.services.greetd.enableGnomeKeyring = true;
+  };
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite
@@ -28,21 +47,19 @@
     wlopm
   ];
 
-  security.pam.services.greetd.enableGnomeKeyring = true;
-
   services = {
     # needed for GNOME services outside of GNOME Desktop
-    #
-    greetd = {
-      enable = true;
-      package = pkgs.greetd;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'niri-session'";
-          # user = "yunyun";
-        };
-      };
-    };
+
+    # greetd = {
+    #   enable = true;
+    #   package = pkgs.greetd;
+    #   settings = {
+    #     default_session = {
+    #       command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'niri-session'";
+    #       # user = "yunyun";
+    #     };
+    #   };
+    # };
 
     dbus.packages = with pkgs; [
       gcr
