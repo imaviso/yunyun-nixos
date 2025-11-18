@@ -17,6 +17,8 @@
       };
     };
 
+    niri.url = "github:sodiboo/niri-flake";
+
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +41,7 @@
 
     ghostty.url = "github:ghostty-org/ghostty";
 
-    dw-proton.url = "github:Momoyaan/dwproton-flake";
+    dw-proton.url = "github:imaviso/dwproton-flake";
 
     vicinae.url = "github:vicinaehq/vicinae";
 
