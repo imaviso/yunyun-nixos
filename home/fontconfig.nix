@@ -8,7 +8,7 @@
     defaultFonts = {
       serif = ["Geist"];
       sansSerif = ["Geist"];
-      monospace = ["GeistMono Nerd Font"];
+      monospace = ["TX-02"];
       emoji = ["Noto Color Emoji"];
     };
   };
