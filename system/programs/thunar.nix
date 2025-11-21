@@ -1,6 +1,7 @@
-{ pkgs, ... }:
-{
-  programs.file-roller.enable = true; # Enable File Roller for GUI archive management
+{pkgs, ...}: {
+  environment.systemPackages = [
+    pkgs.file-roller
+  ];
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
