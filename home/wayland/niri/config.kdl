@@ -387,7 +387,7 @@ binds {
     Mod+Shift+Escape { spawn "dms" "ipc" "call" "control-center" "toggle"; }
     Mod+Shift+Comma { spawn "dms" "ipc" "call" "settings" "toggle"; }
     Mod+E { spawn "app2unit" "--" "foot" "-e" "yazi"; }
-    Mod+Shift+E { spawn "app2unit" "--" "nautilus"; }
+    Mod+Shift+E { spawn "app2unit" "--" "thunar"; }
     Mod+V { toggle-window-floating; }
     // Mod+T { toggle-column-tabbed-display; }
     Mod+W { toggle-overview; }

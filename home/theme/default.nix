@@ -14,7 +14,7 @@
     };
 
     font = {
-      name = "SFProText Nerd Font";
+      name = "Geist";
       size = 10;
     };
 

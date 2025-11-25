@@ -31,7 +31,6 @@
     nwg-look
     colloid-gtk-theme
     font-manager
-    nautilus
     hyprpicker
     swappy
     slurp
@@ -42,6 +41,10 @@
     wl-screenrec
     kanshi
     wlopm
+    kdePackages.qtsvg
+    kdePackages.kio-fuse #to mount remote filesystems via FUSE
+    kdePackages.kio-extras #extra protocols support (sftp, fish and more)
+    kdePackages.dolphin # This is the actual dolphin package
     # swaylock
   ];
 

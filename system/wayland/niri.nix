@@ -43,7 +43,6 @@
     colloid-gtk-theme
     nwg-look
     font-manager
-    nautilus
     swappy
     slurp
     grim

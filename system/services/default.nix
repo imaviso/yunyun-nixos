@@ -5,6 +5,6 @@
     ./lact.nix
     ./ssh.nix
     ./udev.nix
-    ./tailcale.nix
+    ./tailscale.nix
   ];
 }

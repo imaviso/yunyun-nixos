@@ -1,11 +1,10 @@
-{pkgs, ...}: {
+{
   programs.kitty = {
     enable = true;
     enableGitIntegration = true;
     shellIntegration.enableFishIntegration = true;
     font = {
-      name = "JetBrainsMono Nerd Font";
-      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "TX-02";
       size = 12;
     };
   };
