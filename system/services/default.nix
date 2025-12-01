@@ -6,5 +6,6 @@
     ./ssh.nix
     ./udev.nix
     ./tailscale.nix
+    ./sunshine.nix
   ];
 }

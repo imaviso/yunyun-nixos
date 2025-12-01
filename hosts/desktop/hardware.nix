@@ -53,7 +53,7 @@
       "btrfs"
       "ntfs"
     ];
-    #   extraModulePackages = with config.boot.kernelPackages; [
+    # extraModulePackages = with config.boot.kernelPackages; [
     #   v4l2loopback
     # ];
     # extraModprobeConfig = ''

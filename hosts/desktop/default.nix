@@ -37,6 +37,7 @@
       wget
       curl
       git
+      jujutsu
       fastfetch
       microfetch
       nmap
@@ -65,14 +66,13 @@
       vesktop
       supersonic
       obs-studio
-      # (pkgs.wrapOBS {
-      #   plugins = with pkgs.obs-studio-plugins; [
-      #     wlrobs
-      #     obs-backgroundremoval
-      #     obs-pipewire-audio-capture
-      #     droidcam-obs
-      #   ];
-      # })
+      (pkgs.wrapOBS {
+        plugins = with pkgs.obs-studio-plugins; [
+          wlrobs
+          obs-backgroundremoval
+          obs-pipewire-audio-capture
+        ];
+      })
       dbeaver-bin
       mission-center
       vulkan-tools

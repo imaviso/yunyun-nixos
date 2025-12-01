@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
 {
-
+  pkgs,
+  lib,
+  ...
+}: {
   boot = {
     initrd.kernelModules = [
       "vfio_pci"
@@ -16,15 +18,15 @@
       "video=efifb:off"
     ];
 
-    kernelPatches = [
-      {
-        name = "drm-kms-helper-config";
-        patch = null;
-        structuredExtraConfig = {
-          DRM_KMS_HELPER = lib.kernel.no;
-        };
-      }
-    ];
+    # kernelPatches = [
+    #   {
+    #     name = "drm-kms-helper-config";
+    #     patch = null;
+    #     structuredExtraConfig = {
+    #       DRM_KMS_HELPER = lib.kernel.no;
+    #     };
+    #   }
+    # ];
   };
 
   environment.systemPackages = [
@@ -32,19 +34,11 @@
   ];
   virtualisation.libvirtd = {
     enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [
-          (pkgs.OVMF.override {
-            secureBoot = true;
-            tpmSupport = true;
-          }).fd
-        ];
-      };
-    };
+    # qemu = {
+    #   package = pkgs.qemu_kvm;
+    #   runAsRoot = true;
+    #   swtpm.enable = true;
+    #   ovmf.packages = [pkgs.OVMFFull.fd];
+    # };
   };
 }
