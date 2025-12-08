@@ -1,5 +1,6 @@
 {
   imports = [
+    ./adb.nix
     ./audio.nix
     ./keyboard.nix
     ./lact.nix

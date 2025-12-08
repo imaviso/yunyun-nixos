@@ -5,15 +5,12 @@
 }: {
   imports = [
     inputs.dms.nixosModules.greeter
-    inputs.niri.nixosModules.niri
   ];
-
-  nixpkgs.overlays = [inputs.niri.overlays.niri];
 
   programs = {
     niri = {
       enable = true;
-      package = pkgs.niri-stable;
+      package = pkgs.niri;
     };
     dankMaterialShell.greeter = {
       enable = true;
@@ -31,7 +28,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    xwayland-satellite-unstable
+    xwayland-satellite
     gpu-screen-recorder
     brightnessctl
     matugen

@@ -6,5 +6,6 @@
       enable = true;
       extraArgs = "--keep-since 7d";
     };
+    flake = "/home/yunyun/nixos";
   };
 }

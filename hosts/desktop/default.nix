@@ -25,6 +25,7 @@
         "plugdev"
         "input"
         "libvirtd"
+        "adbusers"
       ];
     };
   };
@@ -77,7 +78,6 @@
       mission-center
       vulkan-tools
       libva-utils
-      android-tools
       scrcpy
       pdfsam-basic
       wgcf
@@ -89,7 +89,7 @@
       komikku
       vial
       # anydesk
-      # telegram-desktop
+      telegram-desktop
       thunderbird
       authenticator
       universal-android-debloater
