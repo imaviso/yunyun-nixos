@@ -12,7 +12,6 @@
     systemd.enable = true;
     quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableDynamicTheming = false;
-    enableBrightnessControl = false;
   };
   # home.packages = [
   #   pkgs.quickshell f
