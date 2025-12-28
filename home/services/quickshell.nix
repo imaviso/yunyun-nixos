@@ -4,10 +4,10 @@
   ...
 }: {
   imports = [
-    inputs.dms.homeModules.dankMaterialShell.default
+    inputs.dms.homeModules.dank-material-shell
   ];
 
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     enable = true;
     systemd.enable = true;
     quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;

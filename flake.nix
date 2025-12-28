@@ -27,15 +27,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell";
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # quickshell = {
+    #   url = "github:quickshell-mirror/quickshell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # dms = {
+    #   url = "github:AvengeMedia/DankMaterialShell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
@@ -44,9 +49,11 @@
 
     dw-proton.url = "github:imaviso/dwproton-flake";
 
-    vicinae.url = "github:vicinaehq/vicinae";
+    # vicinae.url = "github:vicinaehq/vicinae";
 
     berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
+
+    slothsonic.url = "github:imaviso/slothsonic";
   };
 
   outputs = inputs @ {

@@ -8,10 +8,8 @@
   };
   environment.systemPackages = with pkgs; [
     app2unit
-    walker
     swww
     hyprpaper
-    hyprpanel
     hyprpicker
     nwg-look
     font-manager

@@ -8,5 +8,6 @@
     ./udev.nix
     ./tailscale.nix
     ./sunshine.nix
+    ./scx.nix
   ];
 }

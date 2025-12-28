@@ -1,5 +1,13 @@
 {
   wayland.windowManager.hyprland.settings = {
+    "$kbSession" = "ControlSuper, Delete";
+    "$kbClearNotifs" = "ControlSuper, Escape";
+    "$kbShowPanels" = "Super, Tab";
+    "$kbLock" = "Super, Escape";
+    "$kbRestoreLock" = "ControlSuperShift, Escape";
+
+    exec = ["hyprctl dispatch submap global"];
+
     bind = [
       #actions
       "SuperShift, Q, killactive,"
@@ -9,16 +17,16 @@
       "Super ALT, ,resizeactive,"
 
       # utility
-      "Super, Return, exec, app2unit -- footclient"
+      "Super, Return, exec, app2unit -- ghostty"
+      "Super, Space, exec, app2unit -- footclient"
       "Super, E, exec, app2unit -- footclient -e yazi"
       "Super, P, exec, hyprpicker -a"
       "SuperShift, E, exec, app2unit -- nautilus"
-      "Super, L, exec, dms ipc call powermenu toggle"
-      "Super, C, exec, dms ipc call clipboard toggle"
-      "Super, D, exec, dms ipc call spotlight toggle"
-      "Super, N, exec, dms ipc call control-center toggle"
-      "Super, M, exec, dms ipc call processlist toggle"
-      "Super, Comma, exec, dms ipc call settings toggle"
+
+      # clipboard and emoji picker
+      "Super, C, exec, pkill fuzzel || caelestia clipboard"
+      "SuperAlt, C, exec, pkill fuzzel || caelestia clipboard -d"
+      "Super, Period, exec, pkill fuzzel || caelestia emoji -p"
 
       # move focus
       "Super, left, movefocus, l"
@@ -128,6 +136,14 @@
       # send focused workspace to left/right monitors
       "Super SHIFT ALT, bracketleft, movecurrentworkspacetomonitor, l"
       "Super SHIFT ALT, bracketright, movecurrentworkspacetomonitor, r"
+
+      # shell keybinds (global submap)
+      "$kbSession, global, caelestia:session"
+      "$kbShowPanels, global, caelestia:showall"
+      "$kbLock, global, caelestia:lock"
+
+      # launcher
+      "Super, D, global, caelestia:launcher"
     ];
 
     bindm = [
@@ -136,24 +152,41 @@
     ];
 
     bindl = [
-      # media controls
-      ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioPrev, exec, playerctl previous"
-      ", XF86AudioNext, exec, playerctl next"
+      # clear notifications (global submap)
+      "$kbClearNotifs, global, caelestia:clearNotifs"
+
+      # restore lock
+      "$kbRestoreLock, exec, caelestia shell -d"
+      "$kbRestoreLock, global, caelestia:lock"
+
+      # brightness (global submap)
+      ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
+      ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
+
+      # media controls (global submap)
+      "Ctrl+Super, Space, global, caelestia:mediaToggle"
+      ", XF86AudioPlay, global, caelestia:mediaToggle"
+      ", XF86AudioPause, global, caelestia:mediaToggle"
+      "Ctrl+Super, Equal, global, caelestia:mediaNext"
+      ", XF86AudioNext, global, caelestia:mediaNext"
+      "Ctrl+Super, Minus, global, caelestia:mediaPrev"
+      ", XF86AudioPrev, global, caelestia:mediaPrev"
+      ", XF86AudioStop, global, caelestia:mediaStop"
 
       # volume
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+      # alternate paste
+      ''Ctrl+Shift+Alt, V, exec, sleep 0.5s && ydotool type -d 1 "$(cliphist list | head -1 | cliphist decode)"''
     ];
 
     bindle = [
       # volume
       ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
       ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
-
-      # backlight
-      ", XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5"
-      ", XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5"
     ];
+
+    submap = "global";
   };
 }

@@ -12,7 +12,7 @@
       enable = true;
       package = pkgs.niri;
     };
-    dankMaterialShell.greeter = {
+    dank-material-shell.greeter = {
       enable = true;
       compositor.name = "niri";
       quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;

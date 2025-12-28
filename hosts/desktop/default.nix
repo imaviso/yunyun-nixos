@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -48,6 +49,7 @@
       ripgrep
       dust
       bat
+      mpv
       eza
       fd
       jq
@@ -74,6 +76,7 @@
           obs-pipewire-audio-capture
         ];
       })
+      inputs.slothsonic.packages.${system}.default
       dbeaver-bin
       mission-center
       vulkan-tools

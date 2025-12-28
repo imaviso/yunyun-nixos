@@ -43,7 +43,7 @@
         smart_resizing = false;
       };
       decoration = {
-        rounding = 5;
+        rounding = 10;
         dim_inactive = false;
         blur = {
           enabled = false;

@@ -17,11 +17,11 @@
       tailwind.enable = true;
       css = {
         enable = true;
-        format.type = "biome";
+        format.type = ["biome"];
       };
       ts = {
         enable = true;
-        format.type = "biome";
+        format.type = ["biome"];
       };
       typst.enable = true;
     };
