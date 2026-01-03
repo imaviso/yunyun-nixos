@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./terminal
     ./nix-ld.nix
@@ -7,6 +6,6 @@
     ./localsend.nix
     ./thunar.nix
     ./chromium.nix
-    #./an-anime-game.nix
+    ./an-anime-game.nix
   ];
 }

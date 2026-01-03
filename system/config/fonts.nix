@@ -22,5 +22,6 @@
     font-awesome_6
     source-sans
     source-sans-pro
+    inputs.google-sans.packages.${pkgs.stdenv.hostPlatform.system}.google-sans
   ];
 }

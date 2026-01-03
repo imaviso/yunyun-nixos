@@ -1,7 +1,20 @@
-{
+{pkgs, ...}: {
   imports = [
     ./keybinds.nix
   ];
+  home.packages = with pkgs; [
+  ];
+  home.sessionVariables = {
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    GDK_BACKEND = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    # GTK_THEME = "adw-gtk3-dark";
+    APP2UNIT_TYPE = "service";
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -89,7 +102,7 @@
         disable_hyprland_logo = true;
         allow_session_lock_restore = true;
         initial_workspace_tracking = 2;
-        font_family = "Geist";
+        font_family = "Google Sans";
       };
       render = {
         direct_scanout = 1;

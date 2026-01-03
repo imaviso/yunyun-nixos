@@ -1,0 +1,49 @@
+# NixOS Modules
+# Import this file and pick the modules you want to use
+# Example: nixosModules.programs.gaming
+{
+  # System configuration
+  config = ../../system/config;
+  nix = ../../system/nix;
+
+  # Services
+  services = {
+    all = ../../system/services;
+    adb = ../../system/services/adb.nix;
+    audio = ../../system/services/audio.nix;
+    docker = ../../system/services/docker.nix;
+    flatpak = ../../system/services/flatpak.nix;
+    keyboard = ../../system/services/keyboard.nix;
+    lact = ../../system/services/lact.nix;
+    libvirt = ../../system/services/libvirt.nix;
+    podman = ../../system/services/podman.nix;
+    scx = ../../system/services/scx.nix;
+    ssh = ../../system/services/ssh.nix;
+    sunshine = ../../system/services/sunshine.nix;
+    tailscale = ../../system/services/tailscale.nix;
+    udev = ../../system/services/udev.nix;
+  };
+
+  # Programs
+  programs = {
+    all = ../../system/programs;
+    terminal = ../../system/programs/terminal;
+    gaming = ../../system/programs/gaming.nix;
+    chromium = ../../system/programs/chromium.nix;
+    localsend = ../../system/programs/localsend.nix;
+    nix-ld = ../../system/programs/nix-ld.nix;
+    thunar = ../../system/programs/thunar.nix;
+    an-anime-game = ../../system/programs/an-anime-game.nix;
+  };
+
+  # Wayland compositors
+  wayland = {
+    all = ../../system/wayland;
+    hyprland = ../../system/wayland/hyprland.nix;
+    cosmic = ../../system/wayland/cosmic.nix;
+    labwc = ../../system/wayland/labwc.nix;
+    niri = ../../system/wayland/niri.nix;
+    plasma = ../../system/wayland/plasma.nix;
+    wayfire = ../../system/wayland/wayfire.nix;
+  };
+}

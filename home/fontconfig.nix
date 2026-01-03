@@ -6,8 +6,8 @@
     subpixelRendering = "rgb";
 
     defaultFonts = {
-      serif = ["Geist"];
-      sansSerif = ["Geist"];
+      serif = ["Google Sans"];
+      sansSerif = ["Google Sans"];
       monospace = ["TX-02"];
       emoji = ["Noto Color Emoji"];
     };

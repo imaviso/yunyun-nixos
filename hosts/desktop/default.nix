@@ -3,20 +3,22 @@
   lib,
   pkgs,
   inputs,
+  hostname,
+  username,
   ...
 }: {
   imports = [
     ./hardware.nix
-    ../../system
+    # System modules are now imported via flake.nix nixosModules
   ];
 
   users = {
     defaultUserShell = pkgs.fish;
-    users.yunyun = {
+    users.${username} = {
       isNormalUser = true;
-      description = "yunyun";
+      description = username;
       createHome = true;
-      home = "/home/yunyun";
+      home = "/home/${username}";
       extraGroups = [
         "wheel"
         "users"
@@ -61,7 +63,7 @@
       brave
       gamescope
       libreoffice-fresh
-      youtube-music
+      pear-desktop
       # teams-for-linux
       img2pdf
       tesseract
@@ -76,7 +78,7 @@
           obs-pipewire-audio-capture
         ];
       })
-      inputs.slothsonic.packages.${system}.default
+      inputs.slothsonic.packages.${stdenv.hostPlatform.system}.default
       dbeaver-bin
       mission-center
       vulkan-tools
@@ -111,7 +113,7 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. It's perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

@@ -12,9 +12,9 @@
     settings = {
       appearance = {
         font.family = {
-          clock = "Geist";
+          clock = "Google Sans";
           mono = "TX-02";
-          sans = "Geist";
+          sans = "Google Sans";
         };
         rounding = {
           scale = 1.0;
@@ -29,7 +29,7 @@
       paths.wallpaperDir = "~/Pictures/Wallpapers";
     };
     cli = {
-      enable = true; # Also add caelestia-cli to path
+      enable = true;
       settings = {
         theme.enableGtk = true;
       };

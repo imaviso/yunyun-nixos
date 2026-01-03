@@ -1,5 +1,5 @@
 {
-  description = "Yunyun's simple NixOS flake";
+  description = "Yunyun's modular NixOS flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -54,6 +54,10 @@
     berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
 
     slothsonic.url = "github:imaviso/slothsonic";
+
+    google-sans.url = "github:imaviso/google-sans-flake";
+
+    betterfox.url = "github:HeitorAugustoLN/betterfox-nix";
   };
 
   outputs = inputs @ {
@@ -61,26 +65,101 @@
     nixpkgs,
     hm,
     ...
-  }: {
-    nixosConfigurations = {
-      yunyun = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [
-          ./hosts/desktop
-          hm.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.yunyun = import ./home;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
-            home-manager.backupFileExtension = "bk";
-          }
+  }: let
+    lib = nixpkgs.lib;
+
+    nixosModules = import ./modules/nixos;
+    homeModules = import ./modules/home;
+
+    inherit (import ./lib/mkHost.nix {inherit inputs lib;}) mkHost;
+
+    profiles = {
+      desktop = {
+        nixos = with nixosModules; [
+          config
+          nix
+          services.all
+          programs.terminal
+          programs.gaming
+          programs.chromium
+          programs.localsend
+          programs.thunar
+          programs.nix-ld
+          wayland.hyprland
+        ];
+        home = with homeModules; [
+          fontconfig
+          cursor
+          theme
+          xdg
+          git
+          terminal.all
+          programs.mpv
+          programs.betterfox
+          wayland.hyprland
+          services.caelestia
+          services.easyeffects
+          services.clipboard
+          services.footserver
+          services.polkit-agent
         ];
       };
+
+      server = {
+        nixos = with nixosModules; [
+          config
+          nix
+          services.ssh
+          services.docker
+        ];
+        home = with homeModules; [
+          terminal.all
+          git
+        ];
+      };
+    };
+  in {
+    inherit nixosModules homeModules profiles;
+
+    nixosConfigurations = {
+      yunyun = mkHost {
+        hostname = "desktop";
+        username = "yunyun";
+        nixosModules = profiles.desktop.nixos;
+        homeModules = profiles.desktop.home;
+      };
+
+      # laptop = mkHost {
+      #   hostname = "laptop";
+      #   username = "yunyun";
+      #   nixosModules = with nixosModules; [
+      #     config
+      #     nix
+      #     services.all
+      #     programs.all
+      #     wayland.hyprland
+      #   ];
+      #   homeModules = with homeModules; [
+      #     fontconfig
+      #     cursor
+      #     theme
+      #     xdg
+      #     git
+      #     terminal.all
+      #     programs.all
+      #     wayland.hyprland
+      #     services.all
+      #   ];
+      # };
+
+      # homeserver = mkHost {
+      #   hostname = "homeserver";
+      #   username = "admin";
+      #   nixosModules = profiles.server.nixos ++ [
+      #     nixosModules.services.tailscale
+      #   ];
+      #   homeModules = profiles.server.home;
+      # };
     };
   };
 }

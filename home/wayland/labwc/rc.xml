@@ -27,7 +27,7 @@
   <theme>
     <name>openbox-3</name>
     <cornerRadius>0</cornerRadius>
-    <font name="Geist" size="9"/>
+    <font name="Google Sans" size="9"/>
     <dropShadows>yes</dropShadows>
     <keepBorder>no</keepBorder>
   </theme>

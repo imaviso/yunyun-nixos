@@ -14,7 +14,7 @@
     };
 
     font = {
-      name = "Geist";
+      name = "Google Sans";
       size = 10;
     };
 

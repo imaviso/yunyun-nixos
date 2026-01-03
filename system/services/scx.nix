@@ -1,7 +1,6 @@
 {
   services.scx = {
     enable = true;
-    scheduler = "scx_lavd";
-    extraArgs = ["--autopower"];
+    scheduler = "scx_bpfland";
   };
 }
