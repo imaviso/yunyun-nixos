@@ -93,6 +93,13 @@ in
         ];
       }
       {
+        name = "go";
+        auto-format = true;
+        language-servers = [
+          "gopls"
+        ];
+      }
+      {
         name = "python";
         auto-format = true;
         language-servers = [
@@ -163,6 +170,31 @@ in
           "${lib.getExe pkgs.nixfmt}"
           "-q"
         ];
+      };
+
+      gopls = {
+        command = lib.getExe pkgs.gopls;
+        config = {
+          gopls = {
+            staticcheck = true;
+            gofumpt = true;
+            usePlaceholders = true;
+            completeUnimported = true;
+            analyses = {
+              unusedparams = true;
+              shadow = true;
+              nilness = true;
+            };
+            hints = {
+              assignVariableTypes = true;
+              compositeLiteralFields = true;
+              constantValues = true;
+              functionTypeParameters = true;
+              parameterNames = true;
+              rangeVariableTypes = true;
+            };
+          };
+        };
       };
 
       qmlls = {

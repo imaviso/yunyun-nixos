@@ -52,6 +52,8 @@
       "SuperAlt, S, exec, grimblast --notify --cursor copysave output"
       # all screens
       "ControlSuper, S, exec, grimblast --notify --cursor copysave screen"
+      # OCR
+      ''SuperShift, T, exec, grim -g "$(slurp)" "/tmp/ocr_image.png" && tesseract "/tmp/ocr_image.png" - | wl-copy && rm "/tmp/ocr_image.png"''
 
       "ControlSuper, right, workspace, +1"
       "ControlSuper, left, workspace, -1"

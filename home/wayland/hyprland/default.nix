@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./keybinds.nix
   ];
@@ -12,7 +13,7 @@
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland";
     CLUTTER_BACKEND = "wayland";
-    # GTK_THEME = "adw-gtk3-dark";
+    GTK_THEME = "adw-gtk3-dark";
     APP2UNIT_TYPE = "service";
   };
   wayland.windowManager.hyprland = {
@@ -112,10 +113,10 @@
         "renderunfocused, class:^(client-win64-shipping.exe)$"
         "renderunfocused, class:^(starrail.exe)$"
       ];
-      layerrule = [
-        "noanim, quickshell"
-        "noanim, quickshell.*"
-      ];
+      # layerrule = [
+      #   "noanim, quickshell"
+      #   "noanim, quickshell.*"
+      # ];
     };
   };
 }
