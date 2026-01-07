@@ -1,10 +1,27 @@
-{ pkgs, ... }:
+# Hyprland home-manager configuration
+{ pkgs, lib, monitors ? [], ... }:
+let
+  # Convert monitor config to Hyprland format
+  mkMonitorString = m:
+    let
+      transform = if m.transform or 0 != 0 then ", transform, ${toString m.transform}" else "";
+    in
+    "${m.name}, ${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz, ${toString m.x}x${toString m.y}, ${toString m.scale}${transform}";
+  
+  monitorConfigs = if monitors != [] 
+    then map mkMonitorString monitors
+    else [
+      # Fallback default
+      ", preferred, auto, 1"
+    ];
+in
 {
   imports = [
     ./keybinds.nix
   ];
-  home.packages = with pkgs; [
-  ];
+
+  home.packages = with pkgs; [];
+
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
@@ -16,18 +33,18 @@
     GTK_THEME = "adw-gtk3-dark";
     APP2UNIT_TYPE = "service";
   };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      monitor = [
-        "DP-3, 1920x1080@165.00Hz, 0x0, 1"
-        "HDMI-A-1, 1920x1080@144.00Hz, 1920x-400, 1, transform, 3"
-      ];
+      monitor = monitorConfigs;
+
       input = {
         accel_profile = "flat";
         repeat_delay = 250;
         repeat_rate = 35;
       };
+
       general = {
         gaps_in = 5;
         gaps_out = 10;
@@ -36,32 +53,31 @@
         "col.active_border" = "rgba(73737373)";
         "col.inactive_border" = "rgba(0a0a0a0a)";
       };
-      group = {
-        groupbar = {
-          enabled = true;
-          scrolling = false;
-          gradients = true;
-          height = 14;
-          font_size = 10;
-          font_weight_active = "bold";
-          font_weight_inactive = "bold";
-          render_titles = true;
-          text_color = "rgba(e5e5e5e5)";
-          "col.active" = "rgba(71717a71)";
-          "col.inactive" = "rgba(18181b18)";
-        };
+
+      group.groupbar = {
+        enabled = true;
+        scrolling = false;
+        gradients = true;
+        height = 14;
+        font_size = 10;
+        font_weight_active = "bold";
+        font_weight_inactive = "bold";
+        render_titles = true;
+        text_color = "rgba(e5e5e5e5)";
+        "col.active" = "rgba(71717a71)";
+        "col.inactive" = "rgba(18181b18)";
       };
+
       dwindle = {
         preserve_split = true;
         smart_split = false;
         smart_resizing = false;
       };
+
       decoration = {
         rounding = 10;
         dim_inactive = false;
-        blur = {
-          enabled = false;
-        };
+        blur.enabled = false;
         shadow = {
           enabled = true;
           ignore_window = true;
@@ -71,6 +87,7 @@
           color = "rgba(0000002A)";
         };
       };
+
       animations = {
         enabled = true;
         bezier = [
@@ -93,6 +110,7 @@
           "specialWorkspace, 1, 3, md3_decel, slidevert"
         ];
       };
+
       misc = {
         vfr = true;
         vrr = 2;
@@ -105,22 +123,19 @@
         initial_workspace_tracking = 2;
         font_family = "Google Sans";
       };
-      render = {
-        direct_scanout = 1;
-      };
+
+      render.direct_scanout = 1;
+
       windowrule = [
         "match:class starrail.exe, idle_inhibit always"
         "match:class client-win64-shipping.exe, idle_inhibit always"
       ];
+
       windowrulev2 = [
         "float, title:^(.*Bitwarden Password Manager.*)$"
         "renderunfocused, class:^(client-win64-shipping.exe)$"
         "renderunfocused, class:^(starrail.exe)$"
       ];
-      # layerrule = [
-      #   "noanim, quickshell"
-      #   "noanim, quickshell.*"
-      # ];
     };
   };
 }

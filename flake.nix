@@ -32,24 +32,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # quickshell = {
-    #   url = "github:quickshell-mirror/quickshell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # dms = {
-    #   url = "github:AvengeMedia/DankMaterialShell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     dw-proton.url = "github:imaviso/dwproton-flake";
-
-    # vicinae.url = "github:vicinaehq/vicinae";
 
     berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
 
@@ -60,68 +48,26 @@
     betterfox.url = "github:HeitorAugustoLN/betterfox-nix";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    hm,
-    ...
-  }: let
+  outputs = inputs @ { self, nixpkgs, hm, ... }:
+  let
     lib = nixpkgs.lib;
 
+    # Import module registries
     nixosModules = import ./modules/nixos;
     homeModules = import ./modules/home;
 
-    inherit (import ./lib/mkHost.nix {inherit inputs lib;}) mkHost;
+    # Import mkHost helper
+    inherit (import ./lib/mkHost.nix { inherit inputs lib; }) mkHost;
 
-    profiles = {
-      desktop = {
-        nixos = with nixosModules; [
-          config
-          nix
-          services.all
-          programs.terminal
-          programs.gaming
-          programs.chromium
-          programs.localsend
-          programs.thunar
-          programs.nix-ld
-          wayland.hyprland
-        ];
-        home = with homeModules; [
-          fontconfig
-          cursor
-          theme
-          xdg
-          git
-          terminal.all
-          programs.mpv
-          programs.betterfox
-          wayland.hyprland
-          services.caelestia
-          services.easyeffects
-          services.clipboard
-          services.footserver
-          services.polkit-agent
-        ];
-      };
+    # Import reusable profiles
+    profiles = import ./lib/profiles.nix { inherit nixosModules homeModules; };
 
-      server = {
-        nixos = with nixosModules; [
-          config
-          nix
-          services.ssh
-          services.docker
-        ];
-        home = with homeModules; [
-          terminal.all
-          git
-        ];
-      };
-    };
   in {
+    # Export for reuse
     inherit nixosModules homeModules profiles;
 
     nixosConfigurations = {
+      # Main desktop
       yunyun = mkHost {
         hostname = "desktop";
         username = "yunyun";
@@ -129,29 +75,15 @@
         homeModules = profiles.desktop.home;
       };
 
+      # Laptop (uncomment when needed)
       # laptop = mkHost {
       #   hostname = "laptop";
       #   username = "yunyun";
-      #   nixosModules = with nixosModules; [
-      #     config
-      #     nix
-      #     services.all
-      #     programs.all
-      #     wayland.hyprland
-      #   ];
-      #   homeModules = with homeModules; [
-      #     fontconfig
-      #     cursor
-      #     theme
-      #     xdg
-      #     git
-      #     terminal.all
-      #     programs.all
-      #     wayland.hyprland
-      #     services.all
-      #   ];
+      #   nixosModules = profiles.desktop-minimal.nixos;
+      #   homeModules = profiles.desktop-minimal.home;
       # };
 
+      # Home server (uncomment when needed)
       # homeserver = mkHost {
       #   hostname = "homeserver";
       #   username = "admin";

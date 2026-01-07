@@ -1,10 +1,21 @@
-# NixOS Modules
+# NixOS Modules Registry
 # Import this file and pick the modules you want to use
 # Example: nixosModules.programs.gaming
 {
   # System configuration
   config = ../../system/config;
   nix = ../../system/nix;
+
+  # Packages (organized by category)
+  packages = {
+    all = ../../system/packages;
+    core = ../../system/packages/core.nix;
+    desktop = ../../system/packages/desktop.nix;
+    development = ../../system/packages/development.nix;
+    android = ../../system/packages/android.nix;
+    networking = ../../system/packages/networking.nix;
+    misc = ../../system/packages/misc.nix;
+  };
 
   # Services
   services = {

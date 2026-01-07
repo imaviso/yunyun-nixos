@@ -21,13 +21,22 @@
     homeModules ? [],
     extraSpecialArgs ? {},
   }:
+    let
+      # Load host-specific variables if they exist
+      hostVarsPath = ../hosts/${hostname}/vars.nix;
+      hostVars = if builtins.pathExists hostVarsPath
+        then import hostVarsPath
+        else { monitors = []; settings = {}; };
+      
+      # Merge all special args
+      allSpecialArgs = {
+        inherit inputs hostname username hostVars;
+        monitors = hostVars.monitors or [];
+      } // extraSpecialArgs;
+    in
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs =
-        {
-          inherit inputs hostname username;
-        }
-        // extraSpecialArgs;
+      specialArgs = allSpecialArgs;
       modules =
         [
           # Host-specific configuration
@@ -39,11 +48,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "bk";
-              extraSpecialArgs =
-                {
-                  inherit inputs hostname username;
-                }
-                // extraSpecialArgs;
+              extraSpecialArgs = allSpecialArgs;
               users.${username} = {
                 imports = homeModules;
                 home = {
