@@ -6,7 +6,8 @@
   hostname,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
     # System modules are now imported via flake.nix nixosModules
@@ -67,9 +68,9 @@
       # teams-for-linux
       img2pdf
       tesseract
-      feishin
-      vesktop
-      supersonic
+      # feishin
+      # vesktop
+      # supersonic
       obs-studio
       (pkgs.wrapOBS {
         plugins = with pkgs.obs-studio-plugins; [
@@ -80,7 +81,7 @@
       })
       inputs.slothsonic.packages.${stdenv.hostPlatform.system}.default
       dbeaver-bin
-      mission-center
+      # mission-center
       vulkan-tools
       libva-utils
       scrcpy
@@ -99,7 +100,7 @@
       authenticator
       universal-android-debloater
       pavucontrol
-      tigervnc
+      # tigervnc
     ];
   };
 

@@ -108,6 +108,10 @@
       render = {
         direct_scanout = 1;
       };
+      windowrule = [
+        "match:class starrail.exe, idle_inhibit always"
+        "match:class client-win64-shipping.exe, idle_inhibit always"
+      ];
       windowrulev2 = [
         "float, title:^(.*Bitwarden Password Manager.*)$"
         "renderunfocused, class:^(client-win64-shipping.exe)$"

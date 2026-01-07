@@ -31,7 +31,7 @@
   programs = {
     all = ../../home/programs;
     anyrun = ../../home/programs/anyrun;
-    mpv = ../../home/programs/mpv;
+    mpv = ../../home/programs/mpv.nix;
     betterfox = ../../home/programs/firefox.nix;
   };
 

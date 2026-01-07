@@ -1,6 +1,6 @@
 {
   imports = [
     ./anyrun
-    ./mpv
+    ./mpv.nix
   ];
 }
