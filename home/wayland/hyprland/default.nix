@@ -1,21 +1,26 @@
 # Hyprland home-manager configuration
-{ pkgs, lib, monitors ? [], ... }:
-let
+{
+  pkgs,
+  lib,
+  monitors ? [],
+  ...
+}: let
   # Convert monitor config to Hyprland format
-  mkMonitorString = m:
-    let
-      transform = if m.transform or 0 != 0 then ", transform, ${toString m.transform}" else "";
-    in
-    "${m.name}, ${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz, ${toString m.x}x${toString m.y}, ${toString m.scale}${transform}";
-  
-  monitorConfigs = if monitors != [] 
+  mkMonitorString = m: let
+    transform =
+      if m.transform or 0 != 0
+      then ", transform, ${toString m.transform}"
+      else "";
+  in "${m.name}, ${toString m.width}x${toString m.height}@${toString m.refreshRate}Hz, ${toString m.x}x${toString m.y}, ${toString m.scale}${transform}";
+
+  monitorConfigs =
+    if monitors != []
     then map mkMonitorString monitors
     else [
       # Fallback default
       ", preferred, auto, 1"
     ];
-in
-{
+in {
   imports = [
     ./keybinds.nix
   ];
@@ -124,17 +129,21 @@ in
         font_family = "Google Sans";
       };
 
+      cursor = {
+        default_monitor = "DP-3";
+      };
+
       render.direct_scanout = 1;
 
       windowrule = [
         "match:class starrail.exe, idle_inhibit always"
         "match:class client-win64-shipping.exe, idle_inhibit always"
-      ];
-
-      windowrulev2 = [
-        "float, title:^(.*Bitwarden Password Manager.*)$"
-        "renderunfocused, class:^(client-win64-shipping.exe)$"
-        "renderunfocused, class:^(starrail.exe)$"
+        "match:class client-win64-shipping.exe, render_unfocused on"
+        "match:class starrail.exe, render_unfocused on"
+        "match:title .*Picture-in-Picture.*, float on"
+        "match:title .*Picture-in-Picture.*, pin on"
+        "match:title .*Bitwarden Password Manager.*, float on"
+        "match:class (brave|chromium)-browser, no_vrr on"
       ];
     };
   };

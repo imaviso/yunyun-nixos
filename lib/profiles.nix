@@ -1,7 +1,9 @@
 # Reusable profiles for common configurations
 # Profiles bundle together related modules for easy host configuration
-{ nixosModules, homeModules }:
 {
+  nixosModules,
+  homeModules,
+}: {
   # Full desktop environment with gaming, streaming, etc.
   desktop = {
     nixos = with nixosModules; [

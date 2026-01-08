@@ -713,11 +713,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1767276212,
-        "narHash": "sha256-R+faz8O2ab/dvtj9hAxJMCcOwaP21SurriFr4AnP/n8=",
+        "lastModified": 1767799257,
+        "narHash": "sha256-nizYc25mTIIwLbXp7YHx3ojaDBRrrWPUJFrFOhckgu8=",
         "owner": "imaviso",
         "repo": "slothsonic",
-        "rev": "5c790c02258e34faa90e2367b473bfad22fe158d",
+        "rev": "fa644b9d37e636b13cafe6a0533df388272b1dee",
         "type": "github"
       },
       "original": {

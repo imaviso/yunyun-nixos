@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.mpv = {
     enable = true;
     scripts = with pkgs.mpvScripts; [
       autoload
-      thumbnail
       thumbfast
       mpv-webm
       modernx-zydezu
@@ -40,6 +40,15 @@
 
       slang = "eng,en";
       alang = "jpn,ja";
+    };
+    scriptOpts = {
+      modernx = {
+        compact_mode = "no";
+        info_button = "yes";
+        title_font_size = 28;
+        font_size = 24;
+        seek_handle_size = 0;
+      };
     };
   };
 }
