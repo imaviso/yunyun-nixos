@@ -45,7 +45,12 @@
       nix
       packages.core
       packages.development
-      services.all
+      services.scx
+      services.audio
+      services.keyboard
+      services.ssh
+      services.tailscale
+      services.docker
       programs.terminal
       programs.thunar
       programs.chromium
@@ -62,7 +67,7 @@
       programs.betterfox
       wayland.hyprland
       services.caelestia
-      services.easyeffects
+      services.footserver
       services.clipboard
       services.polkit-agent
     ];
