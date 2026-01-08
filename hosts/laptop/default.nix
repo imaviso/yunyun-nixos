@@ -51,7 +51,10 @@
     fd
     fzf
 
+    brightnessctl
     firefox
+    chromium
+    brave
   ];
 
   networking.hostName = hostname;

@@ -9,6 +9,11 @@
     exec = ["hyprctl dispatch submap global"];
 
     bind = [
+      ", KP_1, sendshortcut, , Left"
+      ", KP_2, sendshortcut, , Down"
+      ", KP_3, sendshortcut, , Right"
+      ", KP_5, sendshortcut, , Up"
+
       #actions
       "SuperShift, Q, killactive,"
       "Super, R, togglesplit,"

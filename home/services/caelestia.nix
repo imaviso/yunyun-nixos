@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   imports = [
     inputs.caelestia-shell.homeManagerModules.default
   ];
@@ -8,7 +7,7 @@
     systemd = {
       enable = true;
       target = "graphical-session.target";
-      environment = [ ];
+      environment = [];
     };
     settings = {
       appearance = {
@@ -25,7 +24,7 @@
         rounding = 10;
       };
       bar.status = {
-        showBattery = false;
+        showBattery = true;
         showAudio = true;
       };
       paths.wallpaperDir = "~/Pictures/Wallpapers";

@@ -7,7 +7,7 @@
   # Full desktop environment with gaming, streaming, etc.
   desktop = {
     nixos = with nixosModules; [
-      config
+      config.all
       nix
       packages.all
       services.all
@@ -37,16 +37,18 @@
     ];
   };
 
-  # Minimal desktop (no gaming, lighter services)
-  desktop-minimal = {
+  laptop = {
     nixos = with nixosModules; [
-      config
+      config.xdg
+      config.i18n
+      config.fonts
       nix
       packages.core
-      services.audio
-      services.ssh
+      packages.development
+      services.all
       programs.terminal
       programs.thunar
+      programs.chromium
       wayland.hyprland
     ];
     home = with homeModules; [
@@ -56,7 +58,11 @@
       xdg
       git
       terminal.all
+      programs.mpv
+      programs.betterfox
       wayland.hyprland
+      services.caelestia
+      services.easyeffects
       services.clipboard
       services.polkit-agent
     ];

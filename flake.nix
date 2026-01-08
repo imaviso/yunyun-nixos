@@ -75,13 +75,12 @@
         homeModules = profiles.desktop.home;
       };
 
-      # Laptop (uncomment when needed)
-      # laptop = mkHost {
-      #   hostname = "laptop";
-      #   username = "yunyun";
-      #   nixosModules = profiles.desktop-minimal.nixos;
-      #   homeModules = profiles.desktop-minimal.home;
-      # };
+      yunyun-laptop = mkHost {
+        hostname = "laptop";
+        username = "yunyun";
+        nixosModules = profiles.laptop.nixos;
+        homeModules = profiles.laptop.home;
+      };
 
       # Home server (uncomment when needed)
       # homeserver = mkHost {

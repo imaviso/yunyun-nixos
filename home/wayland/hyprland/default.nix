@@ -45,6 +45,7 @@ in {
       monitor = monitorConfigs;
 
       input = {
+        kb_options = "caps:escape";
         accel_profile = "flat";
         repeat_delay = 250;
         repeat_rate = 35;

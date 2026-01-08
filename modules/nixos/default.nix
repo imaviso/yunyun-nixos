@@ -3,7 +3,14 @@
 # Example: nixosModules.programs.gaming
 {
   # System configuration
-  config = ../../system/config;
+  config = {
+    all = ../../system/config;
+    xdg = ../../system/config/xdg.nix;
+    i18n = ../../system/config/i18n.nix;
+    fonts = ../../system/config/fonts.nix;
+    networking = ../../system/config/networking.nix;
+   };
+
   nix = ../../system/nix;
 
   # Packages (organized by category)
