@@ -1,4 +1,6 @@
-{
+{settings, ...}: let
+  colors = settings.colors;
+in {
   programs.foot = {
     enable = true;
     settings = {
@@ -6,7 +8,7 @@
         term = "xterm-256color";
         title = "foot";
         letter-spacing = "0";
-        font = "JetBrainsMono Nerd Font:size=12";
+        font = "${settings.fonts.terminal}:size=${toString settings.fonts.terminalSize}";
         dpi-aware = "yes";
         pad = "10x10";
       };
@@ -26,8 +28,8 @@
       };
 
       colors = {
-        foreground = "FAFAFA";
-        background = "0A0A0A";
+        foreground = builtins.replaceStrings ["#"] [""] colors.foreground;
+        background = builtins.replaceStrings ["#"] [""] colors.background;
         regular0 = "000000";
         regular1 = "ec4899";
         regular2 = "22c55e";
@@ -44,10 +46,10 @@
         bright5 = "c084fc";
         bright6 = "22d3ee";
         bright7 = "FFFFFF";
-        selection-foreground = "FAFAFA";
-        selection-background = "262626";
+        selection-foreground = builtins.replaceStrings ["#"] [""] colors.foreground;
+        selection-background = builtins.replaceStrings ["#"] [""] colors.selection;
         search-box-no-match = "000000 f75f8f";
-        search-box-match = "FAFAFA 262626";
+        search-box-match = "${builtins.replaceStrings ["#"] [""] colors.foreground} ${builtins.replaceStrings ["#"] [""] colors.selection}";
         jump-labels = "000000 ff9907";
         urls = "52a8ff";
       };

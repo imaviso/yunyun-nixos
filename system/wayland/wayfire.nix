@@ -1,4 +1,9 @@
-{pkgs, username, ...}: {
+{
+  pkgs,
+  username,
+  settings,
+  ...
+}: {
   programs.wayfire = {
     enable = true;
     plugins = with pkgs.wayfirePlugins; [
@@ -86,8 +91,8 @@
 
   qt = {
     enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
+    platformTheme = settings.appearance.qtPlatformTheme;
+    style = settings.appearance.qtStyle;
   };
 
   xdg.portal = {

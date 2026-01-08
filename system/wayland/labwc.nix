@@ -1,4 +1,9 @@
-{pkgs, username, ...}: {
+{
+  pkgs,
+  username,
+  settings,
+  ...
+}: {
   programs.labwc.enable = true;
 
   programs.uwsm = {
@@ -85,8 +90,8 @@
 
   qt = {
     enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
+    platformTheme = settings.appearance.qtPlatformTheme;
+    style = settings.appearance.qtStyle;
   };
 
   xdg.portal = {

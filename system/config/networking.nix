@@ -2,14 +2,12 @@
   hostname,
   hostVars,
   ...
-}:
-let
+}: let
   # Get networking settings from hostVars with defaults
   networkingVars = hostVars.networking or {};
   nameservers = networkingVars.nameservers or ["1.1.1.1" "9.9.9.9"];
   timeServers = networkingVars.timeServers or ["time.cloudflare.com"];
-in
-{
+in {
   networking = {
     hostName = hostname;
     inherit timeServers nameservers;

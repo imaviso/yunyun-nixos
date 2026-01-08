@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  settings,
   ...
 }: let
   cfg = config.programs.git;
@@ -93,8 +94,8 @@ in {
       };
 
       user = {
-        email = "imaviso@protonmail.com";
-        name = "Momoyaan";
+        email = settings.user.email;
+        name = settings.user.name;
       };
 
       gpg.ssh.allowedSignersFile =

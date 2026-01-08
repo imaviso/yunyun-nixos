@@ -9,7 +9,7 @@
     i18n = ../../system/config/i18n.nix;
     fonts = ../../system/config/fonts.nix;
     networking = ../../system/config/networking.nix;
-   };
+  };
 
   nix = ../../system/nix;
 

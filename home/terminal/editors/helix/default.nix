@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./languages.nix
     # ./keybinds.nix
@@ -36,7 +35,7 @@
         };
         lsp.display-inlay-hints = true;
         soft-wrap.enable = true;
-        statusline.center = [ "position-percentage" ];
+        statusline.center = ["position-percentage"];
         true-color = true;
         trim-final-newlines = true;
         trim-trailing-whitespace = true;

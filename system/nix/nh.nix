@@ -1,5 +1,8 @@
-{ username, ... }:
 {
+  username,
+  settings,
+  ...
+}: {
   programs.nh = {
     enable = true;
     # weekly cleanup
@@ -7,6 +10,6 @@
       enable = true;
       extraArgs = "--keep-since 7d";
     };
-    flake = "/home/${username}/nixos";
+    flake = "/home/${username}/${settings.paths.flake}";
   };
 }

@@ -1,4 +1,4 @@
-{
+{settings, ...}: {
   wayland.windowManager.hyprland.settings = {
     "$kbSession" = "ControlSuper, Delete";
     "$kbClearNotifs" = "ControlSuper, Escape";
@@ -22,11 +22,11 @@
       "Super ALT, ,resizeactive,"
 
       # utility
-      "Super, Return, exec, app2unit -- ghostty"
-      "Super, Space, exec, app2unit -- footclient"
-      "Super, E, exec, app2unit -- footclient -e yazi"
+      "Super, Return, exec, app2unit -- ${settings.apps.terminal}"
+      "Super, Space, exec, app2unit -- ${settings.apps.terminalAlt}"
+      "Super, E, exec, app2unit -- ${settings.apps.terminalAlt} -e ${settings.apps.fileManagerTUI}"
       "Super, P, exec, hyprpicker -a"
-      "SuperShift, E, exec, app2unit -- nautilus"
+      "SuperShift, E, exec, app2unit -- ${settings.apps.fileManager}"
 
       # clipboard and emoji picker
       "Super, C, exec, pkill fuzzel || caelestia clipboard"

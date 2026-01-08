@@ -1,6 +1,5 @@
 # Android/mobile development tools
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     scrcpy
     universal-android-debloater

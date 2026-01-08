@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   services.xserver.enable = true;
   services.displayManager.sddm = {
     enable = true;
@@ -21,5 +19,4 @@
     wl-clipboard # Command-line copy/paste utilities for Wayland
     walker
   ];
-
 }

@@ -1,4 +1,8 @@
-{inputs, username, ...}: {
+{
+  inputs,
+  username,
+  ...
+}: {
   imports = [
     inputs.betterfox.homeModules.betterfox
   ];

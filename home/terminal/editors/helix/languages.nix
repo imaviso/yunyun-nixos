@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   biome = ext: {
     command = lib.getExe pkgs.biome;
     args = [
@@ -14,8 +13,7 @@ let
       "-"
     ];
   };
-in
-{
+in {
   programs.helix.languages = {
     language = [
       {
@@ -32,10 +30,10 @@ in
       {
         name = "cmake";
         auto-format = true;
-        language-servers = [ "cmake-language-server" ];
+        language-servers = ["cmake-language-server"];
         formatter = {
           command = lib.getExe pkgs.cmake-format;
-          args = [ "-" ];
+          args = ["-"];
         };
       }
       {
@@ -138,12 +136,12 @@ in
       {
         name = "typst";
         auto-format = true;
-        language-servers = [ "tinymist" ];
+        language-servers = ["tinymist"];
       }
       {
         name = "java";
         auto-format = true;
-        language-servers = [ "jdtls" ];
+        language-servers = ["jdtls"];
       }
     ];
 
@@ -152,12 +150,12 @@ in
 
       bash-language-server = {
         command = lib.getExe pkgs.bash-language-server;
-        args = [ "start" ];
+        args = ["start"];
       };
 
       clangd = {
         command = "${pkgs.clang-tools}/bin/clangd";
-        clangd.fallbackFlags = [ "-std=c++2b" ];
+        clangd.fallbackFlags = ["-std=c++2b"];
       };
 
       cmake-language-server = {
@@ -199,17 +197,17 @@ in
 
       qmlls = {
         command = "${pkgs.qt6.qtdeclarative}/bin/qmlls";
-        args = [ "-E" ];
+        args = ["-E"];
       };
 
       ruff = {
         command = lib.getExe pkgs.ruff;
-        args = [ "server" ];
+        args = ["server"];
       };
 
       tailwindcss-ls = {
         command = lib.getExe pkgs.tailwindcss-language-server;
-        args = [ "--stdio" ];
+        args = ["--stdio"];
       };
 
       tinymist = {
@@ -243,7 +241,7 @@ in
 
       typescript-language-server = {
         command = lib.getExe pkgs.nodePackages.typescript-language-server;
-        args = [ "--stdio" ];
+        args = ["--stdio"];
         config = {
           typescript-language-server.source = {
             addMissingImports.ts = true;
@@ -256,7 +254,7 @@ in
             {
               name = "@vue/typescript-plugin";
               location = "${pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
-              languages = [ "vue" ];
+              languages = ["vue"];
             }
           ];
         };
@@ -264,7 +262,7 @@ in
 
       vscode-css-language-server = {
         command = "${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-css-language-server";
-        args = [ "--stdio" ];
+        args = ["--stdio"];
         config = {
           provideFormatter = true;
           css.validate.enable = true;

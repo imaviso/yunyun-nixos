@@ -1,4 +1,9 @@
-{pkgs, username, ...}: {
+{
+  pkgs,
+  username,
+  settings,
+  ...
+}: {
   # programs.hyprlock.enable = true;
   # services.hypridle.enable = true;
   programs.hyprland = {
@@ -61,8 +66,8 @@
 
   qt = {
     enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
+    platformTheme = settings.appearance.qtPlatformTheme;
+    style = settings.appearance.qtStyle;
   };
 
   xdg.portal = {

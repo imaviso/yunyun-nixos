@@ -1,15 +1,19 @@
 # Desktop-specific packages
-{ pkgs, inputs, lib, ... }:
 {
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # Browsers
     firefox
     brave
-    
+
     # Office & productivity
     libreoffice-fresh
     thunderbird
-    
+
     # Media
     mpv
     obs-studio
@@ -23,21 +27,21 @@
     handbrake
     losslesscut-bin
     mkvtoolnix
-    
+
     # Audio
     pavucontrol
-    
+
     # Communication
     telegram-desktop
-    
+
     # Utilities
     img2pdf
     tesseract
     pdfsam-basic
-    
+
     # Security
     authenticator
-    
+
     # Custom packages
     inputs.slothsonic.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

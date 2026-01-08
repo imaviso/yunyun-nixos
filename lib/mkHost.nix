@@ -20,20 +20,129 @@
     nixosModules ? [],
     homeModules ? [],
     extraSpecialArgs ? {},
-  }:
-    let
-      # Load host-specific variables if they exist
-      hostVarsPath = ../hosts/${hostname}/vars.nix;
-      hostVars = if builtins.pathExists hostVarsPath
-        then import hostVarsPath
-        else { monitors = []; settings = {}; };
-      
-      # Merge all special args
-      allSpecialArgs = {
+  }: let
+    # Default settings - can be overridden in hostVars.settings
+    defaultSettings = {
+      # Input/keyboard settings
+      input = {
+        keyboardLayout = "us";
+        keyboardVariant = "";
+        keyboardOptions = "caps:escape";
+        repeatDelay = 250;
+        repeatRate = 35;
+        accelProfile = "flat";
+      };
+
+      # Appearance settings
+      appearance = {
+        cursor = {
+          name = "macOS";
+          size = 24;
+        };
+        gtkTheme = "adw-gtk3-dark";
+        qtStyle = "adwaita-dark";
+        qtPlatformTheme = "gnome";
+        iconTheme = "Colloid-Dark";
+        preferDark = true;
+      };
+
+      # Font settings
+      fonts = {
+        sans = "Google Sans";
+        serif = "Google Sans";
+        mono = "TX-02";
+        terminal = "TX-02";
+        terminalSize = 12;
+        uiSize = 10;
+        emoji = "Noto Color Emoji";
+      };
+
+      # Default applications
+      apps = {
+        terminal = "ghostty";
+        terminalAlt = "footclient";
+        terminalServer = "foot";
+        fileManager = "nautilus";
+        fileManagerTUI = "yazi";
+        browser = "firefox";
+        editor = "nvim";
+      };
+
+      # Window manager layout settings
+      layout = {
+        gapsInner = 5;
+        gapsOuter = 10;
+        borderSize = 1;
+        cornerRadius = 10;
+      };
+
+      # Animation settings
+      animation = {
+        enabled = true;
+        duration = 200;
+      };
+
+      # Workspace settings
+      workspaces = {
+        count = 10;
+        gridWidth = 3;
+        gridHeight = 3;
+      };
+
+      # Path settings
+      paths = {
+        wallpapers = "Pictures/Wallpapers";
+        screenshots = "Pictures/Screenshots";
+        flake = "nixos";
+      };
+
+      # Locale settings
+      locale = {
+        timezone = "Asia/Manila";
+        defaultLocale = "en_US.UTF-8";
+      };
+
+      # User/git settings
+      user = {
+        name = "Momoyaan";
+        email = "imaviso@protonmail.com";
+      };
+
+      # Color scheme
+      colors = {
+        background = "#0A0A0A";
+        foreground = "#FAFAFA";
+        selection = "#262626";
+        borderActive = "#737373";
+        borderInactive = "#0a0a0a";
+      };
+    };
+
+    # Load host-specific variables if they exist
+    hostVarsPath = ../hosts/${hostname}/vars.nix;
+    hostVarsRaw =
+      if builtins.pathExists hostVarsPath
+      then import hostVarsPath
+      else {
+        monitors = [];
+        settings = {};
+      };
+
+    # Deep merge settings: hostVars.settings overrides defaultSettings
+    mergedSettings = lib.recursiveUpdate defaultSettings (hostVarsRaw.settings or {});
+
+    # Final hostVars with merged settings
+    hostVars = hostVarsRaw // {settings = mergedSettings;};
+
+    # Merge all special args
+    allSpecialArgs =
+      {
         inherit inputs hostname username hostVars;
         monitors = hostVars.monitors or [];
-      } // extraSpecialArgs;
-    in
+        settings = mergedSettings;
+      }
+      // extraSpecialArgs;
+  in
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = allSpecialArgs;

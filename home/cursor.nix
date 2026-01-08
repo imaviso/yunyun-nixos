@@ -1,10 +1,12 @@
-{ pkgs, ... }:
 {
-
+  pkgs,
+  settings,
+  ...
+}: {
   home.pointerCursor = {
     gtk.enable = true;
-    name = "macOS";
+    name = settings.appearance.cursor.name;
     package = pkgs.apple-cursor;
-    size = 24;
+    size = settings.appearance.cursor.size;
   };
 }

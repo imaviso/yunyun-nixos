@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   username,
+  settings,
   ...
 }: {
   imports = [
@@ -85,8 +86,8 @@
 
   qt = {
     enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
+    platformTheme = settings.appearance.qtPlatformTheme;
+    style = settings.appearance.qtStyle;
   };
 
   xdg.portal = {

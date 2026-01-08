@@ -2,39 +2,45 @@
   config,
   lib,
   pkgs,
+  settings,
   ...
-}:
-{
+}: {
   gtk = {
     enable = true;
 
     cursorTheme = {
-      name = "macOS";
+      name = settings.appearance.cursor.name;
       package = pkgs.apple-cursor;
-      size = 24;
+      size = settings.appearance.cursor.size;
     };
 
     font = {
-      name = "Google Sans";
-      size = 10;
+      name = settings.fonts.sans;
+      size = settings.fonts.uiSize;
     };
 
     iconTheme = {
-      name = "Colloid-Dark";
+      name = settings.appearance.iconTheme;
       package = pkgs.colloid-icon-theme;
     };
 
     theme = {
-      name = "adw-gtk3-dark";
+      name = settings.appearance.gtkTheme;
       package = pkgs.adw-gtk3;
     };
 
     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      gtk-application-prefer-dark-theme =
+        if settings.appearance.preferDark
+        then 1
+        else 0;
     };
 
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      gtk-application-prefer-dark-theme =
+        if settings.appearance.preferDark
+        then 1
+        else 0;
     };
 
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";

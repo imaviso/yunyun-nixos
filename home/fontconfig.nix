@@ -1,4 +1,4 @@
-{
+{settings, ...}: {
   fonts.fontconfig = {
     enable = true;
     antialiasing = true;
@@ -6,10 +6,10 @@
     subpixelRendering = "rgb";
 
     defaultFonts = {
-      serif = ["Google Sans"];
-      sansSerif = ["Google Sans"];
-      monospace = ["TX-02"];
-      emoji = ["Noto Color Emoji"];
+      serif = [settings.fonts.serif];
+      sansSerif = [settings.fonts.sans];
+      monospace = [settings.fonts.mono];
+      emoji = [settings.fonts.emoji];
     };
   };
 }

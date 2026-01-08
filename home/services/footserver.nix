@@ -1,11 +1,10 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   systemd.user.services.footserver = {
     Unit.Description = "footserver";
     Install = {
-      WantedBy = [ "graphical-session.target" ];
-      Wants = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+      WantedBy = ["graphical-session.target"];
+      Wants = ["graphical-session.target"];
+      After = ["graphical-session.target"];
     };
     Service = {
       Type = "simple";

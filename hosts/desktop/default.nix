@@ -8,8 +8,7 @@
   username,
   hostVars,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware.nix
   ];

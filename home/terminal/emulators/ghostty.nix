@@ -1,15 +1,18 @@
 {
   inputs,
   pkgs,
+  settings,
   ...
-}: {
+}: let
+  colors = settings.colors;
+in {
   programs.ghostty = {
     enable = true;
     package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableFishIntegration = true;
     settings = {
-      font-family = "TX-02";
-      font-size = 12;
+      font-family = settings.fonts.terminal;
+      font-size = settings.fonts.terminalSize;
       gtk-single-instance = true;
       gtk-titlebar = false;
       window-decoration = true;
@@ -20,9 +23,9 @@
     };
     themes = {
       minimal = {
-        background = "#0A0A0A";
-        foreground = "#FAFAFA";
-        cursor-color = "#737373";
+        background = colors.background;
+        foreground = colors.foreground;
+        cursor-color = colors.borderActive;
         palette = [
           "0=#000000"
           "1=#f75f8f"
@@ -41,8 +44,8 @@
           "14=#1da9b0"
           "15=#FFFFFF"
         ];
-        selection-background = "#262626";
-        selection-foreground = "#FAFAFA";
+        selection-background = colors.selection;
+        selection-foreground = colors.foreground;
       };
     };
   };

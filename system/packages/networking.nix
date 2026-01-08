@@ -1,6 +1,5 @@
 # Networking tools
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     wgcf
     wireguard-tools

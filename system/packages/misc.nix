@@ -1,9 +1,8 @@
 # Misc packages
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    komikku      # Manga reader
-    vial         # Keyboard firmware manager
+    komikku # Manga reader
+    vial # Keyboard firmware manager
     pear-desktop # Desktop app
   ];
 }

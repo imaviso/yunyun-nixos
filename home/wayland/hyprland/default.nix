@@ -3,6 +3,7 @@
   pkgs,
   lib,
   monitors ? [],
+  settings,
   ...
 }: let
   # Convert monitor config to Hyprland format
@@ -25,9 +26,16 @@
   primaryMonitor = let
     primary = lib.findFirst (m: m.primary or false) null monitors;
   in
-    if primary != null then primary.name
-    else if monitors != [] then (builtins.head monitors).name
+    if primary != null
+    then primary.name
+    else if monitors != []
+    then (builtins.head monitors).name
     else "";
+
+  # Helper to convert hex color to rgba format for hyprland
+  hexToRgba = hex: alpha: let
+    cleanHex = builtins.replaceStrings ["#"] [""] hex;
+  in "rgba(${cleanHex}${alpha})";
 in {
   imports = [
     ./keybinds.nix
@@ -43,7 +51,7 @@ in {
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland";
     CLUTTER_BACKEND = "wayland";
-    GTK_THEME = "adw-gtk3-dark";
+    GTK_THEME = settings.appearance.gtkTheme;
     APP2UNIT_TYPE = "service";
   };
 
@@ -53,19 +61,19 @@ in {
       monitor = monitorConfigs;
 
       input = {
-        kb_options = "caps:escape";
-        accel_profile = "flat";
-        repeat_delay = 250;
-        repeat_rate = 35;
+        kb_options = settings.input.keyboardOptions;
+        accel_profile = settings.input.accelProfile;
+        repeat_delay = settings.input.repeatDelay;
+        repeat_rate = settings.input.repeatRate;
       };
 
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 1;
+        gaps_in = settings.layout.gapsInner;
+        gaps_out = settings.layout.gapsOuter;
+        border_size = settings.layout.borderSize;
         allow_tearing = false;
-        "col.active_border" = "rgba(73737373)";
-        "col.inactive_border" = "rgba(0a0a0a0a)";
+        "col.active_border" = hexToRgba settings.colors.borderActive "73";
+        "col.inactive_border" = hexToRgba settings.colors.borderInactive "0a";
       };
 
       group.groupbar = {
@@ -73,7 +81,7 @@ in {
         scrolling = false;
         gradients = true;
         height = 14;
-        font_size = 10;
+        font_size = settings.fonts.uiSize;
         font_weight_active = "bold";
         font_weight_inactive = "bold";
         render_titles = true;
@@ -89,7 +97,7 @@ in {
       };
 
       decoration = {
-        rounding = 10;
+        rounding = settings.layout.cornerRadius;
         dim_inactive = false;
         blur.enabled = false;
         shadow = {
@@ -103,7 +111,7 @@ in {
       };
 
       animations = {
-        enabled = true;
+        enabled = settings.animation.enabled;
         bezier = [
           "md3_decel, 0.05, 0.7, 0.1, 1"
           "md3_accel, 0.3, 0, 0.8, 0.15"
@@ -135,7 +143,7 @@ in {
         disable_hyprland_logo = true;
         allow_session_lock_restore = true;
         initial_workspace_tracking = 2;
-        font_family = "Google Sans";
+        font_family = settings.fonts.sans;
       };
 
       cursor = {
