@@ -1,16 +1,21 @@
 {
+  hostname,
+  hostVars,
+  ...
+}:
+let
+  # Get networking settings from hostVars with defaults
+  networkingVars = hostVars.networking or {};
+  nameservers = networkingVars.nameservers or ["1.1.1.1" "9.9.9.9"];
+  timeServers = networkingVars.timeServers or ["time.cloudflare.com"];
+in
+{
   networking = {
-    hostName = "nixos"; # Define your hostname.
-    timeServers = [
-      "time.cloudflare.com"
-      "0.ph.pool.ntp.org"
-    ];
+    hostName = hostname;
+    inherit timeServers nameservers;
+
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-    nameservers = [
-      "192.168.254.2"
-      "192.168.254.1"
-    ];
     dhcpcd.extraConfig = "nohook resolv.conf";
     networkmanager.dns = "none";
 

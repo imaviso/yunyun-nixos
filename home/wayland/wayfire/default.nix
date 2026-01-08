@@ -1,4 +1,27 @@
-{pkgs, ...}: {
+{pkgs, lib, monitors ? [], ...}: 
+let
+  # Convert transform number to degrees for wayfire
+  transformToDegrees = t:
+    if t == 1 then 90
+    else if t == 2 then 180
+    else if t == 3 then 270
+    else 0;
+
+  # Generate wayfire output configs from monitors
+  mkWayfireOutputs = monitors:
+    lib.listToAttrs (map (m: {
+      name = "output:${m.name}";
+      value = {
+        mode = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+        position = "${toString m.x},${toString m.y}";
+      } // lib.optionalAttrs ((m.transform or 0) != 0) {
+        transform = transformToDegrees m.transform;
+      };
+    }) monitors);
+
+  outputConfigs = mkWayfireOutputs monitors;
+in
+{
   wayland.windowManager.wayfire = {
     enable = true;
     systemd.enable = true;
@@ -9,7 +32,7 @@
       wwp-switcher
       windecor
     ];
-    settings = {
+    settings = outputConfigs // {
       core = {
         plugins = "animate command expo follow-focus focus-change grid foreign-toplevel ipc ipc-rules input-method-v1 move oswitch place resize session-lock scale switcher shortcuts-inhibit session-lock vswitch window-rules wm-actions winshadows xdg-activation";
         close_top_view = "<super> <shift> KEY_Q";
@@ -22,15 +45,6 @@
         mouse_accel_profile = "flat";
         kb_repeat_delay = 250;
         kb_repeat_rate = 35;
-      };
-      "output:DP-3" = {
-        mode = "1920x1080@165.001";
-        position = "0,0";
-      };
-      "output:HDMI-A-1" = {
-        mode = "1920x1080@143.999";
-        position = "1920,-400";
-        transform = 270;
       };
       autostart = {
         autostart_wf_shell = false;

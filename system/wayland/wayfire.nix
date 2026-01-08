@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, username, ...}: {
   programs.wayfire = {
     enable = true;
     plugins = with pkgs.wayfirePlugins; [
@@ -60,7 +60,7 @@
         default_session = {
           command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -- wayfire-uwsm.desktop'";
           # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'wayfire'";
-          # user = "yunyun";
+          # user = username;
         };
       };
     };

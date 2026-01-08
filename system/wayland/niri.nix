@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  username,
   ...
 }: {
   imports = [
@@ -16,8 +17,8 @@
       enable = true;
       compositor.name = "niri";
       quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
-      configHome = "/home/yunyun";
-      configFiles = ["/home/yunyun/.config/DankMaterialShell/settings.json"];
+      configHome = "/home/${username}";
+      configFiles = ["/home/${username}/.config/DankMaterialShell/settings.json"];
     };
   };
 
@@ -58,7 +59,7 @@
     #   settings = {
     #     default_session = {
     #       command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'niri-session'";
-    #       # user = "yunyun";
+    #       # user = username;
     #     };
     #   };
     # };

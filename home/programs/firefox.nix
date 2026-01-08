@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{inputs, username, ...}: {
   imports = [
     inputs.betterfox.homeModules.betterfox
   ];
@@ -6,12 +6,12 @@
     enable = true;
     betterfox = {
       enable = true;
-      profiles.yunyun-profile = {
+      profiles."${username}-profile" = {
         enableAllSections = true;
       };
     };
-    profiles.yunyun-profile = {
-      name = "yunyun";
+    profiles."${username}-profile" = {
+      name = username;
     };
   };
 }

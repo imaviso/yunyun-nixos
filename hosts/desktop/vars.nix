@@ -29,4 +29,16 @@
 
   # Hardware info (used by multiple modules)
   gpu = "amd";
+
+  # Networking configuration
+  networking = {
+    nameservers = [
+      "192.168.254.2"
+      "192.168.254.1"
+    ];
+    timeServers = [
+      "time.cloudflare.com"
+      "0.ph.pool.ntp.org"
+    ];
+  };
 }

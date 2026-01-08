@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, username, ...}: {
   # programs.hyprlock.enable = true;
   # services.hypridle.enable = true;
   programs.hyprland = {
@@ -33,7 +33,7 @@
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start hyprland-uwsm.desktop'";
         # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'Hyprland'";
-        # user = "yunyun";
+        # user = username;
       };
     };
   };

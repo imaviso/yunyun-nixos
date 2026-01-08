@@ -1,3 +1,4 @@
+{ username, ... }:
 {
   programs.nh = {
     enable = true;
@@ -6,6 +7,6 @@
       enable = true;
       extraArgs = "--keep-since 7d";
     };
-    flake = "/home/yunyun/nixos";
+    flake = "/home/${username}/nixos";
   };
 }

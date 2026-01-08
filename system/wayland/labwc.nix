@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, username, ...}: {
   programs.labwc.enable = true;
 
   programs.uwsm = {
@@ -59,7 +59,7 @@
         default_session = {
           command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -- labwc-uwsm.desktop'";
           # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'labwc'";
-          # user = "yunyun";
+          # user = username;
         };
       };
     };

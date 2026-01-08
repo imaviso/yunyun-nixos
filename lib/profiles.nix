@@ -4,13 +4,19 @@
   nixosModules,
   homeModules,
 }: {
-  # Full desktop environment with gaming, streaming, etc.
   desktop = {
     nixos = with nixosModules; [
       config.all
       nix
       packages.all
-      services.all
+      services.adb
+      services.audio
+      services.lact
+      services.keyboard
+      services.scx
+      services.ssh
+      services.sunshine
+      services.tailscale
       programs.terminal
       programs.gaming
       programs.chromium
@@ -73,7 +79,6 @@
     ];
   };
 
-  # Headless server
   server = {
     nixos = with nixosModules; [
       config
@@ -85,33 +90,6 @@
     home = with homeModules; [
       terminal.all
       git
-    ];
-  };
-
-  # Development workstation
-  workstation = {
-    nixos = with nixosModules; [
-      config
-      nix
-      packages.all
-      services.all
-      programs.terminal
-      programs.thunar
-      programs.nix-ld
-      wayland.hyprland
-    ];
-    home = with homeModules; [
-      fontconfig
-      cursor
-      theme
-      xdg
-      git
-      terminal.all
-      programs.mpv
-      programs.betterfox
-      wayland.hyprland
-      services.clipboard
-      services.polkit-agent
     ];
   };
 }

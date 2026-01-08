@@ -20,6 +20,14 @@
       # Fallback default
       ", preferred, auto, 1"
     ];
+
+  # Get primary monitor name, fallback to first monitor or empty string
+  primaryMonitor = let
+    primary = lib.findFirst (m: m.primary or false) null monitors;
+  in
+    if primary != null then primary.name
+    else if monitors != [] then (builtins.head monitors).name
+    else "";
 in {
   imports = [
     ./keybinds.nix
@@ -131,7 +139,7 @@ in {
       };
 
       cursor = {
-        default_monitor = "DP-3";
+        default_monitor = primaryMonitor;
       };
 
       render.direct_scanout = 1;
