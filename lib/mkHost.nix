@@ -42,7 +42,7 @@
         gtkTheme = "adw-gtk3-dark";
         qtStyle = "adwaita-dark";
         qtPlatformTheme = "gnome";
-        iconTheme = "Colloid-Dark";
+        iconTheme = "Papirus-Dark";
         preferDark = true;
       };
 

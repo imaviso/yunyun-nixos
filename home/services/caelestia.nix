@@ -1,7 +1,13 @@
-{inputs, ...}: {
+{
+  inputs,
+  settings,
+  config,
+  ...
+}: {
   imports = [
     inputs.caelestia-shell.homeManagerModules.default
   ];
+
   programs.caelestia = {
     enable = true;
     systemd = {
@@ -12,27 +18,33 @@
     settings = {
       appearance = {
         font.family = {
-          clock = "Google Sans";
-          mono = "TX-02";
-          sans = "Google Sans";
+          clock = settings.fonts.sans;
+          mono = settings.fonts.mono;
+          sans = settings.fonts.sans;
         };
-        rounding = {
-          scale = 1.0;
-        };
+        rounding.scale = 1.0;
       };
-      border = {
-        rounding = 10;
-      };
+      border.rounding = settings.layout.cornerRadius;
       bar.status = {
         showBattery = true;
         showAudio = true;
       };
-      paths.wallpaperDir = "~/Pictures/Wallpapers";
+      paths.wallpaperDir = "~/${settings.paths.wallpapers}";
     };
     cli = {
       enable = true;
       settings = {
-        theme.enableGtk = true;
+        theme = {
+          enableTerm = true;
+          enableHypr = true;
+          enableGtk = true;
+          enableQt = true;
+          enableDiscord = true;
+          enableSpicetify = false;
+          enableFuzzel = true;
+          enableBtop = true;
+          enableCava = true;
+        };
       };
     };
   };

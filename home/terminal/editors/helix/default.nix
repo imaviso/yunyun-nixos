@@ -16,7 +16,7 @@
     ];
 
     settings = {
-      theme = "minimal";
+      theme = "caelestia";
       editor = {
         evil = true;
         color-modes = true;

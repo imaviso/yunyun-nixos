@@ -21,7 +21,7 @@
 
     iconTheme = {
       name = settings.appearance.iconTheme;
-      package = pkgs.colloid-icon-theme;
+      package = pkgs.papirus-icon-theme;
     };
 
     theme = {
@@ -46,6 +46,5 @@
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   };
 
-  # home.file."${config.xdg.configHome}/gtk-3.0/gtk.css".source = ./gtk3-dark.css;
-  # home.file."${config.xdg.configHome}/gtk-4.0/gtk.css".source = lib.mkForce ./gtk4-dark.css;
+  xdg.configFile."gtk-4.0/gtk.css".enable = false;
 }

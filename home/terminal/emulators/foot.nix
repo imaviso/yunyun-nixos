@@ -8,7 +8,7 @@ in {
         term = "xterm-256color";
         title = "foot";
         letter-spacing = "0";
-        font = "${settings.fonts.terminal}:size=${toString settings.fonts.terminalSize}";
+        font = "JetBrainsMono Nerd Font:size=${toString settings.fonts.terminalSize}";
         dpi-aware = "yes";
         pad = "10x10";
       };
@@ -49,7 +49,9 @@ in {
         selection-foreground = builtins.replaceStrings ["#"] [""] colors.foreground;
         selection-background = builtins.replaceStrings ["#"] [""] colors.selection;
         search-box-no-match = "000000 f75f8f";
-        search-box-match = "${builtins.replaceStrings ["#"] [""] colors.foreground} ${builtins.replaceStrings ["#"] [""] colors.selection}";
+        search-box-match = "${builtins.replaceStrings ["#"] [""] colors.foreground} ${
+          builtins.replaceStrings ["#"] [""] colors.selection
+        }";
         jump-labels = "000000 ff9907";
         urls = "52a8ff";
       };

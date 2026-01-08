@@ -86,6 +86,10 @@ in {
       {
         name = "nix";
         auto-format = true;
+        formatter = {
+          command = lib.getExe pkgs.alejandra;
+          args = ["-q"];
+        };
         language-servers = [
           "nil"
         ];
@@ -165,7 +169,7 @@ in {
       nil = {
         command = lib.getExe pkgs.nil;
         config.nil.formatting.command = [
-          "${lib.getExe pkgs.nixfmt}"
+          "${lib.getExe pkgs.alejandra}"
           "-q"
         ];
       };

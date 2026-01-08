@@ -18,10 +18,11 @@ in {
       window-decoration = true;
       window-padding-x = 10;
       window-padding-y = 10;
-      theme = "minimal";
+      theme = "caelestia";
       confirm-close-surface = false;
     };
     themes = {
+      # Fallback theme if caelestia theme is not available
       minimal = {
         background = colors.background;
         foreground = colors.foreground;

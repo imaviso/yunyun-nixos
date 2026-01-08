@@ -37,7 +37,7 @@
     wlsunset
     app2unit
     apple-cursor
-    colloid-icon-theme
+    papirus-icon-theme
     nwg-look
     colloid-gtk-theme
     font-manager

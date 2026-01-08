@@ -31,17 +31,35 @@
     else if monitors != []
     then (builtins.head monitors).name
     else "";
-
-  # Helper to convert hex color to rgba format for hyprland
-  hexToRgba = hex: alpha: let
-    cleanHex = builtins.replaceStrings ["#"] [""] hex;
-  in "rgba(${cleanHex}${alpha})";
 in {
   imports = [
     ./keybinds.nix
   ];
 
-  home.packages = with pkgs; [];
+  # Source caelestia dynamic theme colors and set border colors
+  # caelestia-cli writes raw hex colors to ~/.config/hypr/scheme/current.conf
+  # Variables are like: $outline = 8c9195 (raw hex, no rgb wrapper)
+  # We set the border colors here after sourcing so variables are available
+  wayland.windowManager.hyprland.extraConfig = ''
+    # Source caelestia theme
+    source = ~/.config/hypr/scheme/current.conf
+
+    # Define colors using caelestia variables
+    $activeWindowBorderColour = rgba($primarye6)
+    $inactiveWindowBorderColour = rgba($onSurfaceVariant11)
+    $groupActiveColour = rgba($primaryContainer71)
+    $groupInactiveColour = rgba($surfaceContainer18)
+    $groupTextColour = rgba($onSurfacee5)
+    $shadowColour = rgba($shadow2A)
+
+    # Apply colors
+    general:col.active_border = $activeWindowBorderColour
+    general:col.inactive_border = $inactiveWindowBorderColour
+    group:groupbar:text_color = $groupTextColour
+    group:groupbar:col.active = $groupActiveColour
+    group:groupbar:col.inactive = $groupInactiveColour
+    decoration:shadow:color = $shadowColour
+  '';
 
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
@@ -72,8 +90,6 @@ in {
         gaps_out = settings.layout.gapsOuter;
         border_size = settings.layout.borderSize;
         allow_tearing = false;
-        "col.active_border" = hexToRgba settings.colors.borderActive "73";
-        "col.inactive_border" = hexToRgba settings.colors.borderInactive "0a";
       };
 
       group.groupbar = {
@@ -85,9 +101,7 @@ in {
         font_weight_active = "bold";
         font_weight_inactive = "bold";
         render_titles = true;
-        text_color = "rgba(e5e5e5e5)";
-        "col.active" = "rgba(71717a71)";
-        "col.inactive" = "rgba(18181b18)";
+        # Colors set via extraConfig using caelestia variables
       };
 
       dwindle = {
@@ -106,7 +120,7 @@ in {
           range = 20;
           offset = "0 2";
           render_power = 4;
-          color = "rgba(0000002A)";
+          # Color set via extraConfig using caelestia variables
         };
       };
 

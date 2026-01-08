@@ -12,7 +12,10 @@
       go.enable = true;
       java.enable = true;
       lua.enable = true;
-      nix.enable = true;
+      nix = {
+        enable = true;
+        format.type = ["alejandra"];
+      };
       rust.enable = true;
       tailwind.enable = true;
       css = {
