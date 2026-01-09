@@ -39,6 +39,7 @@
       services.easyeffects
       services.clipboard
       services.footserver
+      services.ghostty
       services.polkit-agent
     ];
   };

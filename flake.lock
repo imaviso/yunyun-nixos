@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767882109,
-        "narHash": "sha256-KofxtA8Br4E5e2jDLyjjmye9R7dBjydjE5/Nsxupsjw=",
+        "lastModified": 1767921291,
+        "narHash": "sha256-1sKyjXdltxXknNXZjbzkr7taWarDPgymF2Whu3XmPdE=",
         "owner": "imaviso",
         "repo": "cli",
-        "rev": "d9c1b66cfefb583685accebdf24606d5945b1eb2",
+        "rev": "6d17768083ed05af0b259e976f872f851cf6e9c9",
         "type": "github"
       },
       "original": {

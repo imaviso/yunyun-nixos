@@ -49,6 +49,7 @@
     clipboard = ../../home/services/clipboard.nix;
     easyeffects = ../../home/services/easyeffects;
     footserver = ../../home/services/footserver.nix;
+    ghostty = ../../home/services/ghostty.nix;
     kanshi = ../../home/services/kanshi.nix;
     polkit-agent = ../../home/services/polkit-agent.nix;
     quickshell = ../../home/services/quickshell.nix;
