@@ -29,6 +29,36 @@
         showBattery = true;
         showAudio = true;
       };
+      general = {
+        apps = {
+          "terminal" = [settings.apps.terminal];
+          "explorer" = [settings.apps.fileManager];
+          "playback" = [settings.apps.playback];
+        };
+        idle = {
+          lockBeforeSleep = true;
+          inhibitWhenAudio = true;
+          timeouts = [
+            {
+              timeout = 300;
+              idleAction = "lock";
+            }
+            {
+              timeout = 600;
+              idleAction = "dpms off";
+              returnAction = "dpms on";
+            }
+            {
+              timeout = 1200;
+              idleAction = ["systemctl" "suspend"];
+            }
+          ];
+        };
+      };
+      services = {
+        weatherLocation = "Cebu";
+        useFahrenheit = false;
+      };
       paths.wallpaperDir = "~/${settings.paths.wallpapers}";
     };
     cli = {

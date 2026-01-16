@@ -28,6 +28,10 @@
     eza
     dust
     fzf
+    rbw
+    rofi-rbw
+    pinentry-all
+    wtype
 
     # Development
     jujutsu
@@ -36,7 +40,7 @@
 
     # System info
     fastfetch
-    microfetch
+    inputs.machinereport.packages.${pkgs.stdenv.hostPlatform.system}.default
     vulkan-tools
     libva-utils
     mediainfo

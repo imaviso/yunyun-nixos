@@ -43,7 +43,7 @@
       "kvm-amd"
       "ntsync"
       "btintel"
-      # "v4l2loopback"
+      "v4l2loopback"
     ];
 
     kernelParams = ["amdgpu.ppfeaturemask=0xffffffff"];
@@ -53,12 +53,12 @@
       "btrfs"
       "ntfs"
     ];
-    # extraModulePackages = with config.boot.kernelPackages; [
-    #   v4l2loopback
-    # ];
-    # extraModprobeConfig = ''
-    #   options v4l2loopback exclusive_caps=1 card_label="Virtual Webcam"
-    # '';
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
+    extraModprobeConfig = ''
+      options v4l2loopback exclusive_caps=1 card_label="Virtual Webcam"
+    '';
 
     kernel.sysctl = {
       # The Magic SysRq key is a key combo that allows users connected to the

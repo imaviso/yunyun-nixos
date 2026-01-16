@@ -11,6 +11,7 @@
       vo = "gpu-next";
       gpu-api = "auto";
       hwdec = "auto-safe";
+      target-colorspace-hint = "no";
 
       profile = "high-quality";
       scale = "ewa_lanczossharp";

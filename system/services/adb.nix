@@ -1,7 +1,8 @@
 {pkgs, ...}: {
-  programs.adb.enable = true;
-
-  environment.systemPackages = [
-    pkgs.universal-android-debloater
+  environment.systemPackages = with pkgs; [
+    universal-android-debloater
+    android-tools
+    scrcpy
+    v4l-utils
   ];
 }

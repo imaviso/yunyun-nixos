@@ -66,6 +66,7 @@
         fileManagerTUI = "yazi";
         browser = "firefox";
         editor = "nvim";
+        playback = "mpv";
       };
 
       # Window manager layout settings

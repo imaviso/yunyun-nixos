@@ -27,6 +27,7 @@
     handbrake
     losslesscut-bin
     mkvtoolnix
+    mpv-handler
 
     # Audio
     pavucontrol
@@ -44,5 +45,6 @@
 
     # Custom packages
     inputs.slothsonic.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.subsonic-tui.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

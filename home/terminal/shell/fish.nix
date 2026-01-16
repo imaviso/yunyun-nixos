@@ -1,7 +1,7 @@
 {
   programs.fish = {
     enable = true;
-    interactiveShellInit = "microfetch";
+    interactiveShellInit = "machinereport";
     shellAliases = {
       ls = "eza";
       l = "eza -l";

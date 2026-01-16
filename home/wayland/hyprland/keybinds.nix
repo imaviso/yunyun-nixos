@@ -30,6 +30,7 @@
 
       # clipboard and emoji picker
       "Super, C, exec, pkill fuzzel || caelestia clipboard"
+      "SuperShift, C, exec, pkill fuzzel || rofi-rbw"
       "SuperAlt, C, exec, pkill fuzzel || caelestia clipboard -d"
       "Super, Period, exec, pkill fuzzel || caelestia emoji -p"
 

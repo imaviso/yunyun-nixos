@@ -51,6 +51,10 @@
 
     slothsonic.url = "github:imaviso/slothsonic";
 
+    subsonic-tui.url = "github:imaviso/subsonic-tui";
+
+    machinereport.url = "github:imaviso/machinereport";
+
     google-sans.url = "github:imaviso/google-sans-flake";
 
     betterfox.url = "github:HeitorAugustoLN/betterfox-nix";
