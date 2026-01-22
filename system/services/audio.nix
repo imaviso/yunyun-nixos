@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   # Enable sound with pipewire.
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -30,11 +31,11 @@
           "default.clock.min-quantum" = 256;
           "default.clock.max-quantum" = 512;
         };
+      };
 
-        "93-resampling" = {
-          "stream.properties" = {
-            "resampling.quality" = 10;
-          };
+      "93-resampling" = {
+        "stream.properties" = {
+          "resampling.quality" = 10;
         };
       };
     };
