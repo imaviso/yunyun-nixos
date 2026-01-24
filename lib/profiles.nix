@@ -33,6 +33,7 @@
       git
       terminal.all
       programs.mpv
+      programs.qt
       programs.betterfox
       wayland.hyprland
       services.caelestia
@@ -71,6 +72,7 @@
       git
       terminal.all
       programs.mpv
+      programs.qt
       programs.betterfox
       wayland.hyprland
       services.caelestia

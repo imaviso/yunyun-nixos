@@ -44,6 +44,5 @@
     vulkan-tools
     libva-utils
     mediainfo
-    jamesdsp
   ];
 }

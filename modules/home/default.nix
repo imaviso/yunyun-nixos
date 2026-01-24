@@ -31,6 +31,7 @@
   programs = {
     all = ../../home/programs;
     anyrun = ../../home/programs/anyrun;
+    qt = ../../home/programs/qt.nix;
     mpv = ../../home/programs/mpv.nix;
     betterfox = ../../home/programs/firefox.nix;
   };
