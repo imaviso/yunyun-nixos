@@ -16,6 +16,11 @@ in {
     enable = true;
     settings = {
       vim = {
+        options = {
+          tabstop = 2;
+          shiftwidth = 2;
+          expandtab = true;
+        };
         clipboard = {
           enable = true;
           registers = "unnamedplus";
@@ -25,6 +30,7 @@ in {
         };
         visuals = {
           indent-blankline.enable = true;
+          nvim-web-devicons.enable = true;
         };
         notes.todo-comments.enable = true;
         lsp = {
@@ -33,26 +39,40 @@ in {
           inlayHints.enable = true;
           lspconfig.enable = true;
           trouble.enable = true;
+          lspsaga.enable = false; # Disable lspsaga to avoid conflicts with lspsaga/noice/notify
         };
+
+        # LazyVim Replication
+        formatter.conform-nvim.enable = true;
+        dashboard.dashboard-nvim.enable = true;
+        statusline.lualine.enable = true;
+        tabline.nvimBufferline = {
+          enable = true;
+          setupOpts.options.numbers = "none";
+        };
+        filetree.neo-tree.enable = true;
+        fzf-lua.enable = true;
+        binds.whichKey.enable = true;
+        autocomplete.blink-cmp.enable = true;
+        autocomplete.blink-cmp.friendly-snippets.enable = true;
+        notify.nvim-notify.enable = true;
+        ui.noice.enable = true;
+        git.gitsigns.enable = true;
+        treesitter.context.enable = true;
+        utility.motion.flash-nvim.enable = true;
+        terminal.toggleterm = {
+          enable = true;
+          lazygit.enable = true;
+        };
+        session.nvim-session-manager.enable = true;
+
         mini = {
           ai.enable = true;
           basics.enable = true;
           bracketed.enable = true;
           bufremove.enable = true;
-          clue.enable = true;
           icons.enable = true;
-          files.enable = true;
-          pick.enable = true;
-          notify.enable = true;
-          snippets.enable = true;
           surround.enable = true;
-          starter.enable = true;
-          statusline.enable = true;
-          tabline.enable = true;
-
-          completion = {
-            enable = true;
-          };
 
           pairs = {
             enable = true;

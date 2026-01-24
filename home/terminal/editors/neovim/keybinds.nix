@@ -13,12 +13,28 @@ in {
     enable = true;
     settings = {
       vim.keymaps = [
-        (mkKeymap "n" "<leader>e" ":lua MiniFiles.open()<CR>" {})
-        (mkKeymap "n" "<leader>f" ":Pick files<CR>" {})
-        (mkKeymap "n" "<leader>b" ":Pick buffers<CR>" {})
-        (mkKeymap "n" "<leader>/" ":Pick grep_live<CR>" {})
+        (mkKeymap "n" "<leader>e" ":Neotree toggle<CR>" {desc = "Explorer";})
+        (mkKeymap "n" "<leader>f" ":FzfLua files<CR>" {desc = "Find Files";})
+        (mkKeymap "n" "<leader>b" ":FzfLua buffers<CR>" {desc = "Buffers";})
+        (mkKeymap "n" "<leader>/" ":FzfLua live_grep<CR>" {desc = "Grep";})
 
-        (mkKeymap "n" "<leader>dd" ":lua MiniBufremove.delete()<CR>" {})
+        (mkKeymap "n" "<leader>dd" ":lua MiniBufremove.delete()<CR>" {desc = "Close Buffer";})
+
+        (mkKeymap "n" "<leader>cf" ":lua require('conform').format({ lsp_fallback = true })<CR>" {desc = "Format";})
+
+        (mkKeymap "n" "gd" ":FzfLua lsp_definitions<CR>" {desc = "Goto Definition";})
+        (mkKeymap "n" "gr" ":FzfLua lsp_references<CR>" {desc = "Goto References";})
+        (mkKeymap "n" "gI" ":FzfLua lsp_implementations<CR>" {desc = "Goto Implementation";})
+        (mkKeymap "n" "gy" ":FzfLua lsp_typedefs<CR>" {desc = "Goto Type Definition";})
+        (mkKeymap "n" "<leader>cr" ":lua vim.lsp.buf.rename()<CR>" {desc = "Rename";})
+        (mkKeymap "n" "<leader>ca" ":FzfLua lsp_code_actions<CR>" {desc = "Code Action";})
+        (mkKeymap "n" "K" ":lua vim.lsp.buf.hover()<CR>" {desc = "Hover";})
+        (mkKeymap "n" "[d" ":lua vim.diagnostic.goto_prev()<CR>" {desc = "Prev Diagnostic";})
+        (mkKeymap "n" "]d" ":lua vim.diagnostic.goto_next()<CR>" {desc = "Next Diagnostic";})
+        (mkKeymap "n" "<leader>gg" ":LazyGit<CR>" {desc = "LazyGit";})
+        (mkKeymap "n" "<leader>ft" ":ToggleTerm direction=float<CR>" {desc = "Toggle Terminal";})
+        (mkKeymap "t" "<leader>ft" "<C-\\><C-n>:ToggleTerm<CR>" {desc = "Toggle Terminal";})
+
         (mkKeymap "n" "<S-h>" ":bprevious<CR>" {})
         (mkKeymap "n" "<S-l>" ":bnext<CR>" {})
         (mkKeymap "n" "[b" ":bprevious<CR>" {})
