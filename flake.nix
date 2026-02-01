@@ -76,8 +76,14 @@
     pkgs = nixpkgs.legacyPackages.${system};
 
     # Import module registries
-    nixosModules = import ./modules/nixos;
-    homeModules = import ./modules/home;
+    nixosModules = import ./modules/nixos {
+      inherit lib;
+      myLib = import ./lib/helpers.nix {inherit lib;};
+    };
+    homeModules = import ./modules/home {
+      inherit lib;
+      myLib = import ./lib/helpers.nix {inherit lib;};
+    };
 
     # Import mkHost helper
     inherit (import ./lib/mkHost.nix {inherit inputs lib;}) mkHost;

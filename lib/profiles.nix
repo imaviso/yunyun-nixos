@@ -6,9 +6,14 @@
 }: {
   desktop = {
     nixos = with nixosModules; [
-      config.all
-      nix
-      packages.all
+      config.default
+      nix.default
+      packages.android
+      packages.core
+      packages.desktop
+      packages.development
+      packages.misc
+      packages.networking
       services.adb
       services.audio
       services.lact
@@ -17,7 +22,8 @@
       services.ssh
       services.sunshine
       services.tailscale
-      programs.terminal
+      programs.terminal.fish
+      programs.terminal.zoxide
       programs.gaming
       programs.chromium
       programs.localsend
@@ -28,16 +34,16 @@
     home = with homeModules; [
       fontconfig
       cursor
-      theme
+      theme.default
       xdg
       git
-      terminal.all
+      terminal.default
       programs.mpv
       programs.qt
-      programs.betterfox
-      wayland.hyprland
+      programs.firefox
+      wayland.hyprland.default
       services.caelestia
-      services.easyeffects
+      services.easyeffects.default
       services.clipboard
       services.footserver
       # services.ghostty
@@ -50,7 +56,7 @@
       config.xdg
       config.i18n
       config.fonts
-      nix
+      nix.default
       packages.core
       packages.development
       services.scx
@@ -59,7 +65,8 @@
       services.ssh
       services.tailscale
       services.docker
-      programs.terminal
+      programs.terminal.fish
+      programs.terminal.zoxide
       programs.thunar
       programs.chromium
       wayland.hyprland
@@ -67,32 +74,18 @@
     home = with homeModules; [
       fontconfig
       cursor
-      theme
+      theme.default
       xdg
       git
-      terminal.all
+      terminal.default
       programs.mpv
       programs.qt
-      programs.betterfox
-      wayland.hyprland
+      programs.firefox
+      wayland.hyprland.default
       services.caelestia
       services.footserver
       services.clipboard
       services.polkit-agent
-    ];
-  };
-
-  server = {
-    nixos = with nixosModules; [
-      config
-      nix
-      packages.core
-      services.ssh
-      services.docker
-    ];
-    home = with homeModules; [
-      terminal.all
-      git
     ];
   };
 }
