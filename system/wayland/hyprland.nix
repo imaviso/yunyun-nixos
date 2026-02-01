@@ -1,9 +1,4 @@
-{
-  pkgs,
-  username,
-  settings,
-  ...
-}: {
+{pkgs, ...}: {
   # programs.hyprlock.enable = true;
   # services.hypridle.enable = true;
   programs.hyprland = {
@@ -63,12 +58,6 @@
   };
 
   programs.dconf.enable = true;
-
-  qt = {
-    enable = true;
-    platformTheme = settings.appearance.qtPlatformTheme;
-    style = settings.appearance.qtStyle;
-  };
 
   xdg.portal = {
     enable = true;

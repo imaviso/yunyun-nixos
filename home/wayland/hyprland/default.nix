@@ -155,6 +155,7 @@ in {
         animate_manual_resizes = false;
         animate_mouse_windowdragging = false;
         disable_hyprland_logo = true;
+        middle_click_paste = false;
         allow_session_lock_restore = true;
         initial_workspace_tracking = 2;
         font_family = settings.fonts.sans;

@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     "$kbSession" = "ControlSuper, Delete";
     "$kbClearNotifs" = "ControlSuper, Escape";
-    "$kbShowPanels" = "Super, Tab";
+    "$kbShowPanels" = "SuperAlt, Tab";
     "$kbLock" = "Super, Escape";
     "$kbRestoreLock" = "ControlSuperShift, Escape";
 

@@ -49,7 +49,7 @@
 
     berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
 
-    slothsonic.url = "github:imaviso/slothsonic";
+    solidsonic.url = "path:/home/yunyun/Dev/solidsonic";
 
     subsonic-tui.url = "github:imaviso/subsonic-tui";
 

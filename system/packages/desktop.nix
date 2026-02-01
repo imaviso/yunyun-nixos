@@ -24,8 +24,8 @@
         obs-pipewire-audio-capture
       ];
     })
-    handbrake
-    losslesscut-bin
+    # handbrake
+    # losslesscut-bin
     mkvtoolnix
     mpv-handler
 
@@ -44,7 +44,7 @@
     authenticator
 
     # Custom packages
-    inputs.slothsonic.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.solidsonic.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.subsonic-tui.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

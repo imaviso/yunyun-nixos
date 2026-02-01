@@ -64,7 +64,6 @@ in {
           enable = true;
           lazygit.enable = true;
         };
-        session.nvim-session-manager.enable = true;
 
         mini = {
           ai.enable = true;

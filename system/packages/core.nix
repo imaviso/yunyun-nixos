@@ -14,6 +14,8 @@
     git
 
     # System tools
+    psmisc
+    libnotify
     btop
     lsof
     nmap

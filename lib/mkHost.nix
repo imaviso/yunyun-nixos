@@ -40,8 +40,8 @@
           size = 24;
         };
         gtkTheme = "adw-gtk3-dark";
-        qtStyle = "adwaita-dark";
-        qtPlatformTheme = "gnome";
+        qtStyle = "breeze";
+        qtPlatformTheme = "kde";
         iconTheme = "Papirus-Dark";
         preferDark = true;
       };
@@ -59,10 +59,10 @@
 
       # Default applications
       apps = {
-        terminal = "ghostty";
-        terminalAlt = "footclient";
+        terminal = "footclient";
+        terminalAlt = "ghostty";
         terminalServer = "foot";
-        fileManager = "nautilus";
+        fileManager = "thunar";
         fileManagerTUI = "yazi";
         browser = "firefox";
         editor = "nvim";
