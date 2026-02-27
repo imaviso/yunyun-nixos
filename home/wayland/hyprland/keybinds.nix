@@ -1,13 +1,5 @@
 {settings, ...}: {
   wayland.windowManager.hyprland.settings = {
-    "$kbSession" = "ControlSuper, Delete";
-    "$kbClearNotifs" = "ControlSuper, Escape";
-    "$kbShowPanels" = "SuperAlt, Tab";
-    "$kbLock" = "Super, Escape";
-    "$kbRestoreLock" = "ControlSuperShift, Escape";
-
-    exec = ["hyprctl dispatch submap global"];
-
     bind = [
       ", KP_1, sendshortcut, , Left"
       ", KP_2, sendshortcut, , Down"
@@ -24,15 +16,16 @@
       # utility
       "Super, Return, exec, app2unit -- ${settings.apps.terminal}"
       "Super, Space, exec, app2unit -- ${settings.apps.terminalAlt}"
-      "Super, E, exec, app2unit -- ${settings.apps.terminalAlt} -e ${settings.apps.fileManagerTUI}"
+      "Super, E, exec, app2unit -- ${settings.apps.terminal} -e ${settings.apps.fileManagerTUI}"
       "Super, P, exec, hyprpicker -a"
       "SuperShift, E, exec, app2unit -- ${settings.apps.fileManager}"
 
       # clipboard and emoji picker
-      "Super, C, exec, pkill fuzzel || caelestia clipboard"
+      "SuperShift, D, exec, pkill fuzzel || fuzzel"
+      "Super, C, exec, dms ipc call clipboard toggle"
       "SuperShift, C, exec, pkill fuzzel || rofi-rbw"
-      "SuperAlt, C, exec, pkill fuzzel || caelestia clipboard -d"
-      "Super, Period, exec, pkill fuzzel || caelestia emoji -p"
+      # "SuperAlt, C, exec, pkill fuzzel || dms ipc call clipboard -d"
+      # "Super, Period, exec, pkill fuzzel || dms ipc call emoji -p"
 
       # move focus
       "Super, left, movefocus, l"
@@ -146,40 +139,32 @@
       "Super SHIFT ALT, bracketright, movecurrentworkspacetomonitor, r"
 
       # shell keybinds (global submap)
-      "$kbSession, global, caelestia:session"
-      "$kbShowPanels, global, caelestia:showall"
-      "$kbLock, global, caelestia:lock"
+      # "$kbSession, global, dms ipc call:session"
+      # "$kbShowPanels, global, dms ipc call:showall"
+      "SuperShift, L, exec, dms ipc call lock lock"
 
       # launcher
-      "Super, D, global, caelestia:launcher"
-    ];
+      "Super, D, exec, dms ipc call spotlight toggle"
 
-    bindm = [
-      "Super, mouse:272, movewindow"
-      "Super, mouse:273, resizewindow"
-    ];
-
-    bindl = [
-      # clear notifications (global submap)
-      "$kbClearNotifs, global, caelestia:clearNotifs"
+      # "$kbClearNotifs, dms ipc call notifications clearAll"
 
       # restore lock
-      "$kbRestoreLock, exec, caelestia shell -d"
-      "$kbRestoreLock, global, caelestia:lock"
+      # "$kbRestoreLock, exec, dms ipc call shell -d"
+      # "$kbRestoreLock, global, dms ipc call:lock"
 
       # brightness (global submap)
-      ", XF86MonBrightnessUp, global, caelestia:brightnessUp"
-      ", XF86MonBrightnessDown, global, caelestia:brightnessDown"
+      ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 5"
+      ", XF86MonBrightnessDown,exec, dms ipc call brightness decrement 5"
 
       # media controls (global submap)
-      "Ctrl+Super, Space, global, caelestia:mediaToggle"
-      ", XF86AudioPlay, global, caelestia:mediaToggle"
-      ", XF86AudioPause, global, caelestia:mediaToggle"
-      "Ctrl+Super, Equal, global, caelestia:mediaNext"
-      ", XF86AudioNext, global, caelestia:mediaNext"
-      "Ctrl+Super, Minus, global, caelestia:mediaPrev"
-      ", XF86AudioPrev, global, caelestia:mediaPrev"
-      ", XF86AudioStop, global, caelestia:mediaStop"
+      "Ctrl+Super, Space,exec, dms ipc call mpris playPause"
+      ", XF86AudioPlay,exec, dms ipc call mpris playPause"
+      ", XF86AudioPause,exec, dms ipc call mpris pause"
+      "Ctrl+Super, Equal,exec, dms ipc call mpris next"
+      ", XF86AudioNext,exec, dms ipc call mpris next"
+      "Ctrl+Super, Minus,exec, dms ipc call mpris previous"
+      ", XF86AudioPrev,exec, dms ipc call mpris previous"
+      ", XF86AudioStop,exec, dms ipc call mpris stop"
 
       # volume
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -189,12 +174,15 @@
       ''Ctrl+Shift+Alt, V, exec, sleep 0.5s && ydotool type -d 1 "$(cliphist list | head -1 | cliphist decode)"''
     ];
 
+    bindm = [
+      "Super, mouse:272, movewindow"
+      "Super, mouse:273, resizewindow"
+    ];
+
     bindle = [
       # volume
       ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
       ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
     ];
-
-    submap = "global";
   };
 }

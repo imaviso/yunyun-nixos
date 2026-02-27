@@ -64,7 +64,7 @@
         terminalServer = "foot";
         fileManager = "thunar";
         fileManagerTUI = "yazi";
-        browser = "firefox";
+        browser = "chromium";
         editor = "nvim";
         playback = "mpv";
       };
@@ -74,7 +74,7 @@
         gapsInner = 5;
         gapsOuter = 10;
         borderSize = 1;
-        cornerRadius = 10;
+        cornerRadius = 5;
       };
 
       # Animation settings
@@ -105,8 +105,8 @@
 
       # User/git settings
       user = {
-        name = "Momoyaan";
-        email = "imaviso@protonmail.com";
+        name = "imaviso";
+        email = "mail@imaviso.com";
       };
 
       # Color scheme

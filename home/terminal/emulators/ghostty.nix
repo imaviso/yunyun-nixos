@@ -8,7 +8,7 @@
 in {
   programs.ghostty = {
     enable = true;
-    package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    # package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableFishIntegration = true;
     settings = {
       font-family = settings.fonts.terminal;
@@ -18,7 +18,7 @@ in {
       window-decoration = true;
       window-padding-x = 10;
       window-padding-y = 10;
-      theme = "caelestia";
+      theme = "dankcolors";
       confirm-close-surface = false;
     };
     themes = {

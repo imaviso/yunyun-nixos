@@ -39,6 +39,9 @@
     jujutsu
     lazygit
     bun
+    nodejs
+
+    inputs.run0-sudo-shim.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # System info
     fastfetch

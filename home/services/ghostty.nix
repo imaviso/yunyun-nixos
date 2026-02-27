@@ -13,7 +13,8 @@
     Service = {
       Type = "simple";
       ExecStart = "${
-        inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+        # inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+        pkgs.ghostty
       }/bin/ghostty --gtk-single-instance=true --initial-window=false";
       Restart = "on-failure";
       RestartSec = 1;

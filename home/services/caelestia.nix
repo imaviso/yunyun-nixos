@@ -48,10 +48,10 @@
               idleAction = "dpms off";
               returnAction = "dpms on";
             }
-            {
-              timeout = 1200;
-              idleAction = ["systemctl" "suspend"];
-            }
+            # {
+            #   timeout = 1200;
+            #   idleAction = ["systemctl" "suspend"];
+            # }
           ];
         };
       };

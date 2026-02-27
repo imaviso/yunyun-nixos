@@ -34,6 +34,7 @@
 
     # Communication
     telegram-desktop
+    teams-for-linux
 
     # Utilities
     img2pdf

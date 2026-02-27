@@ -26,6 +26,11 @@
     tuigreet
   ];
 
+  # programs.dank-material-shell.greeter = {
+  #   enable = true;
+  #   compositor.name = "hyprland";
+  # };
+
   services.greetd = {
     enable = true;
     package = pkgs.greetd;

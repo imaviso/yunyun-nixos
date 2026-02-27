@@ -19,6 +19,7 @@
     faugus-launcher
     winetricks
     protonup-qt
+    heroic
   ];
 
   programs.steam = {

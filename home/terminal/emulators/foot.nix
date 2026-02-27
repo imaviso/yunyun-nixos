@@ -5,7 +5,7 @@ in {
     enable = true;
     settings = {
       main = {
-        include = "~/.config/foot/themes/caelestia.ini";
+        include = "~/.config/foot/dank-colors.ini";
         term = "xterm-256color";
         title = "foot";
         letter-spacing = "0";

@@ -39,15 +39,16 @@
       git
       terminal.default
       programs.mpv
-      programs.qt
+      # programs.qt
       programs.firefox
       wayland.hyprland.default
-      services.caelestia
+      # services.caelestia
+      services.dms
       services.easyeffects.default
-      services.clipboard
+      # services.clipboard
       services.footserver
       # services.ghostty
-      services.polkit-agent
+      # services.polkit-agent
     ];
   };
 

@@ -1,11 +1,12 @@
 {
   config,
   pkgs,
+  settings,
   ...
 }: let
-  browser = ["firefox"];
+  browser = [settings.apps.browser];
   imageViewer = ["swappy"];
-  mediaPlayer = ["mpv"];
+  mediaPlayer = [settings.apps.playback];
   archive = ["org.gnome.FileRoller"];
 
   xdgAssociations = type: program: list:
