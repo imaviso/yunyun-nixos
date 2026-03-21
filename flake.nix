@@ -27,6 +27,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    fff-nvim = {
+      url = "github:dmtrKovalenko/fff.nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.rust-overlay.follows = "rust-overlay";
+    };
+
     caelestia-cli = {
       url = "github:imaviso/cli";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,8 +69,6 @@
     dw-proton.url = "github:imaviso/dwproton-flake";
 
     berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
-
-    solidsonic.url = "path:/home/yunyun/Dev/solidsonic";
 
     subsonic-tui.url = "github:imaviso/subsonic-tui";
 

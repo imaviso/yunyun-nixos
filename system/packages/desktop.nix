@@ -45,7 +45,6 @@
     authenticator
 
     # Custom packages
-    inputs.solidsonic.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.subsonic-tui.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
