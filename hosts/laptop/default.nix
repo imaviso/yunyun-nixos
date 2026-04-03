@@ -35,6 +35,7 @@
   # Laptop-specific settings
   services.power-profiles-daemon.enable = true;
   services.thermald.enable = true;
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
 
   # TLP for battery optimization (alternative to power-profiles-daemon)
   # services.tlp.enable = true;
