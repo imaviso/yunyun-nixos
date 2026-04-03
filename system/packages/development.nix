@@ -4,5 +4,7 @@
     antigravity
     zed-editor
     dbeaver-bin
+    zellij
+    opencode
   ];
 }

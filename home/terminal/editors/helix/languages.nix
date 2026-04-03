@@ -39,7 +39,7 @@ in {
       {
         name = "css";
         formatter = {
-          command = lib.getExe pkgs.nodePackages.prettier;
+          command = lib.getExe pkgs.prettier;
           args = [
             "--parser"
             "css"
@@ -66,7 +66,7 @@ in {
       {
         name = "html";
         formatter = {
-          command = lib.getExe pkgs.nodePackages.prettier;
+          command = lib.getExe pkgs.prettier;
           args = [
             "--parser"
             "html"
@@ -118,7 +118,7 @@ in {
       {
         name = "scss";
         formatter = {
-          command = lib.getExe pkgs.nodePackages.prettier;
+          command = lib.getExe pkgs.prettier;
           args = [
             "--parser"
             "scss"
@@ -244,7 +244,7 @@ in {
       };
 
       typescript-language-server = {
-        command = lib.getExe pkgs.nodePackages.typescript-language-server;
+        command = lib.getExe pkgs.typescript-language-server;
         args = ["--stdio"];
         config = {
           typescript-language-server.source = {
@@ -265,7 +265,7 @@ in {
       };
 
       vscode-css-language-server = {
-        command = "${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-css-language-server";
+        command = "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server";
         args = ["--stdio"];
         config = {
           provideFormatter = true;

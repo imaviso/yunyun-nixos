@@ -42,7 +42,6 @@
       # programs.qt
       programs.firefox
       wayland.hyprland.default
-      # services.caelestia
       services.dms
       services.easyeffects.default
       # services.clipboard
@@ -60,6 +59,7 @@
       nix.default
       packages.core
       packages.development
+      services.adguardhome
       services.scx
       services.audio
       services.keyboard
@@ -83,9 +83,9 @@
       programs.qt
       programs.firefox
       wayland.hyprland.default
-      services.caelestia
+      services.dms
       services.footserver
-      services.clipboard
+      # services.clipboard
       services.polkit-agent
     ];
   };

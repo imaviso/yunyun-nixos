@@ -41,7 +41,7 @@
         };
         gtkTheme = "adw-gtk3-dark";
         qtStyle = "breeze";
-        qtPlatformTheme = "kde";
+        qtPlatformTheme = "gtk3";
         iconTheme = "Papirus-Dark";
         preferDark = true;
       };
