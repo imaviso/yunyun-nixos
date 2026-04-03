@@ -27,25 +27,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    fff-nvim = {
-      url = "github:dmtrKovalenko/fff.nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-overlay.follows = "rust-overlay";
-    };
-
-    caelestia-cli = {
-      url = "github:imaviso/cli";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        caelestia-cli.follows = "caelestia-cli";
-      };
-    };
-
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";

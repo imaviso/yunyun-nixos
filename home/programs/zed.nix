@@ -7,7 +7,6 @@
       "astro"
       "java"
       "docker-compose"
-      "biome"
       "opencode"
       "typst"
     ];

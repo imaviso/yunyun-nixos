@@ -1,31 +1,33 @@
-{...}: let
+{
+  inputs,
+  lib,
+  ...
+}: let
+  nix2Lua = inputs.nvf.lib.nvim.lua.toLuaObject;
+  inherit (inputs.nvf.lib.nvim.dag) entryBetween entryAfter;
+  inherit (lib.generators) mkLuaInline;
+  setup = module: table: "require('${module}').setup(${nix2Lua table})";
   mkKeymap = mode: key: action: opts: opts // {inherit mode key action;};
-  mkLuaKeymap = mode: key: action: opts:
-    opts
-    // {
-      inherit mode key action;
-      lua = true;
-    };
 in {
   programs.nvf = {
     enable = true;
     settings = {
       vim.keymaps = [
         (mkKeymap "n" "<leader>e" ":Neotree toggle<CR>" {desc = "Explorer";})
-        (mkKeymap "n" "<leader>f" ":FFFFind<CR>" {desc = "Find Files";})
-        (mkKeymap "n" "<leader>b" ":BufferLinePick<CR>" {desc = "Pick Buffer";})
-        (mkKeymap "n" "<leader>/" ":FFFGrep<CR>" {desc = "Grep";})
+        (mkKeymap "n" "<leader>f" ":FzfLua files<CR>" {desc = "Find Files";})
+        (mkKeymap "n" "<leader>b" ":FzfLua buffers<CR>" {desc = "Buffers";})
+        (mkKeymap "n" "<leader>/" ":FzfLua live_grep<CR>" {desc = "Grep";})
 
         (mkKeymap "n" "<leader>dd" ":lua MiniBufremove.delete()<CR>" {desc = "Close Buffer";})
 
         (mkKeymap "n" "<leader>cf" ":lua require('conform').format({ lsp_fallback = true })<CR>" {desc = "Format";})
 
-        (mkLuaKeymap "n" "gd" "function() vim.lsp.buf.definition() end" {desc = "Goto Definition";})
-        (mkKeymap "n" "gr" "<cmd>Trouble toggle lsp_references<CR>" {desc = "Goto References";})
-        (mkLuaKeymap "n" "gI" "function() vim.lsp.buf.implementation() end" {desc = "Goto Implementation";})
-        (mkLuaKeymap "n" "gy" "function() vim.lsp.buf.type_definition() end" {desc = "Goto Type Definition";})
+        (mkKeymap "n" "gd" ":FzfLua lsp_definitions<CR>" {desc = "Goto Definition";})
+        (mkKeymap "n" "gr" ":FzfLua lsp_references<CR>" {desc = "Goto References";})
+        (mkKeymap "n" "gI" ":FzfLua lsp_implementations<CR>" {desc = "Goto Implementation";})
+        (mkKeymap "n" "gy" ":FzfLua lsp_typedefs<CR>" {desc = "Goto Type Definition";})
         (mkKeymap "n" "<leader>cr" ":lua vim.lsp.buf.rename()<CR>" {desc = "Rename";})
-        (mkLuaKeymap "n" "<leader>ca" "function() vim.lsp.buf.code_action() end" {desc = "Code Action";})
+        (mkKeymap "n" "<leader>ca" ":FzfLua lsp_code_actions<CR>" {desc = "Code Action";})
         (mkKeymap "n" "K" ":lua vim.lsp.buf.hover()<CR>" {desc = "Hover";})
         (mkKeymap "n" "[d" ":lua vim.diagnostic.goto_prev()<CR>" {desc = "Prev Diagnostic";})
         (mkKeymap "n" "]d" ":lua vim.diagnostic.goto_next()<CR>" {desc = "Next Diagnostic";})

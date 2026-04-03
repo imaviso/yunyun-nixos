@@ -107,7 +107,6 @@ in {
     ignores = [
       "*~"
       "*.swp"
-      "*result*"
       ".direnv"
       "node_modules"
     ];
