@@ -46,7 +46,7 @@
       "v4l2loopback"
     ];
 
-    kernelParams = ["amdgpu.ppfeaturemask=0xffffffff"];
+    kernelParams = ["amdgpu.ppfeaturemask=0xffffffff" "preempt=full"];
     supportedFilesystems = [
       "nfs"
       "ext4"

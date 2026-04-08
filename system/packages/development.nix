@@ -6,5 +6,6 @@
     dbeaver-bin
     zellij
     opencode
+    pi-coding-agent
   ];
 }
