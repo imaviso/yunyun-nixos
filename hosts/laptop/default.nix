@@ -33,12 +33,22 @@
   };
 
   # Laptop-specific settings
-  services.power-profiles-daemon.enable = true;
+  # services.power-profiles-daemon.enable = true;
   services.thermald.enable = true;
   services.logind.settings.Login.HandleLidSwitch = "ignore";
+  services.scx = {
+    enable = true;
+    scheduler = "scx_rusty";
+  };
 
   # TLP for battery optimization (alternative to power-profiles-daemon)
-  # services.tlp.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 70;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     wget
@@ -58,11 +68,16 @@
     brave
   ];
 
-  networking.hostName = hostname;
-  networking.networkmanager.enable = true;
-  networking.firewall.extraCommands = ''
-    iptables -A INPUT -s 192.168.254.0/24 -j ACCEPT
-  '';
+  networking = {
+    hostName = hostname;
+    networkmanager = {
+      enable = true;
+      dns = "none";
+    };
+    firewall.extraCommands = ''
+      iptables -A INPUT -s 192.168.254.0/24 -j ACCEPT
+    '';
+  };
 
   system.stateVersion = "24.05";
 }

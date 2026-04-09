@@ -53,6 +53,10 @@
 
     subsonic-tui.url = "github:imaviso/subsonic-tui";
 
+    suboxide.url = "github:imaviso/suboxide";
+
+    bakarr.url = "github:imaviso/bakarr";
+
     machinereport.url = "github:imaviso/machinereport";
 
     google-sans.url = "github:imaviso/google-sans-flake";

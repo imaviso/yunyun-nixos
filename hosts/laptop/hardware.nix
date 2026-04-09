@@ -14,8 +14,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
+  boot.initrd.kernelModules = ["configfs" "fuse" "efi_pstore"];
+  boot.kernelModules = [
+    "kvm-intel"
+    "i915.enable_guc=2"
+    "i915.enable_fbc=1"
+    "i915.enable_psr=2"
+  ];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
@@ -27,6 +32,18 @@
     device = "/dev/disk/by-uuid/F5FA-40D9";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
+  };
+
+  fileSystems."/mnt/media" = {
+    device = "/dev/disk/by-uuid/83608ae0-18b6-4ac9-bc6d-c56a9f6974e0";
+    fsType = "ext4";
+    options = ["users" "nofail" "exec"];
+  };
+
+  fileSystems."/mnt/media2" = {
+    device = "/dev/disk/by-uuid/2816155e-0df7-4496-bce3-d1542139ad6c";
+    fsType = "ext4";
+    options = ["users" "nofail" "exec"];
   };
 
   swapDevices = [
@@ -42,5 +59,8 @@
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware = {
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    graphics.extraPackages = with pkgs; [intel-vaapi-driver intel-media-driver];
+  };
 }

@@ -60,12 +60,16 @@
       packages.core
       packages.development
       services.adguardhome
-      services.scx
+      services.bakarr
+      services.docker
       services.audio
       services.keyboard
+      # services.scx
+      services.smb
       services.ssh
+      services.suboxide
+      services.qbittorrent
       services.tailscale
-      services.docker
       programs.terminal.fish
       programs.terminal.zoxide
       programs.thunar
