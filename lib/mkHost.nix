@@ -40,8 +40,8 @@
           size = 24;
         };
         gtkTheme = "adw-gtk3-dark";
-        qtStyle = "breeze";
-        qtPlatformTheme = "gtk3";
+        # qtStyle = "adwaita-dark";
+        qtPlatformTheme = "qtct";
         iconTheme = "Papirus-Dark";
         preferDark = true;
       };

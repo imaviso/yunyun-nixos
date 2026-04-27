@@ -18,10 +18,12 @@
       services.audio
       services.lact
       services.keyboard
+      # services.keyd #labwc
       services.scx
       services.ssh
       services.sunshine
       services.tailscale
+      services.udev
       programs.terminal.fish
       programs.terminal.zoxide
       programs.gaming
@@ -29,19 +31,20 @@
       programs.localsend
       programs.thunar
       programs.nix-ld
-      wayland.hyprland
+      wayland.niri
     ];
     home = with homeModules; [
       fontconfig
       cursor
-      theme.default
+      theme.gtk
+      theme.qt
       xdg
       git
       terminal.default
       programs.mpv
-      # programs.qt
       programs.firefox
-      wayland.hyprland.default
+      wayland.niri.default
+      # services.kanshi # labwc etc
       services.dms
       services.easyeffects.default
       # services.clipboard
@@ -75,12 +78,12 @@
     home = with homeModules; [
       fontconfig
       cursor
-      theme.default
+      theme.gtk
+      theme.qt
       xdg
       git
       terminal.default
       programs.mpv
-      programs.qt
       programs.firefox
       wayland.hyprland.default
       services.dms

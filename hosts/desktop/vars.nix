@@ -14,17 +14,17 @@
       transform = 0;
       primary = true;
     }
-    {
-      name = "HDMI-A-1";
-      width = 1920;
-      height = 1080;
-      refreshRate = 144;
-      x = 1920;
-      y = -400;
-      scale = 1;
-      transform = 3; # 270 degrees rotation
-      primary = false;
-    }
+    # {
+    #   name = "HDMI-A-1";
+    #   width = 1920;
+    #   height = 1080;
+    #   refreshRate = 144;
+    #   x = 1920;
+    #   y = -400;
+    #   scale = 1;
+    #   transform = 3; # 270 degrees rotation
+    #   primary = false;
+    # }
   ];
 
   # Hardware info (used by multiple modules)
@@ -34,7 +34,7 @@
   networking = {
     nameservers = [
       "192.168.254.2"
-      "192.168.254.1"
+      "192.168.254.117"
     ];
     timeServers = [
       "time.cloudflare.com"

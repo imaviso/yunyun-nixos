@@ -1,0 +1,185 @@
+keymap.rmlvo = {
+    options = "caps:escape",
+}
+repeat-rate = { rate = 35, delay = 250 }
+
+gfx-api = "Vulkan"
+direct-scanout = true
+show-bar = false
+show-titles = true
+middle-click-paste = false
+auto-reload = false
+focus-follows-mouse = true
+
+[theme]
+bg-color = "#121413"
+bar-bg-color = "#121413"
+bar-status-text-color = "#c7c6c4"
+border-color = "#b9cbc1"
+separator-color = "#91918f"
+highlight-color = "#b9cbc1"
+attention-requested-bg-color = "#ffb4ab"
+focused-title-bg-color = "#3a4a43"
+focused-title-text-color = "#e3e2e0"
+focused-inactive-title-bg-color = "#121413"
+focused-inactive-title-text-color = "#c7c6c4"
+unfocused-title-bg-color = "#121413"
+unfocused-title-text-color = "#c7c6c4"
+captured-focused-title-bg-color = "#ffb4ab"
+captured-unfocused-title-bg-color = "#ffb4ab"
+
+[[outputs]]
+match.connector = "DP-3"
+scale = 1
+mode = { width = 1920, height = 1080, refresh-rate = 165.001 }
+vrr = { mode = "always" }
+
+[[clients]]
+name = "dms"
+match.any = [
+  { comm-regex = "quickshell" },
+  { comm-regex = "dms" },
+]
+capabilities = "all"
+
+[[inputs]]
+match.is-pointer = true
+accel-profile = "Flat"
+accel-speed = 0.0
+
+[shortcuts]
+mod4-h = "focus-left"
+mod4-j = "focus-down"
+mod4-k = "focus-up"
+mod4-l = "focus-right"
+
+mod4-shift-h = "move-left"
+mod4-shift-j = "move-down"
+mod4-shift-k = "move-up"
+mod4-shift-l = "move-right"
+
+mod4-alt-d = "split-horizontal"
+mod4-alt-v = "split-vertical"
+
+mod4-t = "toggle-split"
+mod4-g = "toggle-mono"
+mod4-f = "toggle-fullscreen"
+mod4-v = "toggle-floating"
+
+mod4-p = "focus-parent"
+mod4-alt-c = "open-control-center"
+mod4-c = { type = "exec", exec = { shell = "dms ipc call clipboard toggle" } }
+mod4-d = { type = "exec", exec = { shell = "dms ipc call spotlight toggle" } }
+# mod4-l = { type = "exec", exec = "dms ipc call lock lock" }
+mod4-shift-q = "close"
+mod4-shift-f = "toggle-floating"
+# mod4-p = { type = "exec", exec = "bemenu-run" }
+# mod4-shift-q = "quit"
+mod4-shift-r = "reload-config-toml"
+
+mod4-Return = { type = "exec", exec = "footclient" }
+mod4-space = { type = "exec", exec = "ghostty" }
+mod4-e = { type = "exec", exec = "footclient -e yazi" }
+mod4-shift-p = { type = "exec", exec = "hyprpicker -a" }
+mod4-shift-e = { type = "exec", exec = "dolphin" }
+
+Print = { type = "exec", exec = { shell = 'grim -g "$(slurp)" - | wl-copy', privileged = true } }
+mod4-s = { type = "exec", exec = { shell = 'grim -g "$(slurp)" - | wl-copy', privileged = true } }
+mod4-shift-s = { type = "exec", exec = { shell = 'grim -g "$(slurp -w $(jay-msg get-focused-window-geometry))" - | wl-copy', privileged = true } }
+mod4-alt-s = { type = "exec", exec = { shell = 'grim -o "$(slurp -o)" - | wl-copy', privileged = true } }
+ctrl-mod4-s = { type = "exec", exec = { shell = 'grim - | wl-copy', privileged = true } }
+mod4-shift-t = { type = "exec", exec = { shell = 'grim -g "$(slurp)" /tmp/ocr_image.png && tesseract /tmp/ocr_image.png - | wl-copy && rm /tmp/ocr_image.png', privileged = true } }
+
+ctrl-alt-F1 = { type = "switch-to-vt", num = 1 }
+ctrl-alt-F2 = { type = "switch-to-vt", num = 2 }
+ctrl-alt-F3 = { type = "switch-to-vt", num = 3 }
+ctrl-alt-F4 = { type = "switch-to-vt", num = 4 }
+ctrl-alt-F5 = { type = "switch-to-vt", num = 5 }
+ctrl-alt-F6 = { type = "switch-to-vt", num = 6 }
+ctrl-alt-F7 = { type = "switch-to-vt", num = 7 }
+ctrl-alt-F8 = { type = "switch-to-vt", num = 8 }
+ctrl-alt-F9 = { type = "switch-to-vt", num = 9 }
+ctrl-alt-F10 = { type = "switch-to-vt", num = 10 }
+ctrl-alt-F11 = { type = "switch-to-vt", num = 11 }
+ctrl-alt-F12 = { type = "switch-to-vt", num = 12 }
+
+mod4-1 = { type = "show-workspace", name = "1" }
+mod4-2 = { type = "show-workspace", name = "2" }
+mod4-3 = { type = "show-workspace", name = "3" }
+mod4-4 = { type = "show-workspace", name = "4" }
+mod4-5 = { type = "show-workspace", name = "5" }
+mod4-6 = { type = "show-workspace", name = "6" }
+mod4-7 = { type = "show-workspace", name = "7" }
+mod4-8 = { type = "show-workspace", name = "8" }
+mod4-9 = { type = "show-workspace", name = "9" }
+
+mod4-shift-1 = { type = "move-to-workspace", name = "1" }
+mod4-shift-2 = { type = "move-to-workspace", name = "2" }
+mod4-shift-3 = { type = "move-to-workspace", name = "3" }
+mod4-shift-4 = { type = "move-to-workspace", name = "4" }
+mod4-shift-5 = { type = "move-to-workspace", name = "5" }
+mod4-shift-6 = { type = "move-to-workspace", name = "6" }
+mod4-shift-7 = { type = "move-to-workspace", name = "7" }
+mod4-shift-8 = { type = "move-to-workspace", name = "8" }
+mod4-shift-9 = { type = "move-to-workspace", name = "9" }
+
+mod4-0 = { type = "show-workspace", name = "10" }
+mod4-shift-0 = { type = "move-to-workspace", name = "10" }
+
+mod4-w = { type = "show-workspace", name = "scratch" }
+mod4-shift-w = { type = "move-to-workspace", name = "scratch" }
+
+mod4-Tab = "focus-prev"
+mod4-shift-Tab = "focus-next"
+
+mod4-shift-c = { type = "exec", exec = { shell = "pkill fuzzel || rofi-rbw" } }
+mod4-shift-alt-l = { type = "exec", exec = { shell = "dms ipc call lock lock" } }
+ctrl-shift-alt-v = { type = "exec", exec = { shell = "sleep 0.5s && ydotool type -d 1 \"$(cliphist list | head -1 | cliphist decode)\"" } }
+
+ctrl-mod4-space = { type = "exec", exec = { shell = "dms ipc call mpris playPause" } }
+ctrl-mod4-equal = { type = "exec", exec = { shell = "dms ipc call mpris next" } }
+ctrl-mod4-minus = { type = "exec", exec = { shell = "dms ipc call mpris previous" } }
+
+[complex-shortcuts.XF86AudioRaiseVolume]
+mod-mask = ""
+action = { type = "exec", exec = ["wpctl", "set-volume", "-l", "1.0", "@DEFAULT_AUDIO_SINK@", "6%+"] }
+
+[complex-shortcuts.XF86AudioLowerVolume]
+mod-mask = ""
+action = { type = "exec", exec = ["wpctl", "set-volume", "-l", "1.0", "@DEFAULT_AUDIO_SINK@", "6%-"] }
+
+[complex-shortcuts.XF86AudioMute]
+mod-mask = ""
+action = { type = "exec", exec = ["wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle"] }
+
+[complex-shortcuts.XF86AudioMicMute]
+mod-mask = ""
+action = { type = "exec", exec = ["wpctl", "set-mute", "@DEFAULT_AUDIO_SOURCE@", "toggle"] }
+
+[complex-shortcuts.XF86MonBrightnessUp]
+mod-mask = ""
+action = { type = "exec", exec = { shell = "dms ipc call brightness increment 5" } }
+
+[complex-shortcuts.XF86MonBrightnessDown]
+mod-mask = ""
+action = { type = "exec", exec = { shell = "dms ipc call brightness decrement 5" } }
+
+[complex-shortcuts.XF86AudioPlay]
+mod-mask = ""
+action = { type = "exec", exec = { shell = "dms ipc call mpris playPause" } }
+
+[complex-shortcuts.XF86AudioPause]
+mod-mask = ""
+action = { type = "exec", exec = { shell = "dms ipc call mpris pause" } }
+
+[complex-shortcuts.XF86AudioNext]
+mod-mask = ""
+action = { type = "exec", exec = { shell = "dms ipc call mpris next" } }
+
+[complex-shortcuts.XF86AudioPrev]
+mod-mask = ""
+action = { type = "exec", exec = { shell = "dms ipc call mpris previous" } }
+
+[complex-shortcuts.XF86AudioStop]
+mod-mask = ""
+action = { type = "exec", exec = { shell = "dms ipc call mpris stop" } }

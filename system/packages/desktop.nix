@@ -43,8 +43,5 @@
 
     # Security
     authenticator
-
-    # Custom packages
-    inputs.subsonic-tui.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

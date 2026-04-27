@@ -37,11 +37,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     run0-sudo-shim = {
       url = "github:lordgrimmauld/run0-sudo-shim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,8 +45,6 @@
     dw-proton.url = "github:imaviso/dwproton-flake";
 
     berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
-
-    subsonic-tui.url = "github:imaviso/subsonic-tui";
 
     machinereport.url = "github:imaviso/machinereport";
 

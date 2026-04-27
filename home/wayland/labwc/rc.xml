@@ -7,7 +7,7 @@
   <core>
     <decoration>server</decoration>
     <gap>0</gap>
-    <adaptiveSync>no</adaptiveSync>
+    <adaptiveSync>yes</adaptiveSync>
     <allowTearing>no</allowTearing>
     <autoEnableOutputs>yes</autoEnableOutputs>
     <reuseOutputMode>no</reuseOutputMode>
@@ -31,7 +31,7 @@
     <dropShadows>yes</dropShadows>
     <keepBorder>no</keepBorder>
   </theme>
-  <icon>Colloid-Dark</icon>
+  <icon>Papirus-Dark</icon>
   <libinput>
     <device category="Razer Razer Viper Mini">
       <naturalScroll>no</naturalScroll>
@@ -89,10 +89,10 @@
     <keybind key="W-d">
       <action name="Execute" command="dms ipc call spotlight toggle"/>
     </keybind>
-    <keybind key="W-S-e">
-      <action name="Execute" command="app2unit -- nautilus"/>
-    </keybind>
     <keybind key="W-e">
+      <action name="Execute" command="app2unit -- dolphin"/>
+    </keybind>
+    <keybind key="W-S-e">
       <action name="Execute" command="app2unit -- foot -e yazi"/>
     </keybind>
     <keybind key="W-f">

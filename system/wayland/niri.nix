@@ -17,7 +17,7 @@
     dank-material-shell.greeter = {
       enable = true;
       compositor.name = "niri";
-      quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      # quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
       configHome = "/home/${username}";
       configFiles = ["/home/${username}/.config/DankMaterialShell/settings.json"];
     };
@@ -49,6 +49,7 @@
     cliphist
     wl-screenrec
     wlopm
+    kdePackages.dolphin
   ];
 
   services = {
@@ -86,8 +87,8 @@
 
   qt = {
     enable = true;
-    platformTheme = settings.appearance.qtPlatformTheme;
-    style = settings.appearance.qtStyle;
+    # platformTheme = settings.appearance.qtPlatformTheme;
+    # style = settings.appearance.qtStyle;
   };
 
   xdg.portal = {

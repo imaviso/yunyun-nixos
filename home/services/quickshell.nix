@@ -10,7 +10,7 @@
   programs.dank-material-shell = {
     enable = true;
     systemd.enable = true;
-    quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    # quickshell.package = inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableDynamicTheming = false;
   };
   # home.packages = [

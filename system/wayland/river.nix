@@ -1,35 +1,33 @@
 {
   pkgs,
+  inputs,
   username,
   settings,
   ...
 }: {
-  programs.labwc.enable = true;
-
   programs.uwsm = {
     enable = true;
     waylandCompositors = {
-      labwc = {
-        prettyName = "Labwc";
-        comment = "Labwc compositor managed by UWSM";
-        binPath = "/run/current-system/sw/bin/labwc";
+      river = {
+        prettyName = "river";
+        comment = "river compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/river";
       };
     };
   };
 
-  security.polkit.enable = true; # polkit
-  # security.pam.services.swaylock = {};
+  security.polkit.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
   environment.systemPackages = with pkgs; [
+    river
+    inputs.swash.packages.${pkgs.stdenv.hostPlatform.system}.default
+    xwayland-satellite
     gpu-screen-recorder
     brightnessctl
     matugen
     cava
     wlsunset
-    labwc-menu-generator
-    labwc-gtktheme
-    labwc-tweaks-gtk
     app2unit
     apple-cursor
     papirus-icon-theme
@@ -40,17 +38,14 @@
     swappy
     slurp
     grim
-    grimblast
     wl-clipboard
     cliphist
     wl-screenrec
-    kanshi
     wlopm
     kdePackages.qtsvg
-    kdePackages.kio-fuse #to mount remote filesystems via FUSE
-    kdePackages.kio-extras #extra protocols support (sftp, fish and more)
-    kdePackages.dolphin # This is the actual dolphin package
-    # swaylock
+    kdePackages.kio-fuse
+    kdePackages.kio-extras
+    kdePackages.dolphin
   ];
 
   security.pam.services.greetd.enableGnomeKeyring = true;
@@ -62,8 +57,7 @@
       package = pkgs.greetd;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -- labwc-uwsm.desktop'";
-          # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'labwc'";
+          command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -- river-uwsm.desktop'";
           # user = username;
         };
       };
@@ -105,6 +99,7 @@
     };
 
     extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
     ];
