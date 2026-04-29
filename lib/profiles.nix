@@ -73,6 +73,7 @@
       programs.terminal.zoxide
       programs.thunar
       programs.chromium
+      programs.nix-ld
       wayland.hyprland
     ];
     home = with homeModules; [
