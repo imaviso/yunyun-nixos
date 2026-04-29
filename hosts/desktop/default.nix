@@ -31,6 +31,7 @@
         "input"
         "libvirtd"
         "adbusers"
+        "i2c"
       ];
     };
   };

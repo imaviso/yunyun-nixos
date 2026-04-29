@@ -196,6 +196,7 @@
   };
 
   hardware = {
+    i2c.enable = true;
     amdgpu.overdrive.ppfeaturemask.enable = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 

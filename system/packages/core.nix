@@ -40,6 +40,7 @@
     lazygit
     bun
     nodejs
+    python3
 
     inputs.run0-sudo-shim.packages.${pkgs.stdenv.hostPlatform.system}.default
 

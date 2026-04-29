@@ -16,6 +16,7 @@
 
     # Media
     mpv
+    feishin
     obs-studio
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
