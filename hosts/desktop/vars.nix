@@ -34,7 +34,7 @@
   networking = {
     nameservers = [
       "192.168.254.2"
-      "192.168.254.117"
+      "192.168.254.191"
     ];
     timeServers = [
       "time.cloudflare.com"

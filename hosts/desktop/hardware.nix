@@ -176,7 +176,7 @@
 
   environment.systemPackages = [pkgs.cifs-utils];
   fileSystems."/mnt/share" = {
-    device = "//192.168.254.117/media";
+    device = "//192.168.254.191/media";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
