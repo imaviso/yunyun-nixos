@@ -44,6 +44,10 @@
 
     dw-proton.url = "github:imaviso/dwproton-flake";
 
+    bakarr.url = "github:imaviso/bakarr";
+
+    suboxide.url = "github:imaviso/suboxide";
+
     berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
 
     machinereport.url = "github:imaviso/machinereport";
@@ -112,7 +116,6 @@
     };
 
     nixosConfigurations = {
-      # Main desktop
       yunyun = mkHost {
         hostname = "desktop";
         username = "yunyun";
@@ -125,6 +128,13 @@
         username = "yunyun";
         nixosModules = profiles.laptop.nixos;
         homeModules = profiles.laptop.home;
+      };
+
+      yunyun-server = mkHost {
+        hostname = "server";
+        username = "yunyun";
+        nixosModules = profiles.server.nixos;
+        homeModules = profiles.server.home;
       };
 
       # Home server (uncomment when needed)

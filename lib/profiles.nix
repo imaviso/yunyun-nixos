@@ -62,7 +62,6 @@
       nix.default
       packages.core
       packages.development
-      services.adguardhome
       services.scx
       services.audio
       services.keyboard
@@ -91,6 +90,34 @@
       services.footserver
       # services.clipboard
       services.polkit-agent
+    ];
+  };
+
+  server = {
+    nixos = with nixosModules; [
+      config.xdg
+      config.i18n
+      nix.default
+      packages.core
+      services.adguardhome
+      services.bakarr
+      services.docker
+      services.keyboard
+      # services.komga
+      services.ssh
+      services.smb
+      services.suboxide
+      # services.scx
+      services.tailscale
+      services.qbittorrent
+      programs.terminal.fish
+      programs.terminal.zoxide
+      programs.nix-ld
+    ];
+    home = with homeModules; [
+      xdg
+      git
+      terminal.default
     ];
   };
 }
