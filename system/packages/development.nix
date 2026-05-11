@@ -2,8 +2,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     zed-editor
-    dbeaver-bin
     zellij
     opencode
+    warp-terminal
   ];
 }

@@ -72,7 +72,7 @@
     <default/>
     <!-- Use a different terminal emulator -->
     <keybind key="W-Return">
-      <action name="Execute" command="app2unit -- ghostty"/>
+      <action name="Execute" command="app2unit -- ghostty +new-window"/>
     </keybind>
     <keybind key="W-Space">
       <action name="Execute" command="app2unit -- footclient"/>

@@ -40,7 +40,6 @@
     swappy
     slurp
     grim
-    grimblast
     wl-clipboard
     cliphist
     wl-screenrec

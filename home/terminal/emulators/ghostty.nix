@@ -8,13 +8,14 @@
 in {
   programs.ghostty = {
     enable = true;
+    systemd.enable = true;
     # package = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
     enableFishIntegration = true;
     settings = {
       font-family = settings.fonts.terminal;
       font-size = settings.fonts.terminalSize;
-      gtk-single-instance = true;
-      gtk-titlebar = false;
+      quit-after-last-window-closed = true;
+      quit-after-last-window-closed-delay = "5m";
       window-decoration = true;
       window-padding-x = 10;
       window-padding-y = 10;
