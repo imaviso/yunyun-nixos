@@ -24,7 +24,7 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1766063696,
+        "lastModified": 1777434145,
         "narHash": "sha256-hql+TQyI/MfgqKwd9ebhN1Gj4oz3uwyw2C/8679mr/Y=",
         "path": "/home/yunyun/berkeley-flake",
         "type": "path"

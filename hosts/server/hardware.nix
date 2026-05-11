@@ -16,6 +16,7 @@
     device = "/dev/sda";
     useOSProber = true;
   };
+  boot.initrd.systemd.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.kernelModules = ["intel_pstate"];
