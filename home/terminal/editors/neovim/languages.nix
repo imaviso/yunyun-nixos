@@ -17,16 +17,17 @@
         format.type = ["alejandra"];
       };
       rust.enable = true;
-      tailwind.enable = true;
       css = {
         enable = true;
         format.type = ["biome"];
       };
-      ts = {
+      typescript = {
         enable = true;
         format.type = ["biome"];
       };
       typst.enable = true;
     };
+
+    settings.vim.lsp.presets.tailwindcss-language-server.enable = true;
   };
 }

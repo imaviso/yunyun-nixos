@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   username,
   ...
@@ -8,6 +9,7 @@
   ];
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     betterfox = {
       enable = true;
       profiles."${username}-profile" = {

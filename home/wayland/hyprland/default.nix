@@ -71,8 +71,6 @@ in {
     CLUTTER_BACKEND = "wayland";
     GTK_THEME = settings.appearance.gtkTheme;
     APP2UNIT_TYPE = "service";
-    QT_QPA_PLATFORMTHEME = "gtk3";
-    QT_QPA_PLATFORMTHEME_QT6 = "gtk3";
   };
 
   wayland.windowManager.hyprland = {

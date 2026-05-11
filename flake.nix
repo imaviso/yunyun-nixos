@@ -89,7 +89,11 @@
     profiles = import ./lib/profiles.nix {inherit nixosModules homeModules;};
   in {
     # Export for reuse
-    inherit nixosModules homeModules profiles;
+    inherit nixosModules homeModules;
+
+    lib = {
+      inherit profiles;
+    };
 
     # Pre-commit hooks
     checks.${system} = {

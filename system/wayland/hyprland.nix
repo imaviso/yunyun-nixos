@@ -8,7 +8,7 @@
   };
   environment.systemPackages = with pkgs; [
     app2unit
-    swww
+    awww
     hyprpaper
     hyprpicker
     nwg-look
