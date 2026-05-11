@@ -1,28 +1,43 @@
 {
+  lib,
   hostname,
   hostVars,
   ...
 }: let
   # Get networking settings from hostVars with defaults
   networkingVars = hostVars.networking or {};
+  backend = networkingVars.backend or "networkmanager";
+  useNetworkManager = backend == "networkmanager";
+  useNetworkd = backend == "networkd";
   nameservers = networkingVars.nameservers or ["1.1.1.1" "9.9.9.9"];
   timeServers = networkingVars.timeServers or ["time.cloudflare.com"];
+  trustedSubnets = networkingVars.trustedSubnets or [];
+  subnetAcceptRules =
+    lib.concatMapStringsSep "\n" (subnet: ''
+      iptables -A INPUT -s ${subnet} -j ACCEPT
+    '')
+    trustedSubnets;
+  subnetAcceptStopRules =
+    lib.concatMapStringsSep "\n" (subnet: ''
+      iptables -D INPUT -s ${subnet} -j ACCEPT || true
+    '')
+    trustedSubnets;
 in {
   networking = {
     hostName = hostname;
     inherit timeServers nameservers;
 
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    dhcpcd.extraConfig = "nohook resolv.conf";
-    networkmanager.dns = "none";
-
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-    # Enable networking
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = useNetworkManager;
+      dns = "systemd-resolved";
+    };
+
+    useNetworkd = useNetworkd;
+    useDHCP = lib.mkIf useNetworkd false;
 
     # wg-quick.interfaces.wg0.configFile = "/etc/nixos/files/wireguard/wg0.conf";
 
@@ -34,10 +49,12 @@ in {
       extraCommands = ''
         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 2408 -j RETURN
         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 2408 -j RETURN
+        ${subnetAcceptRules}
       '';
       extraStopCommands = ''
         ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 2408 -j RETURN || true
         ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 2408 -j RETURN || true
+        ${subnetAcceptStopRules}
       '';
 
       # allowedTCPPorts = [53 2283 3001 4533 4747 4000 4001 4002 20048 2049 111 139 445 8000 8081 9078 9091 51413];
@@ -51,6 +68,27 @@ in {
       # Or disable the firewall altogether.
       # networking.firewall.enable = false;
     };
+  };
+
+  systemd.network = lib.mkIf useNetworkd {
+    enable = true;
+    networks."10-wired-dhcp" = {
+      matchConfig.Name = "en* eth*";
+      networkConfig.DHCP = "yes";
+    };
+  };
+
+  services.resolved = {
+    enable = true;
+    settings.Resolve = {
+      DNS = nameservers;
+      FallbackDNS = ["1.1.1.1" "9.9.9.9"];
+    };
+  };
+
+  services.timesyncd = {
+    enable = true;
+    servers = timeServers;
   };
 
   #   services.dnsproxy = {

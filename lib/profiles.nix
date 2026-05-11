@@ -18,7 +18,7 @@
       services.audio
       services.lact
       services.keyboard
-      # services.keyd #labwc
+      services.keyd #labwc
       services.scx
       services.ssh
       services.sunshine
@@ -31,7 +31,7 @@
       programs.localsend
       programs.thunar
       programs.nix-ld
-      wayland.niri
+      wayland.labwc
     ];
     home = with homeModules; [
       fontconfig
@@ -43,8 +43,8 @@
       terminal.default
       programs.mpv
       programs.firefox
-      wayland.niri.default
-      # services.kanshi # labwc etc
+      wayland.labwc.default
+      services.kanshi # labwc etc
       services.dms
       services.easyeffects.default
       # services.clipboard
@@ -59,6 +59,7 @@
       config.xdg
       config.i18n
       config.fonts
+      config.networking
       nix.default
       packages.core
       packages.development
@@ -97,6 +98,7 @@
     nixos = with nixosModules; [
       config.xdg
       config.i18n
+      config.networking
       nix.default
       packages.core
       services.adguardhome

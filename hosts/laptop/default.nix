@@ -58,11 +58,5 @@
     brave
   ];
 
-  networking.hostName = hostname;
-  networking.networkmanager.enable = true;
-  networking.firewall.extraCommands = ''
-    iptables -A INPUT -s 192.168.254.0/24 -j ACCEPT
-  '';
-
   system.stateVersion = "24.05";
 }

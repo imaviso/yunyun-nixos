@@ -32,6 +32,7 @@
 
   # Networking configuration
   networking = {
+    backend = "networkmanager";
     nameservers = [
       "192.168.254.2"
       "192.168.254.191"

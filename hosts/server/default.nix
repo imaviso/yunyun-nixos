@@ -25,7 +25,6 @@
       extraGroups = [
         "wheel"
         "users"
-        "networkmanager"
         "video"
         "input"
       ];
@@ -44,12 +43,6 @@
     fd
     fzf
   ];
-
-  networking.hostName = hostname;
-  networking.networkmanager.enable = true;
-  networking.firewall.extraCommands = ''
-    iptables -A INPUT -s 192.168.254.0/24 -j ACCEPT
-  '';
 
   system.stateVersion = "25.11";
 }

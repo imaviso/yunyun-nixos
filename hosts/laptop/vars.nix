@@ -20,6 +20,7 @@
 
   # Networking configuration
   networking = {
+    backend = "networkmanager";
     nameservers = [
       "192.168.254.2"
       "192.168.254.1"
@@ -28,5 +29,6 @@
       "time.cloudflare.com"
       "0.ph.pool.ntp.org"
     ];
+    trustedSubnets = ["192.168.254.0/24"];
   };
 }
