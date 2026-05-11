@@ -7,7 +7,7 @@
     samba = {
       # The full package is needed to register mDNS records (for discoverability), see discussion in
       # https://gist.github.com/vy-let/a030c1079f09ecae4135aebf1e121ea6
-      # package = pkgs.samba4Full;
+      package = pkgs.samba4Full;
       usershares.enable = true;
       enable = true;
       openFirewall = true;
@@ -17,6 +17,11 @@
           # "server min protocol" = "SMB3_00";
           "workgroup" = "WORKGROUP";
           "vfs objects" = "catia fruit streams_xattr";
+          "fruit:metadata" = "stream";
+          "fruit:resource" = "file";
+          "fruit:nfs_aces" = "no"; # This is often the culprit for 'out of space' errors
+          "fruit:copyfile" = "no";
+          "fruit:model" = "MacSamba";
           "server string" = "smbnix";
           "netbios name" = "smbnix";
           "security" = "user";
@@ -35,16 +40,16 @@
           "force user" = "yunyun";
           "force group" = "users";
         };
-        "yunyun" = {
-          "path" = "/mnt/media/samba";
-          "browseable" = "yes";
-          "read only" = "no";
-          "guest ok" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          "force user" = "yunyun";
-          "force group" = "users";
-        };
+        # "yunyun" = {
+        #   "path" = "/mnt/media/samba";
+        #   "browseable" = "yes";
+        #   "read only" = "no";
+        #   "guest ok" = "no";
+        #   "create mask" = "0644";
+        #   "directory mask" = "0755";
+        #   "force user" = "yunyun";
+        #   "force group" = "users";
+        # };
         "vianney" = {
           "path" = "/mnt/media2/samba/vianney";
           "browseable" = "yes";
@@ -52,8 +57,8 @@
           "guest ok" = "no";
           "create mask" = "0644";
           "directory mask" = "0755";
-          "force user" = "vianney";
-          "force group" = "samba";
+          "force user" = "yunyun";
+          "force group" = "users";
         };
       };
     };
@@ -78,13 +83,5 @@
   # Make sure your user is in the samba group
   users.users.yunyun = {
     extraGroups = ["samba"];
-  };
-
-  users.users.vianney = {
-    isNormalUser = true;
-    extraGroups = ["samba"];
-    shell = "${pkgs.shadow}/bin/nologin";
-    home = "/var/empty";
-    createHome = false;
   };
 }

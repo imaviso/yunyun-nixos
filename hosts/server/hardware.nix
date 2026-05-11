@@ -21,30 +21,30 @@
   boot.kernelModules = ["intel_pstate"];
   boot.extraModulePackages = [];
   boot.kernelParams = [
-    "pcie_aspm=force" # Forces Active State Power Management
-    "ahci.mobile_lpm_policy=3" # Aggressive Link Power Management for SATA
-    "i915.enable_fbc=1" # Framebuffer compression (if using iGPU)
-    "i915.enable_guc=3" # Enable GuC/HuC firmware loading
+    # "pcie_aspm=force" # Forces Active State Power Management
+    # "ahci.mobile_lpm_policy=3" # Aggressive Link Power Management for SATA
+    # "i915.enable_fbc=1" # Framebuffer compression (if using iGPU)
+    # "i915.enable_guc=3" # Enable GuC/HuC firmware loading
   ];
   boot.blacklistedKernelModules = ["bluetooth" "btusb" "snd_hda_intel"];
 
-  powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = "powersave";
-
-  services.tlp = {
-    enable = true;
-    settings = {
-      PCIE_ASPM_ON_AC = "powersave";
-      SATA_LINKPWR_ON_AC = "min_power";
-      CPU_MAX_PERF_ON_AC = 80;
-      CPU_BOOST_ON_AC = 0;
-    };
-  };
-  environment.systemPackages = with pkgs; [
-    powertop
-    cpufrequtils
-    intel-gpu-tools
-  ];
+  # powerManagement.enable = true;
+  # powerManagement.cpuFreqGovernor = "powersave";
+  #
+  # services.tlp = {
+  #   enable = true;
+  #   settings = {
+  #     PCIE_ASPM_ON_AC = "powersave";
+  #     SATA_LINKPWR_ON_AC = "min_power";
+  #     CPU_MAX_PERF_ON_AC = 80;
+  #     CPU_BOOST_ON_AC = 0;
+  #   };
+  # };
+  # environment.systemPackages = with pkgs; [
+  #   powertop
+  #   cpufrequtils
+  #   intel-gpu-tools
+  # ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/2f797433-55b0-4556-aacc-0a8f3207b91e";
