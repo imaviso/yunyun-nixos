@@ -15,5 +15,6 @@
       "0.ph.pool.ntp.org"
     ];
     trustedSubnets = ["192.168.254.0/24"];
+    adguard.dnsBindHosts = ["192.168.254.191"];
   };
 }
