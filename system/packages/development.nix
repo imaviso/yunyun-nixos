@@ -2,8 +2,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     zed-editor
+    pi-coding-agent
     zellij
-    opencode
-    warp-terminal
   ];
 }

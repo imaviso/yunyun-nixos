@@ -38,7 +38,6 @@
     # Development
     jujutsu
     lazygit
-    bun
     nodejs
     python3
 

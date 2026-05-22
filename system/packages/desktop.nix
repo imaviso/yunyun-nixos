@@ -36,6 +36,7 @@
     # Communication
     telegram-desktop
     teams-for-linux
+    vesktop
 
     # Utilities
     img2pdf
