@@ -7,8 +7,7 @@
   networking = {
     backend = "networkd";
     nameservers = [
-      "192.168.254.2"
-      "192.168.254.1"
+      "192.168.254.191"
     ];
     timeServers = [
       "time.cloudflare.com"
