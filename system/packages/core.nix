@@ -39,6 +39,7 @@
     jujutsu
     lazygit
     nodejs
+    deno
     python3
 
     inputs.run0-sudo-shim.packages.${pkgs.stdenv.hostPlatform.system}.default
