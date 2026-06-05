@@ -114,7 +114,7 @@
       services.ssh
       services.smb
       services.suboxide
-      # services.scx
+      services.scx
       services.tailscale
       services.qbittorrent
       programs.terminal.fish
@@ -125,6 +125,7 @@
       xdg
       git
       terminal.default
+      programs.beets
     ];
   };
 }
