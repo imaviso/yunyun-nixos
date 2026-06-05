@@ -1,4 +1,4 @@
-{
+{settings, ...}: {
   programs.zed-editor = {
     enable = true;
     extensions = [
@@ -13,7 +13,7 @@
     userSettings = {
       vim_mode = true;
       telemetry.metrics = false;
-      ui_font_family = "TX-02";
+      ui_font_family = settings.fonts.mono;
       ui_font_size = 16;
       buffer_font_size = 16;
     };

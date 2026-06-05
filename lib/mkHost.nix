@@ -48,10 +48,10 @@
 
       # Font settings
       fonts = {
-        sans = "Google Sans";
-        serif = "Google Sans";
-        mono = "TX-02";
-        terminal = "TX-02";
+        sans = "Geist";
+        serif = "IBM Plex Serif";
+        mono = "IoskeleyMono Nerd Font";
+        terminal = "IoskeleyMono Nerd Font";
         terminalSize = 12;
         uiSize = 10;
         emoji = "Noto Color Emoji";
@@ -59,12 +59,12 @@
 
       # Default applications
       apps = {
-        terminal = "footclient";
-        terminalAlt = "ghostty";
+        terminal = "ghostty";
+        terminalAlt = "footclient";
         terminalServer = "foot";
-        fileManager = "thunar";
+        fileManager = "dolphin";
         fileManagerTUI = "yazi";
-        browser = "chromium";
+        browser = "helium";
         editor = "nvim";
         playback = "mpv";
       };
@@ -157,7 +157,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              backupFileExtension = "bk";
+              backupFileExtension = "bk2";
               extraSpecialArgs = allSpecialArgs;
               users.${username} = {
                 imports = homeModules;

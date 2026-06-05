@@ -1,10 +1,10 @@
-{
+{settings, ...}: {
   programs.kitty = {
     enable = true;
     enableGitIntegration = true;
     shellIntegration.enableFishIntegration = true;
     font = {
-      name = "TX-02";
+      name = settings.fonts.mono;
       size = 12;
     };
   };

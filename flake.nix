@@ -4,10 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    hm = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hm.url = "github:nix-community/home-manager";
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
@@ -50,17 +47,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helium-flake = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dw-proton.url = "github:imaviso/dwproton-flake";
 
     bakarr.url = "github:imaviso/bakarr";
 
     suboxide.url = "github:imaviso/suboxide";
 
-    berkeley-mono.url = "path:/home/yunyun/berkeley-flake";
+    gelly.url = "path:/home/yunyun/Dev/gelly";
 
     machinereport.url = "github:imaviso/machinereport";
-
-    google-sans.url = "github:imaviso/google-sans-flake";
 
     betterfox.url = "github:HeitorAugustoLN/betterfox-nix";
 

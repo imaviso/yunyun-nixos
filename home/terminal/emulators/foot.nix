@@ -9,7 +9,7 @@ in {
         term = "xterm-256color";
         title = "foot";
         letter-spacing = "0";
-        font = "JetBrainsMono Nerd Font:size=${toString settings.fonts.terminalSize}";
+        font = "${toString settings.fonts.terminal}:size=${toString settings.fonts.terminalSize}";
         dpi-aware = "yes";
         pad = "10x10";
       };

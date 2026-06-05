@@ -12,16 +12,17 @@
     roboto
     adwaita-fonts
     geist-font
+    google-fonts
     nerd-fonts.geist-mono
     nerd-fonts.jetbrains-mono
     nerd-fonts.adwaita-mono
     material-symbols
     nerd-fonts.symbols-only
-    inputs.berkeley-mono.packages.${pkgs.stdenv.hostPlatform.system}.berkeleyMono
     font-awesome
     font-awesome_6
     source-sans
     source-sans-pro
-    inputs.google-sans.packages.${pkgs.stdenv.hostPlatform.system}.google-sans
+    ioskeley-mono.normal-NF
+    ibm-plex
   ];
 }

@@ -17,8 +17,8 @@
       services.adb
       services.audio
       services.lact
-      # services.keyboard # plasma handles kbd via systemsettings
-      # services.keyd #labwc
+      services.keyboard # plasma handles kbd via systemsettings
+      services.keyd #labwc
       services.scx
       services.ssh
       services.sunshine
@@ -28,30 +28,31 @@
       programs.terminal.zoxide
       programs.gaming
       programs.chromium
+      programs.helium
       programs.localsend
       # programs.thunar
       programs.nix-ld
-      wayland.kde
-      # wayland.labwc
+      # wayland.kde
+      wayland.labwc
     ];
     home = with homeModules; [
-      # fontconfig
-      # cursor
-      # theme.gtk
-      # theme.qt
-      # xdg
+      fontconfig
+      cursor
+      theme.gtk
+      theme.qt
+      xdg
       git
       terminal.default
       programs.mpv
       programs.firefox
-      wayland.kde.default
-      # wayland.labwc.default
-      # services.kanshi # labwc etc
-      # services.dms
+      # wayland.kde.default
+      wayland.labwc.default
+      services.kanshi # labwc etc
+      services.dms
       services.easyeffects.default
-      # services.clipboard
+      services.clipboard
       services.footserver
-      services.vicinae
+      # services.vicinae
       # services.ghostty
       # services.polkit-agent
     ];
