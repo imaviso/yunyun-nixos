@@ -19,7 +19,7 @@
       services.lact
       services.keyboard # plasma handles kbd via systemsettings
       services.keyd #labwc
-      services.scx
+      # services.scx
       services.ssh
       services.sunshine
       services.tailscale
@@ -67,7 +67,7 @@
       nix.default
       packages.core
       packages.development
-      services.scx
+      # services.scx
       services.audio
       services.keyboard
       services.ssh
@@ -114,7 +114,7 @@
       services.ssh
       services.smb
       services.suboxide
-      services.scx
+      # services.scx
       services.tailscale
       services.qbittorrent
       programs.terminal.fish
