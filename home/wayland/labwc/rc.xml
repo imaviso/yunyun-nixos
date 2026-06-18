@@ -27,7 +27,7 @@
   <theme>
     <name>openbox-3</name>
     <cornerRadius>0</cornerRadius>
-    <font name="Geist" size="9"/>
+    <font name="Inter Variable" size="9"/>
     <dropShadows>yes</dropShadows>
     <keepBorder>no</keepBorder>
   </theme>

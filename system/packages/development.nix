@@ -4,5 +4,11 @@
     zed-editor
     pi-coding-agent
     zellij
+    jujutsu
+    lazygit
+    nodejs
+    deno
+    python3
+    jetbrains.rust-rover
   ];
 }

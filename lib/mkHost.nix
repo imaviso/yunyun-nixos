@@ -48,7 +48,7 @@
 
       # Font settings
       fonts = {
-        sans = "Geist";
+        sans = "Inter Variable";
         serif = "IBM Plex Serif";
         mono = "IoskeleyMono Nerd Font";
         terminal = "IoskeleyMono Nerd Font";
