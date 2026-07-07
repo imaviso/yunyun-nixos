@@ -19,11 +19,9 @@
       rust.enable = true;
       css = {
         enable = true;
-        format.type = ["biome"];
       };
       typescript = {
         enable = true;
-        format.type = ["biome"];
       };
       typst.enable = true;
     };

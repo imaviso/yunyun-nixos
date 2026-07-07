@@ -26,7 +26,7 @@
       timeout = 5;
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     initrd.availableKernelModules = [
       "nvme"
       "xhci_pci"
@@ -47,7 +47,7 @@
       "v4l2loopback"
     ];
 
-    kernelParams = ["amdgpu.ppfeaturemask=0xffffffff" "preempt=full"];
+    kernelParams = ["amdgpu.ppfeaturemask=0xffffffff"];
     supportedFilesystems = [
       "nfs"
       "ext4"
@@ -175,7 +175,11 @@
   #   ];
   # };
 
-  environment.systemPackages = [pkgs.cifs-utils];
+  environment.systemPackages = [
+    pkgs.cifs-utils
+    pkgs.sbctl
+  ];
+
   fileSystems."/mnt/share" = {
     device = "//192.168.254.191/media";
     fsType = "cifs";

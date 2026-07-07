@@ -17,7 +17,6 @@
     # Media
     mpv
     feishin
-    inputs.gelly.packages.${pkgs.stdenv.hostPlatform.system}.default
     obs-studio
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
@@ -46,5 +45,7 @@
 
     # Security
     authenticator
+
+    varia
   ];
 }

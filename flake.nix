@@ -7,16 +7,10 @@
     hm.url = "github:nix-community/home-manager";
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote/v1.1.0";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
       };
-    };
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nvf = {
@@ -57,8 +51,6 @@
     bakarr.url = "github:imaviso/bakarr";
 
     suboxide.url = "github:imaviso/suboxide";
-
-    gelly.url = "path:/home/yunyun/Dev/gelly";
 
     machinereport.url = "github:imaviso/machinereport";
 

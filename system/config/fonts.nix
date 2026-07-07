@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
@@ -10,12 +6,8 @@
     liberation_ttf
     inter
     roboto
-    adwaita-fonts
-    geist-font
     google-fonts
-    nerd-fonts.geist-mono
     nerd-fonts.jetbrains-mono
-    nerd-fonts.adwaita-mono
     material-symbols
     nerd-fonts.symbols-only
     font-awesome
@@ -23,6 +15,5 @@
     source-sans
     source-sans-pro
     ioskeley-mono.normal-NF
-    ibm-plex
   ];
 }

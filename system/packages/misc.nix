@@ -4,5 +4,6 @@
     komikku # Manga reader
     vial # Keyboard firmware manager
     pear-desktop # Desktop app
+    anki
   ];
 }

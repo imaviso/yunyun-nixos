@@ -42,7 +42,12 @@
       theme.qt
       xdg
       git
-      terminal.default
+      terminal.editors.neovim.default
+      terminal.emulators.foot
+      terminal.emulators.ghostty
+      terminal.shell.fish
+      terminal.shell.starship
+      terminal.yazi
       programs.mpv
       programs.firefox
       # wayland.kde.default
