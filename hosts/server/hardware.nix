@@ -13,7 +13,7 @@
   ];
   boot.loader.grub = {
     enable = true;
-    device = "/dev/sdc";
+    device = "/dev/sdb";
     useOSProber = true;
   };
   boot.initrd.systemd.enable = true;
@@ -21,14 +21,25 @@
   boot.initrd.availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
   boot.kernelModules = ["intel_pstate"];
   boot.extraModulePackages = [];
-  # boot.kernelParams = [
-  #   "pcie_aspm=force" # Forces Active State Power Management
-  #   "ahci.mobile_lpm_policy=3" # Aggressive Link Power Management for SATA
-  #   "i915.enable_fbc=1" # Framebuffer compression (if using iGPU)
-  #   "i915.enable_guc=3" # Enable GuC/HuC firmware loading
-  # ];
-  # boot.blacklistedKernelModules = ["bluetooth" "btusb" "snd_hda_intel"];
+  boot.kernelParams = [
+    # "pcie_aspm=force" # Forces Active State Power Management
+    # "ahci.mobile_lpm_policy=3" # Aggressive Link Power Management for SATA
+    # "i915.enable_fbc=1" # Framebuffer compression (if using iGPU)
+    # "i915.enable_guc=3" # Enable GuC/HuC firmware loading
+    "mitigations=off"
+    "transparent_hugepage=never"
+  ];
+  boot.blacklistedKernelModules = ["bluetooth" "btusb" "snd_hda_intel" "soundcore" "snd_hda_codec" "snd_hwdep" "snd_pcm" "snd_timer" "snd_page_alloc" "uvcvideo" "videodev" "v4l2_common" " pcspkr"];
 
+  services.scx = {
+    enable = true;
+    scheduler = "scx_cosmos";
+    extraArgs = [
+      "-s 20000"
+      "-c 75"
+      "-p 250"
+    ];
+  };
   # powerManagement.enable = true;
   # powerManagement.cpuFreqGovernor = "powersave";
   #

@@ -7,8 +7,8 @@
     openFirewall = true;
     user = "yunyun";
     group = "users";
-    autoScan = true;
-    autoScanInterval = 30000;
+    autoScan = false;
+    # autoScanInterval = 30000;
     environment = {
       RUST_LOG = "suboxide=debug";
     };

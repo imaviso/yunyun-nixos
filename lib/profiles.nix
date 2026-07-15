@@ -115,7 +115,6 @@
       services.docker
       services.filebrowser
       services.keyboard
-      # services.komga
       services.ssh
       services.smb
       services.suboxide
@@ -129,8 +128,11 @@
     home = with homeModules; [
       xdg
       git
-      terminal.default
       programs.beets
+      terminal.editors.neovim.default
+      terminal.shell.fish
+      terminal.shell.starship
+      terminal.yazi
     ];
   };
 }

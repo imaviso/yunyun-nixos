@@ -8,9 +8,9 @@
       enableTreesitter = true;
 
       bash.enable = true;
-      clang.enable = true;
+      # clang.enable = true;
       go.enable = true;
-      java.enable = true;
+      # java.enable = true;
       lua.enable = true;
       nix = {
         enable = true;
