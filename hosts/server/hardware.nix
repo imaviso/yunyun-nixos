@@ -33,11 +33,9 @@
 
   services.scx = {
     enable = true;
-    scheduler = "scx_cosmos";
+    scheduler = "scx_p2dq";
     extraArgs = [
-      "-s 20000"
-      "-c 75"
-      "-p 250"
+      "--keep-running"
     ];
   };
   # powerManagement.enable = true;
