@@ -16,10 +16,9 @@
 
   services.scx = {
     enable = true;
-    scheduler = "scx_cosmos";
+    scheduler = "scx_lavd";
     extraArgs = [
-      "-c 0"
-      "-p 0"
+      "--autopilot"
     ];
   };
 
@@ -56,7 +55,7 @@
       "v4l2loopback"
     ];
 
-    kernelParams = ["amdgpu.ppfeaturemask=0xffffffff" "amdgpu.aspm=0" "amdgpu.audio=0" "nmi_watchdog=0" "nowatchdog" "processor.max_cstate=1" "transparent_hugepage=never" "vm.zone_reclaim_mode=0" "audit=0" "pcie_aspm=off" "ignore_rlimit_data" "split_lock_detect=off" "split_lock_mitigate=0" "preempt=full" "libahci.ignore_sss=1" "loglevel=3" "rd.systemd.show_status=false" "transparent_hugepage_tmpfs=never" "amdgpu.dcdebugmask=0x4"];
+    kernelParams = ["amd_pstate=guided" "amdgpu.ppfeaturemask=0xffffffff" "amdgpu.aspm=0" "amdgpu.audio=0" "nmi_watchdog=0" "nowatchdog" "processor.max_cstate=1" "transparent_hugepage=never" "vm.zone_reclaim_mode=0" "audit=0" "pcie_aspm=off" "ignore_rlimit_data" "split_lock_detect=off" "split_lock_mitigate=0" "preempt=full" "libahci.ignore_sss=1" "loglevel=3" "rd.systemd.show_status=false" "transparent_hugepage_tmpfs=never" "amdgpu.dcdebugmask=0x4"];
     supportedFilesystems = [
       "nfs"
       "ext4"

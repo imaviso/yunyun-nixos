@@ -115,6 +115,7 @@
       services.docker
       services.filebrowser
       services.keyboard
+      services.garage
       services.ssh
       services.smb
       services.suboxide
