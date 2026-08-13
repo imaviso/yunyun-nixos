@@ -20,6 +20,7 @@
     winetricks
     protonup-qt
     heroic
+    lutris
   ];
 
   programs.steam = {

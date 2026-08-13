@@ -22,7 +22,7 @@
       # services.scx
       services.ssh
       services.sunshine
-      services.tailscale
+      # services.tailscale
       services.udev
       programs.terminal.fish
       programs.terminal.zoxide
@@ -76,7 +76,7 @@
       services.audio
       services.keyboard
       services.ssh
-      services.tailscale
+      # services.tailscale
       services.docker
       programs.terminal.fish
       programs.terminal.zoxide
@@ -120,7 +120,7 @@
       services.smb
       services.suboxide
       # services.scx
-      services.tailscale
+      # services.tailscale
       services.qbittorrent
       programs.terminal.fish
       programs.terminal.zoxide

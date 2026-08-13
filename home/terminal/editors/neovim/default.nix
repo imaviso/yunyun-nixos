@@ -51,7 +51,6 @@ in {
           setupOpts.options.numbers = "none";
         };
         filetree.neo-tree.enable = true;
-        fzf-lua.enable = true;
         binds.whichKey.enable = true;
         autocomplete.blink-cmp.enable = true;
         autocomplete.blink-cmp.friendly-snippets.enable = true;
@@ -105,6 +104,11 @@ in {
               sass = false;
             };
           };
+        };
+        # fff.nvim: fast file search/grep (replaces fzf-lua)
+        extraPlugins.fff = {
+          package = pkgs.vimPlugins.fff-nvim;
+          setup = "require('fff').setup {}";
         };
       };
     };

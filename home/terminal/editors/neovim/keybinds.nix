@@ -14,20 +14,21 @@ in {
     settings = {
       vim.keymaps = [
         (mkKeymap "n" "<leader>e" ":Neotree toggle<CR>" {desc = "Explorer";})
-        (mkKeymap "n" "<leader>f" ":FzfLua files<CR>" {desc = "Find Files";})
-        (mkKeymap "n" "<leader>b" ":FzfLua buffers<CR>" {desc = "Buffers";})
-        (mkKeymap "n" "<leader>/" ":FzfLua live_grep<CR>" {desc = "Grep";})
+        (mkKeymap "n" "<leader>f" "<cmd>lua require('fff').find_files()<CR>" {desc = "Find Files";})
+        (mkKeymap "n" "<leader>b" ":ls<CR>:b<Space>" {desc = "Buffers";})
+        (mkKeymap "n" "<leader>/" "<cmd>lua require('fff').live_grep()<CR>" {desc = "Grep";})
+        (mkKeymap "n" "<leader>fw" "<cmd>lua require('fff').live_grep_under_cursor()<CR>" {desc = "Grep Under Cursor";})
 
         (mkKeymap "n" "<leader>dd" ":lua MiniBufremove.delete()<CR>" {desc = "Close Buffer";})
 
         (mkKeymap "n" "<leader>cf" ":lua require('conform').format({ lsp_fallback = true })<CR>" {desc = "Format";})
 
-        (mkKeymap "n" "gd" ":FzfLua lsp_definitions<CR>" {desc = "Goto Definition";})
-        (mkKeymap "n" "gr" ":FzfLua lsp_references<CR>" {desc = "Goto References";})
-        (mkKeymap "n" "gI" ":FzfLua lsp_implementations<CR>" {desc = "Goto Implementation";})
-        (mkKeymap "n" "gy" ":FzfLua lsp_typedefs<CR>" {desc = "Goto Type Definition";})
+        (mkKeymap "n" "gd" "<cmd>lua vim.lsp.buf.definition()<CR>" {desc = "Goto Definition";})
+        (mkKeymap "n" "gr" "<cmd>lua vim.lsp.buf.references()<CR>" {desc = "Goto References";})
+        (mkKeymap "n" "gI" "<cmd>lua vim.lsp.buf.implementation()<CR>" {desc = "Goto Implementation";})
+        (mkKeymap "n" "gy" "<cmd>lua vim.lsp.buf.type_definition()<CR>" {desc = "Goto Type Definition";})
         (mkKeymap "n" "<leader>cr" ":lua vim.lsp.buf.rename()<CR>" {desc = "Rename";})
-        (mkKeymap "n" "<leader>ca" ":FzfLua lsp_code_actions<CR>" {desc = "Code Action";})
+        (mkKeymap "n" "<leader>ca" "<cmd>lua vim.lsp.buf.code_action()<CR>" {desc = "Code Action";})
         (mkKeymap "n" "K" ":lua vim.lsp.buf.hover()<CR>" {desc = "Hover";})
         (mkKeymap "n" "[d" ":lua vim.diagnostic.goto_prev()<CR>" {desc = "Prev Diagnostic";})
         (mkKeymap "n" "]d" ":lua vim.diagnostic.goto_next()<CR>" {desc = "Next Diagnostic";})

@@ -25,8 +25,8 @@
         obs-pipewire-audio-capture
       ];
     })
-    # handbrake
-    # losslesscut-bin
+    handbrake
+    losslesscut-bin
     mkvtoolnix
     mpv-handler
 

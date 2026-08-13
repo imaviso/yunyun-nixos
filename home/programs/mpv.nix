@@ -1,7 +1,4 @@
 {pkgs, ...}: {
-  home.packages = [
-    pkgs.celluloid
-  ];
   programs.mpv = {
     enable = true;
     scripts = with pkgs.mpvScripts; [

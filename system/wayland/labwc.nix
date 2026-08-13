@@ -2,8 +2,12 @@
   pkgs,
   username,
   settings,
+  inputs,
   ...
 }: {
+  imports = [
+    inputs.dms.nixosModules.greeter
+  ];
   programs.labwc.enable = true;
 
   programs.uwsm = {
@@ -53,6 +57,12 @@
   ];
 
   security.pam.services.greetd.enableGnomeKeyring = true;
+
+  # programs.dank-material-shell.greeter = {
+  #   enable = true;
+  #   compositor.name = "labwc";
+  #   configHome = "/home/yunyun";
+  # };
 
   services = {
     # needed for GNOME services outside of GNOME Desktop
