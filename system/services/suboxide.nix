@@ -9,9 +9,8 @@
     group = "users";
     autoScan = false;
     # autoScanInterval = 30000;
-    environmentFile = "/home/yunyun/suboxide.env";
-    # environment = {
-    #   RUST_LOG = "suboxide=debug";
-    # };
+    environment = {
+      RUST_LOG = "debug";
+    };
   };
 }

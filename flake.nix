@@ -48,9 +48,15 @@
 
     dw-proton.url = "github:imaviso/dwproton-flake";
 
-    bakarr.url = "github:imaviso/bakarr";
+    bakarr = {
+      url = "github:imaviso/bakarr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    suboxide.url = "github:imaviso/suboxide";
+    suboxide = {
+      url = "github:imaviso/suboxide";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     machinereport.url = "github:imaviso/machinereport";
 

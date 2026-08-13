@@ -115,7 +115,6 @@
       services.adguardhome
       services.bakarr
       services.docker
-      services.filebrowser
       services.keyboard
       services.garage
       services.nfs
