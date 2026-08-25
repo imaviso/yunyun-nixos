@@ -16,10 +16,11 @@
 
   services.scx = {
     enable = true;
-    scheduler = "scx_lavd";
-    extraArgs = [
-      "--autopilot"
-    ];
+    scheduler = "scx_bpfland";
+    # scheduler = "scx_lavd";
+    # extraArgs = [
+    #   "--autopilot"
+    # ];
   };
 
   boot = {

@@ -4,6 +4,7 @@
   ...
 }: {
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     name = settings.appearance.cursor.name;
     package = pkgs.apple-cursor;

@@ -30,7 +30,7 @@
       programs.chromium
       programs.helium
       programs.localsend
-      # programs.thunar
+      programs.thunar
       programs.nix-ld
       # wayland.kde
       wayland.labwc
@@ -116,6 +116,7 @@
       services.filebrowser
       services.keyboard
       services.garage
+      services.nfs
       services.ssh
       services.smb
       services.suboxide

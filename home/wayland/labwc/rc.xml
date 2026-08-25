@@ -80,17 +80,11 @@
     <keybind key="W-S-q">
       <action name="Close"/>
     </keybind>
-    <!-- <keybind key="W-a"> -->
-    <!--   <action name="Execute" command="walker" /> -->
-    <!-- </keybind> -->
-    <!-- <keybind key="W-d"> -->
-    <!--   <action name="Execute" command="sh -c 'pkill anyrun || anyrun'"/> -->
-    <!-- </keybind> -->
     <keybind key="W-d">
       <action name="Execute" command="dms ipc call spotlight toggle"/>
     </keybind>
     <keybind key="W-e">
-      <action name="Execute" command="app2unit -- dolphin"/>
+      <action name="Execute" command="app2unit -- thunar"/>
     </keybind>
     <keybind key="W-S-e">
       <action name="Execute" command="app2unit -- foot -e yazi"/>

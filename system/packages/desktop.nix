@@ -11,7 +11,7 @@
     brave
 
     # Office & productivity
-    libreoffice-fresh
+    libreoffice-stable
     thunderbird
 
     # Media

@@ -62,7 +62,7 @@
         terminal = "ghostty";
         terminalAlt = "footclient";
         terminalServer = "foot";
-        fileManager = "dolphin";
+        fileManager = "thunar";
         fileManagerTUI = "yazi";
         browser = "helium";
         editor = "nvim";

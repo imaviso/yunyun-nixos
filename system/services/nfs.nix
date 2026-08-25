@@ -1,20 +1,27 @@
+# NFS server exporting the same media shares as SMB, no auth (LAN only)
 {
-  fileSystems."/export/mafuyu" = {
-    device = "/mnt/mafuyu";
+  services.nfs.server = {
+    enable = true;
+
+    exports = ''
+      /export         192.168.254.0/24(rw,fsid=0,no_subtree_check)
+      /export/media   192.168.254.0/24(rw,nohide,insecure,no_subtree_check)
+      /export/media2  192.168.254.0/24(rw,nohide,insecure,no_subtree_check)
+    '';
+  };
+
+  # Bind-mount the media drives under /export so NFS can export them.
+  # Clients' uid/gid map straight through (no_root_squash), so files
+  # are created as the connecting user, like SMB's force user = yunyun.
+  fileSystems."/export/media" = {
+    device = "/mnt/media";
+    fsType = "none";
     options = ["bind"];
   };
 
-  fileSystems."/export/sen" = {
-    device = "/mnt/sen";
+  fileSystems."/export/media2" = {
+    device = "/mnt/media2";
+    fsType = "none";
     options = ["bind"];
   };
-
-  services.nfs.server.enable = true;
-  services.nfs.server.exports = ''
-    /export         192.168.1.10(rw,fsid=0,no_subtree_check) 192.168.1.15(rw,fsid=0,no_subtree_check)
-    /export/kotomi  192.168.1.10(rw,nohide,insecure,no_subtree_check) 192.168.1.15(rw,nohide,insecure,no_subtree_check)
-    /export/mafuyu  192.168.1.10(rw,nohide,insecure,no_subtree_check) 192.168.1.15(rw,nohide,insecure,no_subtree_check)
-    /export/sen     192.168.1.10(rw,nohide,insecure,no_subtree_check) 192.168.1.15(rw,nohide,insecure,no_subtree_check)
-    /export/tomoyo  192.168.1.10(rw,nohide,insecure,no_subtree_check) 192.168.1.15(rw,nohide,insecure,no_subtree_check)
-  '';
 }
