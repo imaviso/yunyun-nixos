@@ -14,6 +14,6 @@
     font-awesome_6
     source-sans
     source-sans-pro
-    ioskeley-mono.normal-NF
+    ioskeley-mono.nf
   ];
 }

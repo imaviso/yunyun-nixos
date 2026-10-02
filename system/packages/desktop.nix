@@ -8,7 +8,7 @@
   environment.systemPackages = with pkgs; [
     # Browsers
     firefox
-    brave
+    brave-origin
 
     # Office & productivity
     libreoffice-stable
@@ -23,8 +23,10 @@
         wlrobs
         obs-backgroundremoval
         obs-pipewire-audio-capture
+        droidcam-obs
       ];
     })
+    droidcam
     handbrake
     losslesscut-bin
     mkvtoolnix

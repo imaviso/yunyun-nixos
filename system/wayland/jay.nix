@@ -10,7 +10,8 @@
       jay = {
         prettyName = "jay";
         comment = "jay compositor managed by UWSM";
-        binPath = "/run/current-system/sw/bin/jay run";
+        binPath = "/run/current-system/sw/bin/jay";
+        extraArgs = ["run"];
       };
     };
   };
@@ -62,7 +63,7 @@
     };
 
     dbus.packages = with pkgs; [
-      gcr
+      gcr_4
       gnome-settings-daemon
     ];
 

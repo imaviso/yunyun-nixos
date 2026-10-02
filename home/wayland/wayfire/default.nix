@@ -34,7 +34,8 @@
 in {
   wayland.windowManager.wayfire = {
     enable = true;
-    systemd.enable = true;
+    # uwsm owns graphical-session.target, HM must not fight it
+    systemd.enable = false;
     plugins = with pkgs.wayfirePlugins; [
       wcm
       wayfire-plugins-extra
@@ -66,6 +67,8 @@ in {
           idle = false;
           portal = false;
           background = false;
+          # signal uwsm that compositor is ready, publish WAYLAND_DISPLAY etc.
+          finalize = "uwsm finalize";
         };
         move.activate = "<super> BTN_LEFT";
         resize.activate = "<super> BTN_RIGHT";

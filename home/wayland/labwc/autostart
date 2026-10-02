@@ -1,3 +1,7 @@
+# Managed by uwsm: signal readiness, publish WAYLAND_DISPLAY etc.
+# Must stay first and backgrounded; labwc does not do this itself.
+uwsm finalize &
+
 # Example autostart file
 # app2unit -- kanshi >/dev/null 2>&1 &
 # app2unit -- swww-daemon >/dev/null 2>&1 &

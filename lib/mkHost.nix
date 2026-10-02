@@ -50,8 +50,8 @@
       fonts = {
         sans = "Inter Variable";
         serif = "IBM Plex Serif";
-        mono = "IoskeleyMono Nerd Font";
-        terminal = "IoskeleyMono Nerd Font";
+        mono = "IoskeleyMono Nerd Font Mono";
+        terminal = "IoskeleyMono Nerd Font Mono";
         terminalSize = 12;
         uiSize = 10;
         emoji = "Noto Color Emoji";

@@ -16,11 +16,11 @@
 
   services.scx = {
     enable = true;
-    scheduler = "scx_bpfland";
-    # scheduler = "scx_lavd";
-    # extraArgs = [
-    #   "--autopilot"
-    # ];
+    # scheduler = "scx_bpfland";
+    scheduler = "scx_lavd";
+    extraArgs = [
+      "--autopilot"
+    ];
   };
 
   boot = {
@@ -52,11 +52,21 @@
     kernelModules = [
       "kvm-amd"
       "ntsync"
+      "btusb"
       "btintel"
+      "iwlwifi"
       "v4l2loopback"
     ];
 
-    kernelParams = ["amd_pstate=guided" "amdgpu.ppfeaturemask=0xffffffff" "amdgpu.aspm=0" "amdgpu.audio=0" "nmi_watchdog=0" "nowatchdog" "processor.max_cstate=1" "transparent_hugepage=never" "vm.zone_reclaim_mode=0" "audit=0" "pcie_aspm=off" "ignore_rlimit_data" "split_lock_detect=off" "split_lock_mitigate=0" "preempt=full" "libahci.ignore_sss=1" "loglevel=3" "rd.systemd.show_status=false" "transparent_hugepage_tmpfs=never" "amdgpu.dcdebugmask=0x4"];
+    kernelParams = [
+      "amd_pstate=active"
+      "audit=0"
+      "nowatchdog"
+      "split_lock_detect=off"
+      "preempt=full"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+    ];
     supportedFilesystems = [
       "nfs"
       "ext4"
@@ -120,7 +130,6 @@
       "kernel.printk_devkmsg" = "off";
       "kernel.printk" = "3 3 2 3"; #limits log messages to the important stuff, less overhead
       "kernel.kptr_restrict" = 1; # restricts viewing of kernel pointers to application which have CAP_SYSLOG capability or have root rights.
-      "kernel.threads-max" = 1073741823; # sets max system thread count.
 
       # 20-net-timeout.conf
       # This is required due to some games being unable to reuse their TCP ports
@@ -134,11 +143,10 @@
       # USE MAX_INT - MAPCOUNT_ELF_CORE_MARGIN.
       # see comment in include/linux/mm.h in the kernel tree.
       "vm.max_map_count" = 2147483642;
-      "vm.swappiness" = 1; # Says how strong the pressure is to put stale stuff in memory into Swap the lower the less the pressure
+      "vm.swappiness" = 100; # zram backing: let kernel page out stale anon to compressed RAM
       "vm.stat_interval" = 10; # This parameter controls how often (in seconds) the kernel's virtual memory (VM) subsystem wakes up to recount and update its internal statistics.
-      "vm.zone_reclaim_mode" = 0; # same as the command line parameter, maybe you dont even need this here if you have the commandline parameter
-      "vm.compaction_proactiveness" = 0; # disables ram memory page defragmentation, this disables kcompactd which repeatedly checks and defragments the ram. Which can cause stutter, lag and hangs.
-      "vm.overcommit_memory" = 1; # tell applications they can commit as much as they want. TLDR: Always say yes to memory allocations.
+      "vm.zone_reclaim_mode" = 0; # NUMA-less box: no off-node reclaim
+      "vm.overcommit_memory" = 1; # Proton/Wine wants always-yes; OOM-killer handles excess
     };
 
     lanzaboote = {
@@ -216,9 +224,20 @@
   swapDevices = [
     {
       device = "/var/lib/swapfile";
-      size = 16 * 1024;
+      size = 32 * 1024;
     }
   ];
+
+  zramSwap = {
+    enable = lib.mkForce false;
+  };
+
+  boot.zswap = {
+    enable = true;
+    compressor = "zstd";
+    zpool = "zsmalloc";
+    maxPoolPercent = 20;
+  };
 
   services.btrfs.autoScrub = {
     enable = true;
@@ -226,7 +245,8 @@
 
   hardware = {
     i2c.enable = true;
-    amdgpu.overdrive.ppfeaturemask.enable = true;
+    amdgpu.overdrive.enable = true;
+    amdgpu.overdrive.ppfeaturemask = "0xffffffff";
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     bluetooth = {

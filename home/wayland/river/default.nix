@@ -6,17 +6,18 @@
 }: {
   wayland.windowManager.river = {
     enable = true;
+    # uwsm owns graphical-session.target, HM must not fight it
     systemd.enable = false;
     package = pkgs.river;
     extraConfig = ''
+      # signal uwsm that compositor is ready, publish WAYLAND_DISPLAY etc.
+      uwsm finalize &
       swash
     '';
   };
 
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "river";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "river";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland";

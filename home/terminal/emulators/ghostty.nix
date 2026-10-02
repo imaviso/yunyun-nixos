@@ -14,7 +14,12 @@ in {
     settings = {
       font-family = settings.fonts.terminal;
       font-size = settings.fonts.terminalSize;
-      quit-after-last-window-closed = true;
+      # Must be false: HM systemd unit runs ghostty headless
+      # (--initial-window=false) as single-instance daemon. `true` makes the
+      # daemon take the quit-after-last-surface path and SEGV (recurring
+      # core-dump in app-com.mitchellh.ghostty.service). Daemon is meant to
+      # linger; on-demand windows still close normally.
+      quit-after-last-window-closed = false;
       quit-after-last-window-closed-delay = "5m";
       window-decoration = true;
       window-padding-x = 10;

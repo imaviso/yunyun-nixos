@@ -8,13 +8,12 @@
 in {
   wayland.windowManager.labwc = {
     enable = true;
-    systemd.enable = true;
+    # uwsm owns graphical-session.target, HM must not fight it
+    systemd.enable = false;
   };
 
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "labwc:wlroots";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "labwc:wlroots";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland";
@@ -23,7 +22,7 @@ in {
     APP2UNIT_TYPE = "service";
     # QT_QPA_PLATFORMTHEME = settings.appearance.qtPlatformTheme;
     # QT_QPA_PLATFORMTHEME_QT6 = settings.appearance.qtPlatformTheme;
-    WLR_RENDERER = "vulkan";
+    # WLR_RENDERER = "vulkan";
     XKB_DEFAULT_LAYOUT = settings.input.keyboardLayout;
     # XKB_DEFAULT_VARIANT = settings.input.keyboardVariant;
     # XKB_DEFAULT_OPTIONS = settings.input.keyboardOptions;

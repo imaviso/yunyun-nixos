@@ -28,14 +28,14 @@
             192000
           ];
           "default.clock.quantum" = 256;
-          "default.clock.min-quantum" = 256;
+          "default.clock.min-quantum" = 32;
           "default.clock.max-quantum" = 512;
         };
       };
 
       "93-resampling" = {
         "stream.properties" = {
-          "resampling.quality" = 10;
+          "resampling.quality" = 5;
         };
       };
     };

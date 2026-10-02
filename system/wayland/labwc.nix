@@ -39,7 +39,7 @@
     papirus-icon-theme
     nwg-look
     colloid-gtk-theme
-    font-manager
+    # font-manager
     hyprpicker
     swappy
     slurp
@@ -72,14 +72,12 @@
       settings = {
         default_session = {
           command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -- labwc-uwsm.desktop'";
-          # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'labwc'";
-          # user = username;
         };
       };
     };
 
     dbus.packages = with pkgs; [
-      gcr
+      gcr_4
       gnome-settings-daemon
     ];
 

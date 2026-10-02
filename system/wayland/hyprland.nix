@@ -37,8 +37,6 @@
     settings = {
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start hyprland-uwsm.desktop'";
-        # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'Hyprland'";
-        # user = username;
       };
     };
   };
@@ -48,7 +46,7 @@
   services = {
     # needed for GNOME services outside of GNOME Desktop
     dbus.packages = with pkgs; [
-      gcr
+      gcr_4
       gnome-settings-daemon
     ];
 

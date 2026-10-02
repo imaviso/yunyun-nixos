@@ -63,8 +63,6 @@ in {
 
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland";
@@ -75,7 +73,11 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
+    # uwsm owns graphical-session.target, HM must not fight it
+    systemd.enable = false;
     settings = {
+      # signal uwsm that compositor is ready, publish WAYLAND_DISPLAY etc.
+      exec-once = ["uwsm finalize"];
       monitor = monitorConfigs;
 
       input = {

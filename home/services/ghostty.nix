@@ -4,12 +4,12 @@
   ...
 }: {
   systemd.user.services.ghostty = {
-    Unit.Description = "ghostty";
-    Install = {
-      WantedBy = ["graphical-session.target"];
-      Wants = ["graphical-session.target"];
+    Unit = {
+      Description = "ghostty";
       After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
     };
+    Install.WantedBy = ["graphical-session.target"];
     Service = {
       Type = "simple";
       ExecStart = "${

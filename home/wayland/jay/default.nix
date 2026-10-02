@@ -1,30 +1,10 @@
-{
-  config,
-  settings,
-  pkgs,
-  lib,
-  ...
-}: let
-  variables = builtins.concatStringsSep " " [
-    "DISPLAY"
-    "WAYLAND_DISPLAY"
-    "XDG_CURRENT_DESKTOP"
-    "NIXOS_OZONE_WL"
-    "XCURSOR_THEME"
-    "XCURSOR_SIZE"
-  ];
-  systemdActivation = "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd ${variables}";
-in {
-  # home.file."${config.xdg.configHome}/jay/config.toml".text = ''
-  #   on-startup = { type = "exec", exec = { shell = "${systemdActivation}" } }
-  #
-  #   ${builtins.readFile ./config.toml}
-  # '';
-
+{settings, ...}: {
+  # jay launched via uwsm (system/wayland/jay.nix).
+  # Manual dbus-update-activation-environment removed: uwsm owns env +
+  # graphical-session.target. Run `uwsm finalize` from jay on-startup once
+  # jay config exists.
   home.sessionVariables = {
     XDG_CURRENT_DESKTOP = "jay";
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "jay";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     GDK_BACKEND = "wayland";

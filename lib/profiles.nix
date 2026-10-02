@@ -43,6 +43,7 @@
       xdg
       git
       terminal.editors.neovim.default
+      terminal.editors.helix.default
       terminal.emulators.foot
       terminal.emulators.ghostty
       terminal.shell.fish
@@ -50,6 +51,7 @@
       terminal.yazi
       programs.mpv
       programs.firefox
+      programs.sonora
       # wayland.kde.default
       wayland.labwc.default
       services.kanshi # labwc etc

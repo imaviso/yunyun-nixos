@@ -64,14 +64,12 @@
       settings = {
         default_session = {
           command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'uwsm start -- wayfire-uwsm.desktop'";
-          # command = "${pkgs.tuigreet}/bin/tuigreet -r -t --asterisks --cmd 'wayfire'";
-          # user = username;
         };
       };
     };
 
     dbus.packages = with pkgs; [
-      gcr
+      gcr_4
       gnome-settings-daemon
     ];
 

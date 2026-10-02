@@ -18,7 +18,7 @@
     # heroic
     faugus-launcher
     winetricks
-    protonup-qt
+    protonplus
     heroic
     lutris
   ];
