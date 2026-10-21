@@ -123,7 +123,9 @@
       services.suboxide
       # services.scx
       # services.tailscale
-      services.qbittorrent
+      services.rtorrent
+      services.rutorrent
+      # services.qbittorrent
       programs.terminal.fish
       programs.terminal.zoxide
       programs.nix-ld

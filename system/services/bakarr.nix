@@ -9,6 +9,7 @@
     openFirewall = true;
     environment = {
       BAKARR_BOOTSTRAP_USERNAME = "admin";
+      BAKARR_TRUSTED_HOSTS = "anime.imaviso.com";
       SESSION_COOKIE_SECURE = false;
     };
   };

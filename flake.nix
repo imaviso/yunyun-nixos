@@ -49,12 +49,12 @@
     dw-proton.url = "github:imaviso/dwproton-flake";
 
     bakarr = {
-      url = "github:imaviso/bakarr";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+https://git.imaviso.com/yunyun/bakarr.git";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     suboxide = {
-      url = "github:imaviso/suboxide";
+      url = "git+https://git.imaviso.com/yunyun/suboxide.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
