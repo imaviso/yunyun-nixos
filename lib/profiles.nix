@@ -133,7 +133,7 @@
     home = with homeModules; [
       xdg
       git
-      programs.beets
+      # programs.beets
       terminal.editors.neovim.default
       terminal.shell.fish
       terminal.shell.starship

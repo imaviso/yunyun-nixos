@@ -13,7 +13,7 @@
   ];
   boot.loader.grub = {
     enable = true;
-    device = "/dev/sdc";
+    device = "/dev/sda";
     useOSProber = true;
   };
   boot.initrd.systemd.enable = true;
